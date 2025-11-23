@@ -2,40 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Youssef Sassi – Portfolio</title>
+  <title>Youssef – Made a Journey</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <!-- ====== BASIC STYLES ====== -->
   <style>
     :root {
       --bg: #050816;
-      --bg-alt: #0b1020;
+      --bg-alt: #060a1a;
       --accent: #ffb547;
       --accent2: #ff6a95;
       --text: #f5f5f7;
-      --text-muted: #a1a1b5;
+      --muted: #a1a1b5;
       --card: #101527;
-      --border: rgba(255,255,255,0.06);
-      --radius-xl: 18px;
-      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.45);
-      --transition-fast: 0.18s ease-out;
-      --max-width: 1100px;
+      --radius: 20px;
     }
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
+      box-sizing: border-box;
     }
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #151c3b, #050816 55%);
+      background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      overflow-x: hidden;
     }
 
     a {
@@ -43,238 +36,127 @@
       text-decoration: none;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* NAVBAR */
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(18px);
-      background: linear-gradient(
-        to bottom,
-        rgba(5, 8, 22, 0.96),
-        rgba(5, 8, 22, 0.8),
-        transparent
-      );
-      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-    }
-
-    .nav {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 12px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 14px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .nav-logo {
-      width: 28px;
-      height: 28px;
-      border-radius: 999px;
-      border: 2px solid var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      color: var(--accent);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .nav-link {
-      font-size: 13px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      color: var(--text-muted);
-      transition: background var(--transition-fast), border-color var(--transition-fast),
-        color var(--transition-fast), transform var(--transition-fast);
-      cursor: pointer;
-    }
-
-    .nav-link:hover {
-      background: rgba(255, 255, 255, 0.02);
-      border-color: rgba(255, 255, 255, 0.06);
-      color: var(--text);
-      transform: translateY(-1px);
-    }
-
-    .nav-link--primary {
-      border-color: rgba(255, 255, 255, 0.16);
-      color: var(--accent);
-      background: rgba(255, 181, 71, 0.12);
-    }
-
     main {
-      flex: 1;
+      width: 100%;
+      min-height: 100vh;
     }
 
     section {
-      max-width: var(--max-width);
+      position: relative;
+      width: 100%;
+    }
+
+    .max-width {
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 48px 20px;
+      padding: 0 24px;
     }
 
-    section + section {
-      border-top: 1px solid rgba(255, 255, 255, 0.04);
-    }
-
-    /* HERO */
+    /* ===== HERO (PARALLAX + TIMELINE) ===== */
 
     .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
-      gap: 40px;
+      height: 100vh;
+      overflow: hidden;
+      background: radial-gradient(circle at top, #1d2349, #050816 55%);
+      display: flex;
       align-items: center;
-      padding-top: 64px;
-      padding-bottom: 64px;
+      justify-content: center;
     }
 
-    .hero-eyebrow {
-      font-size: 13px;
+    .hero-inner {
+      position: relative;
+      width: 100%;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+      gap: 40px;
+      z-index: 2;
+    }
+
+    /* background swirls (parallax layer) */
+    .hero-bg-swirl {
+      position: absolute;
+      inset: -20%;
+      background:
+        radial-gradient(circle at 20% 0, rgba(255, 181, 71, 0.3), transparent 55%),
+        radial-gradient(circle at 80% 100%, rgba(255, 106, 149, 0.25), transparent 55%);
+      opacity: 0.4;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .hero-left {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.24em;
       color: var(--accent);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
-    .hero-title {
+    .hero-heading {
       font-size: clamp(32px, 5vw, 42px);
-      font-weight: 800;
       line-height: 1.1;
       margin-bottom: 8px;
     }
 
     .hero-name {
       font-size: clamp(36px, 6vw, 48px);
-      background: linear-gradient(120deg, #fff, #ffb547, #ff6a95);
-      background-clip: text;
+      background: linear-gradient(120deg, #fff, var(--accent), var(--accent2));
       -webkit-background-clip: text;
+      background-clip: text;
       color: transparent;
-      margin-bottom: 10px;
     }
 
-    .hero-subtitle {
+    .hero-sub {
       font-size: 15px;
-      color: var(--text-muted);
-      max-width: 420px;
-      margin-bottom: 18px;
-    }
-
-    .hero-scroll {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.24em;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 32px;
-    }
-
-    .hero-scroll-line {
-      height: 1px;
-      width: 80px;
-      background: linear-gradient(to right, var(--accent), transparent);
-    }
-
-    .hero-roles-label {
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-    }
-
-    .hero-roles-highlight {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 2px;
-    }
-
-    .hero-roles-tagline {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 18px;
-    }
-
-    .hero-roles-stack {
+      color: var(--muted);
       margin-top: 10px;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
+      max-width: 480px;
+    }
+
+    .hero-tagline {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .hero-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
+      margin-bottom: 18px;
     }
 
     .pill {
       font-size: 11px;
       padding: 4px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      background: rgba(9, 12, 30, 0.9);
-      color: var(--text-muted);
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(4, 7, 24, 0.9);
+      color: var(--muted);
     }
 
-    .hero-buttons {
+    .hero-meta {
+      font-size: 12px;
+      color: var(--muted);
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 8px;
+      gap: 12px;
+      align-items: center;
     }
 
-    .btn {
-      font-size: 13px;
-      padding: 8px 16px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      background: rgba(255, 255, 255, 0.04);
-      cursor: pointer;
-      transition: transform var(--transition-fast),
-        box-shadow var(--transition-fast),
-        background var(--transition-fast);
-    }
-
-    .btn-primary {
-      background: linear-gradient(120deg, var(--accent), var(--accent2));
-      color: #050816;
-      border: none;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+    .hero-meta a {
+      color: var(--accent);
     }
 
     .hero-right {
+      position: relative;
+      z-index: 2;
       display: flex;
       justify-content: center;
     }
@@ -282,600 +164,539 @@
     .hero-card {
       background: radial-gradient(circle at top left, #343a72, #151935 45%, #050816);
       border-radius: 28px;
-      padding: 16px 16px 22px;
-      position: relative;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: var(--shadow-soft);
+      padding: 18px 18px 22px;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.55);
       max-width: 320px;
       width: 100%;
       overflow: hidden;
     }
 
-    .hero-avatar-wrap {
-      border-radius: 999px;
-      padding: 4px;
-      background: radial-gradient(circle at 0 0, #ffb547, #ff6a95, #5b9dff);
+    .hero-avatar {
       width: 120px;
       height: 120px;
+      border-radius: 999px;
+      padding: 4px;
       margin: 0 auto 12px;
+      background: radial-gradient(circle at 0 0, var(--accent), var(--accent2), #5b9dff);
     }
 
     .hero-avatar-inner {
-      border-radius: inherit;
-      background: #050816;
       width: 100%;
       height: 100%;
+      border-radius: inherit;
+      background: #050816;
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
+      font-size: 42px;
     }
 
-    .hero-avatar-inner span {
-      font-size: 54px;
-    }
-
-    .hero-card-title {
+    .hero-role {
       text-align: center;
+      font-size: 14px;
       font-weight: 600;
       margin-bottom: 4px;
     }
 
-    .hero-card-sub {
+    .hero-location {
       text-align: center;
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 14px;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 12px;
     }
 
-    .hero-card-footer {
+    .hero-card-skills {
       display: flex;
-      justify-content: center;
-      gap: 6px;
       flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
       font-size: 11px;
     }
 
-    .hero-card-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: #2ce6b5;
-      box-shadow: 0 0 0 6px rgba(44, 230, 181, 0.16);
-    }
-
-    .hero-card-badge {
+    .hero-card-skills span {
       padding: 3px 8px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.16);
     }
 
-    /* SECTION HEADERS */
+    /* ===== INFINITE MARQUEE ===== */
 
-    .section-eyebrow {
+    .marquee {
+      position: relative;
+      background: var(--bg-alt);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      overflow: hidden;
+      padding: 10px 0;
+    }
+
+    .marquee-inner {
+      white-space: nowrap;
+      display: inline-block;
       font-size: 13px;
-      letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 10px;
+      letter-spacing: 0.2em;
+      color: var(--muted);
     }
 
-    .section-title {
-      font-size: 24px;
-      font-weight: 700;
+    .marquee-inner span {
+      padding: 0 40px;
+    }
+
+    /* ===== JOURNEY FILMSTRIP (HORIZONTAL SCROLL) ===== */
+
+    .journey {
+      background: linear-gradient(to bottom, #050816, #050816);
+    }
+
+    .journey-pin {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .journey-track {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 40px;
+    }
+
+    .journey-panel {
+      flex: 0 0 80vw;
+      max-width: 80vw;
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px 22px;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.55);
+    }
+
+    .panel-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--muted);
       margin-bottom: 8px;
     }
 
-    .section-subtitle {
-      font-size: 13px;
-      color: var(--text-muted);
-      max-width: 480px;
-      margin-bottom: 24px;
-    }
-
-    /* ART FIELDS */
-
-    .fields {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .field-card {
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--border);
-      background: radial-gradient(circle at top, rgba(255, 255, 255, 0.03), transparent);
-      padding: 16px 14px 18px;
-      font-size: 13px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      position: relative;
-      overflow: hidden;
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
-        border-color var(--transition-fast), background var(--transition-fast);
-      cursor: default;
-    }
-
-    .field-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.12), transparent 60%);
-      opacity: 0;
-      transition: opacity var(--transition-fast);
-      pointer-events: none;
-    }
-
-    .field-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-soft);
-      border-color: rgba(255, 255, 255, 0.15);
-      background: radial-gradient(circle at top, rgba(255, 255, 255, 0.06), transparent);
-    }
-
-    .field-card:hover::after {
-      opacity: 1;
-    }
-
-    .field-label {
-      text-transform: uppercase;
-      font-size: 11px;
-      letter-spacing: 0.26em;
-      color: var(--text-muted);
-    }
-
-    .field-title {
-      font-size: 14px;
+    .panel-title {
+      font-size: 20px;
       font-weight: 600;
+      margin-bottom: 10px;
     }
 
-    .field-sub {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    /* SPLIT LAYOUT */
-
-    .split {
-      display: grid;
-      grid-template-columns: minmax(0, 3.3fr) minmax(0, 2.3fr);
-      gap: 28px;
-      align-items: flex-start;
-    }
-
-    .paragraph {
-      font-size: 14px;
-      color: var(--text-muted);
+    .panel-tagline {
+      font-size: 13px;
+      color: var(--muted);
       margin-bottom: 14px;
     }
 
-    .badge-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 4px;
-    }
-
-    .link-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      padding: 6px 11px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      background: rgba(255, 255, 255, 0.02);
-      cursor: pointer;
-      transition: background var(--transition-fast), transform var(--transition-fast),
-        border-color var(--transition-fast);
-    }
-
-    .link-pill:hover {
-      background: rgba(255, 255, 255, 0.04);
-      border-color: rgba(255, 255, 255, 0.22);
-      transform: translateY(-1px);
-    }
-
-    .mini-card {
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--border);
-      background: var(--bg-alt);
-      padding: 14px 16px;
+    .panel-list {
       font-size: 13px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .mini-title {
-      font-weight: 600;
-    }
-
-    .mini-sub {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    /* CONTACT */
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 2.5fr) minmax(0, 3fr);
-      gap: 28px;
-    }
-
-    .contact-info-row {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      font-size: 14px;
-    }
-
-    .contact-info-row a {
-      color: var(--accent);
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      font-size: 13px;
-    }
-
-    label {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    input, textarea {
-      padding: 8px 10px;
-      border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(3, 6, 20, 0.9);
       color: var(--text);
-      font-family: inherit;
+      list-style: none;
+      line-height: 1.5;
+    }
+
+    .panel-list li + li {
+      margin-top: 6px;
+    }
+
+    /* ===== FINAL CTA ===== */
+
+    .cta {
+      padding: 80px 0 60px;
+      background: #050816;
+    }
+
+    .cta-inner {
+      text-align: center;
+    }
+
+    .cta-eyebrow {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.26em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .cta-title {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .cta-text {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto 18px;
+    }
+
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .btn {
       font-size: 13px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.02);
+      cursor: pointer;
+      transition: 0.18s ease-out;
+      color: var(--text);
     }
 
-    input:focus, textarea:focus {
-      outline: 1px solid var(--accent);
-      border-color: var(--accent);
+    .btn-primary {
+      background: linear-gradient(120deg, var(--accent), var(--accent2));
+      border: none;
+      color: #050816;
+      box-shadow: 0 16px 35px rgba(0,0,0,0.6);
     }
 
-    textarea {
-      min-height: 100px;
-      resize: vertical;
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.65);
     }
 
     footer {
       text-align: center;
       font-size: 12px;
-      color: var(--text-muted);
-      padding: 20px;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      color: var(--muted);
+      padding: 16px 0 24px;
       background: #050816;
     }
 
+    /* ===== RESPONSIVE ===== */
+
     @media (max-width: 900px) {
-      .hero,
-      .split,
-      .contact-grid {
+      .hero-inner {
         grid-template-columns: minmax(0, 1fr);
+        gap: 26px;
       }
-
-      .hero {
-        padding-top: 32px;
-      }
-
       .hero-right {
         order: -1;
       }
 
-      .fields {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .journey-panel {
+        flex-basis: 90vw;
+        max-width: 90vw;
       }
     }
 
     @media (max-width: 600px) {
-      .nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .fields {
-        grid-template-columns: minmax(0, 1fr);
+      .hero-sub {
+        max-width: none;
       }
     }
   </style>
 </head>
 <body>
-<div class="page">
+<main>
 
-  <!-- NAVBAR -->
-  <header>
-    <nav class="nav">
-      <div class="nav-left">
-        <div class="nav-logo">YS</div>
-        <span>Portfolio</span>
-      </div>
-      <div class="nav-links">
-        <a href="#about" class="nav-link">About</a>
-        <a href="#fields" class="nav-link">Art fields</a>
-        <a href="#frontend" class="nav-link">Front-end</a>
-        <a href="#uiux" class="nav-link">UI / UX</a>
-        <a href="#illustrations" class="nav-link">Illustrations</a>
-        <a href="#contact" class="nav-link nav-link--primary">Contact</a>
-      </div>
-    </nav>
-  </header>
+  <!-- ========= HERO ========= -->
+  <section class="hero" id="top">
+    <div class="hero-bg-swirl" data-speed="-0.15" data-parallax></div>
 
-  <main>
-    <!-- HERO -->
-    <section id="about">
-      <div class="hero">
-        <div class="hero-left">
-          <div class="hero-eyebrow">Digital creator</div>
-          <h1 class="hero-title">
-            Hi, I’m <span class="hero-name">Youssef Sassi</span>
-          </h1>
-          <p class="hero-subtitle">
-            I craft interactive experiences at the intersection of
-            front-end development, UI/UX design, illustration and voice acting.
+    <div class="max-width hero-inner">
+      <div class="hero-left">
+        <div class="hero-badge hero-badge-layer" data-speed="0.25" data-parallax>
+          Made a Journey – AI • XR • HCI
+        </div>
+        <h1 class="hero-heading hero-heading-layer" data-speed="0.3" data-parallax>
+          I’m <span class="hero-name">Youssef Hadj Sassi</span>,
+          crafting journeys between <br />AI systems &amp; spatial computing.
+        </h1>
+        <p class="hero-sub hero-text-layer" data-speed="0.35" data-parallax>
+          Master’s student in Information Systems and New Technologies, building AI-driven
+          backends and AR/VR experiences with a strong foundation in Human–Computer Interaction
+          and user-centred design.
+        </p>
+        <p class="hero-tagline hero-text-layer" data-speed="0.38" data-parallax>
+          From railway safety XR training to AI assistants that understand natural language,
+          I design tools that help people work safely and intelligently.
+        </p>
+
+        <div class="hero-tags hero-text-layer" data-speed="0.4" data-parallax>
+          <span class="pill">AI &amp; Generative Models</span>
+          <span class="pill">Agent-Based Systems</span>
+          <span class="pill">XR (AR/VR) Development</span>
+          <span class="pill">HCI &amp; UCD</span>
+        </div>
+
+        <div class="hero-meta hero-text-layer" data-speed="0.45" data-parallax>
+          <span>📍 Wrocław · Sfax · Europe-ready</span>
+          <span>✉️ <a href="mailto:yousséfh.sassi@gmail.com">youssefh.sassi@gmail.com</a></span>
+          <span>🔗 <a href="https://linkedin.com/in/youssefhjsassi" target="_blank">LinkedIn</a></span>
+        </div>
+      </div>
+
+      <div class="hero-right hero-avatar-layer" data-speed="0.2" data-parallax>
+        <div class="hero-card">
+          <div class="hero-avatar">
+            <div class="hero-avatar-inner">
+              <!-- replace with your photo later -->
+              🧠
+            </div>
+          </div>
+          <div class="hero-role">
+            Information Systems &amp; New Technologies (AI + XR)
+          </div>
+          <div class="hero-location">
+            University of Sfax · Le Mans University · Wrocław UST
+          </div>
+
+          <div class="hero-card-skills">
+            <span>Python · C# · Java</span>
+            <span>LLM &amp; RAG</span>
+            <span>Unity · Vuforia · Oculus</span>
+            <span>Flask · REST · SQLite</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========= INFINITE MARQUEE ========= -->
+  <section class="marquee">
+    <div class="marquee-inner marquee-track">
+      <span>Stillness &amp; Coherence in Complex Systems</span>
+      <span>AI Assistants Orchestrating AR Train Safety</span>
+      <span>Extended Reality for Critical Railway Scenarios</span>
+      <span>User-Centred Design · HCI · Spatial Computing</span>
+      <span>LLM-powered Workflows &amp; Intelligent Interfaces</span>
+      <span>International Experience · Poland · Italy · Tunisia</span>
+    </div>
+    <div class="marquee-inner marquee-track">
+      <span>Stillness &amp; Coherence in Complex Systems</span>
+      <span>AI Assistants Orchestrating AR Train Safety</span>
+      <span>Extended Reality for Critical Railway Scenarios</span>
+      <span>User-Centred Design · HCI · Spatial Computing</span>
+      <span>LLM-powered Workflows &amp; Intelligent Interfaces</span>
+      <span>International Experience · Poland · Italy · Tunisia</span>
+    </div>
+  </section>
+
+  <!-- ========= JOURNEY HORIZONTAL FILMSTRIP ========= -->
+  <section class="journey" id="journey">
+    <div class="max-width journey-pin">
+      <div class="journey-track">
+        <!-- Panel 1 – Education -->
+        <article class="journey-panel">
+          <div class="panel-label">01 · Foundations</div>
+          <h2 class="panel-title">Education: information meets business</h2>
+          <p class="panel-tagline">
+            From business computing to AI-driven information systems.
           </p>
+          <ul class="panel-list">
+            <li><strong>Master’s in Information Systems &amp; New Technologies</strong><br />
+              University of Sfax (Tunisia) · Double degree with Le Mans University (France).
+              Focus on machine learning, software engineering, and intelligent information systems.</li>
+            <li><strong>Bachelor’s in Business Computing</strong><br />
+              Training in data processing, dashboards, and decision-support systems.</li>
+            <li><strong>Baccalaureate in Economics and Management</strong><br />
+              Understanding organizations and decision-making before jumping into code.</li>
+          </ul>
+        </article>
 
-          <div class="hero-scroll">
-            <div class="hero-scroll-line"></div>
-            <span>Scroll to explore my worlds</span>
-          </div>
+        <!-- Panel 2 – XR Internship -->
+        <article class="journey-panel">
+          <div class="panel-label">02 · Immersive safety</div>
+          <h2 class="panel-title">XR for Railway Safety – SNCFT</h2>
+          <p class="panel-tagline">
+            AR/VR environments that teach teams to operate in safety-critical contexts.
+          </p>
+          <ul class="panel-list">
+            <li>Built an <strong>AR &amp; VR training system</strong> for the National Railway Company of Tunisia (SNCFT).</li>
+            <li>Simulated maintenance operations and safety procedures inside immersive scenes.</li>
+            <li>Stack: <strong>C#, Unity, Vuforia, Oculus Quest 2, MySQL, PHP</strong> and Android tools.</li>
+          </ul>
+        </article>
 
-          <div class="hero-roles-label">Main roles</div>
-          <div class="hero-roles-highlight">
-            Front-end · UI/UX · Illustration · Voice Over
-          </div>
-          <div class="hero-roles-tagline">
-            From wireframes to motion and narration — one consistent universe.
-          </div>
+        <!-- Panel 3 – AI & Data Internship -->
+        <article class="journey-panel">
+          <div class="panel-label">03 · Anomaly &amp; insight</div>
+          <h2 class="panel-title">AI &amp; Data – Global Phones Sfax</h2>
+          <p class="panel-tagline">
+            Using LSTM anomaly detection to keep internal data flows clean.
+          </p>
+          <ul class="panel-list">
+            <li>Implemented <strong>LSTM-based anomaly detection</strong> to check data consistency.</li>
+            <li>Improved internal workflows and reporting for the team.</li>
+            <li>Stack: <strong>Python, SQL, LSTM, Excel</strong> for practical analytics.</li>
+          </ul>
+        </article>
 
-          <div class="hero-roles-stack">
-            <span class="pill">React</span>
-            <span class="pill">Three.js</span>
-            <span class="pill">Figma</span>
-            <span class="pill">Procreate</span>
-            <span class="pill">Storyboarding</span>
-            <span class="pill">French / English VO</span>
-          </div>
+        <!-- Panel 4 – AI Assistant Project -->
+        <article class="journey-panel">
+          <div class="panel-label">04 · Spoken to spatial</div>
+          <h2 class="panel-title">AI Assistant for AR Train Safety</h2>
+          <p class="panel-tagline">
+            Natural-language commands orchestrating AR overlays on train components.
+          </p>
+          <ul class="panel-list">
+            <li>Designed a backend that interprets <strong>spoken and written instructions</strong> to control AR visualizations of train parts.</li>
+            <li>Combined <strong>ASR normalisation, fuzzy logic, rule-based parsing and LLMs</strong> for robust intent understanding.</li>
+            <li>Applied <strong>UCD &amp; HCI</strong> principles (personas, user journeys, sketches) to keep technicians in focus.</li>
+            <li>Stack: <strong>Python, C#, Flask, SQLite, REST APIs, Unity integration</strong>.</li>
+          </ul>
+        </article>
 
-          <div class="hero-buttons">
-            <a href="#contact" class="btn btn-primary">Work with me</a>
-            <a href="#fields" class="btn">See art fields ↓</a>
-          </div>
-        </div>
-
-        <div class="hero-right">
-          <div class="hero-card">
-            <div class="hero-avatar-wrap">
-              <div class="hero-avatar-inner">
-                <!-- Replace this with your photo later -->
-                <span>🧑‍🎨</span>
-              </div>
-            </div>
-            <div class="hero-card-title">Multidisciplinary Artist</div>
-            <div class="hero-card-sub">
-              Mixing code, visuals and voice to tell coherent stories.
-            </div>
-            <div class="hero-card-footer">
-              <div class="hero-card-dot"></div>
-              <div class="hero-card-badge">Available for freelance</div>
-              <div class="hero-card-badge">Remote & on-site</div>
-            </div>
-          </div>
-        </div>
+        <!-- Panel 5 – International & Skills -->
+        <article class="journey-panel">
+          <div class="panel-label">05 · International &amp; skills</div>
+          <h2 class="panel-title">Moving through countries &amp; stacks</h2>
+          <p class="panel-tagline">
+            Erasmus programs and mobility shaped how I design for diverse users.
+          </p>
+          <ul class="panel-list">
+            <li><strong>Erasmus &amp; mobility</strong><br />
+              Wrocław University of Science and Technology (Poland) · University of Messina (Italy).</li>
+            <li><strong>Core skills</strong><br />
+              Python, C#, Java, PHP, SQL, MATLAB · LLM integration, generative AI, agent-based systems, RAG, fuzzy logic.</li>
+            <li><strong>Spatial &amp; UX</strong><br />
+              Unity, Vuforia, Oculus Quest 2 · Persona development, user journey mapping, interaction design, usability evaluation.</li>
+            <li><strong>Languages</strong><br />
+              Arabic (Native), English (B2), French (B2).</li>
+          </ul>
+        </article>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ART FIELDS -->
-    <section id="fields">
-      <div class="section-eyebrow">Art fields</div>
-      <h2 class="section-title">What I love building</h2>
-      <p class="section-subtitle">
-        My work moves between code and canvas. Here are the main universes I explore,
-        just like the original portfolio you saw.
+  <!-- ========= FINAL CTA ========= -->
+  <section class="cta" id="contact">
+    <div class="max-width cta-inner">
+      <div class="cta-eyebrow">Next chapter</div>
+      <h2 class="cta-title">Let’s design your client’s journey</h2>
+      <p class="cta-text">
+        Whether it’s an AI-augmented backend, an XR training module, or a human-centred
+        interface connecting both, I can help structure the experience and deliver
+        a scroll-driven narrative like this one for your clients.
       </p>
-
-      <div class="fields">
-        <div class="field-card">
-          <div class="field-label">01</div>
-          <div class="field-title">Front-end experiences</div>
-          <div class="field-sub">
-            Interactive 3D scenes, smooth animations and responsive layouts using
-            modern JavaScript frameworks.
-          </div>
-        </div>
-
-        <div class="field-card">
-          <div class="field-label">02</div>
-          <div class="field-title">Product & UI design</div>
-          <div class="field-sub">
-            From low-fi wireframes to polished design systems, aiming for clarity
-            and emotional engagement.
-          </div>
-        </div>
-
-        <div class="field-card">
-          <div class="field-label">03</div>
-          <div class="field-title">Illustrations & worlds</div>
-          <div class="field-sub">
-            Characters and environments that can live inside interfaces, games,
-            or standalone artworks.
-          </div>
-        </div>
-
-        <div class="field-card">
-          <div class="field-label">04</div>
-          <div class="field-title">Voice over & narration</div>
-          <div class="field-sub">
-            Bringing interfaces, trailers and characters to life with narrative tone
-            & carefully crafted timing.
-          </div>
-        </div>
+      <div class="cta-actions">
+        <a href="mailto:youssefh.sassi@gmail.com" class="btn btn-primary">Invite me to a project</a>
+        <a href="https://linkedin.com/in/youssefhjsassi" target="_blank" class="btn">View full profile on LinkedIn</a>
       </div>
-    </section>
-
-    <!-- FRONT-END -->
-    <section id="frontend">
-      <div class="split">
-        <div>
-          <div class="section-eyebrow">Front-end</div>
-          <h2 class="section-title">Interfaces that feel alive</h2>
-          <p class="paragraph">
-            I build web experiences with a strong focus on motion, depth and
-            responsiveness. I like to keep the technology invisible and let the
-            interaction feel natural and playful.
-          </p>
-          <p class="paragraph">
-            Typical stack: <strong>React</strong>, <strong>Three.js</strong>,
-            <strong>GSAP</strong>, and <strong>modern CSS</strong>.
-          </p>
-
-          <div class="badge-row">
-            <span class="pill">Single-page apps</span>
-            <span class="pill">3D on the web</span>
-            <span class="pill">Design systems</span>
-          </div>
-
-          <div style="margin-top:14px;">
-            <a class="link-pill" href="#contact">
-              Let’s discuss a front-end project →
-            </a>
-          </div>
-        </div>
-
-        <div class="mini-card">
-          <div class="mini-title">Sample front-end ideas</div>
-          <div class="mini-sub">
-            • Portfolio with 3D hero  
-            • Product landing page with scroll-based storytelling  
-            • Dashboard with micro-interactions  
-          </div>
-        </div>
+      <div class="cta-note" style="font-size:12px;color:var(--muted);">
+        This page is powered by GSAP · ScrollTrigger · timelines · pinning · scrubbing.
       </div>
-    </section>
-
-    <!-- UI/UX -->
-    <section id="uiux">
-      <div class="split">
-        <div>
-          <div class="section-eyebrow">UI / UX</div>
-          <h2 class="section-title">Design before code</h2>
-          <p class="paragraph">
-            Before opening a code editor, I work on flows, structure and the
-            emotional tone of the interface. Each screen should tell a tiny story.
-          </p>
-          <p class="paragraph">
-            Tools I often use: <strong>Figma</strong>, prototyping, design tokens,
-            simple usability tests.
-          </p>
-
-          <div class="badge-row">
-            <span class="pill">Wireframes</span>
-            <span class="pill">Prototypes</span>
-            <span class="pill">Design systems</span>
-          </div>
-        </div>
-
-        <div class="mini-card">
-          <div class="mini-title">Process</div>
-          <div class="mini-sub">
-            1. Understand context and users  
-            2. Map flows & navigation  
-            3. Iterate visually with feedback  
-            4. Translate into front-end components  
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ILLUSTRATIONS -->
-    <section id="illustrations">
-      <div class="split">
-        <div>
-          <div class="section-eyebrow">Illustrations</div>
-          <h2 class="section-title">Characters & visual stories</h2>
-          <p class="paragraph">
-            I enjoy creating characters and universes that connect to the interface.
-            Icons, avatars and scenes can all feel part of the same world.
-          </p>
-          <p class="paragraph">
-            I work digitally using tools like <strong>Procreate</strong> or
-            <strong>Photoshop</strong>, usually starting from small thumbnails.
-          </p>
-        </div>
-
-        <div class="mini-card">
-          <div class="mini-title">What I can provide</div>
-          <div class="mini-sub">
-            • Character sets for apps  
-            • Splash illustrations for landing pages  
-            • Simple comic-style storytelling for onboarding  
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <div class="section-eyebrow">Contact</div>
-      <h2 class="section-title">Let’s build something together</h2>
-      <p class="section-subtitle">
-        Feel free to reach out about collaborations, freelance work, or just to say hi.
-      </p>
-
-      <div class="contact-grid">
-        <div class="contact-info-row">
-          <span><strong>Email</strong></span>
-          <a href="mailto:youssefsassi@example.com">youssefsassi@example.com</a>
-
-          <span style="margin-top:14px;"><strong>Social</strong></span>
-          <a href="#" target="_blank">LinkedIn</a>
-          <a href="#" target="_blank">Behance</a>
-          <a href="#" target="_blank">GitHub</a>
-        </div>
-
-        <form>
-          <label>
-            Name
-            <input type="text" placeholder="Your name" />
-          </label>
-          <label>
-            Email
-            <input type="email" placeholder="you@example.com" />
-          </label>
-          <label>
-            Message
-            <textarea placeholder="Tell me a bit about your project..."></textarea>
-          </label>
-          <button type="submit" class="btn btn-primary">
-            Send message (mock)
-          </button>
-          <small style="color:var(--text-muted);">
-            This is a demo form. To make it send real emails, we’d need to plug in a service later.
-          </small>
-        </form>
-      </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
   <footer>
-    © <span id="year"></span> Youssef Sassi. Crafted with code, design & voice.
+    © <span id="year"></span> Youssef Hadj Sassi · Made a Journey Page
   </footer>
-</div>
+</main>
+
+<!-- ===== GSAP + ScrollTrigger ===== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
 <script>
-  // Simple script to keep footer year up to date
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Footer year
   document.getElementById("year").textContent = new Date().getFullYear();
+
+  /* ============================
+     HERO PARALLAX + TIMELINE
+     - Parallax on elements with data-parallax
+     - Timeline to reveal hero on scroll
+  ============================ */
+
+  gsap.utils.toArray("[data-parallax]").forEach(layer => {
+    const speed = parseFloat(layer.dataset.speed || 0.3);
+    gsap.to(layer, {
+      y: () => window.innerHeight * speed * -0.35,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".hero",
+        start: "top top",
+        end: "bottom top",
+        scrub: true
+      }
+    });
+  });
+
+  const heroTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".hero-inner",
+      start: "top 70%",
+      end: "bottom top",
+      scrub: true
+    }
+  });
+
+  heroTl
+    .from(".hero-heading-layer", { y: 60, opacity: 0 })
+    .from(".hero-text-layer", { y: 40, opacity: 0, stagger: 0.15 }, "-=0.25")
+    .from(".hero-avatar-layer", { y: 80, opacity: 0 }, "-=0.3");
+
+  /* ============================
+     INFINITE MARQUEE
+     - Looping x-translation
+     - SkewX reacting to scroll velocity
+  ============================ */
+
+  const marqueeTl = gsap.timeline({ repeat: -1, ease: "none" });
+
+  marqueeTl.to(".marquee-track", {
+    xPercent: -50,
+    duration: 15,
+    ease: "none",
+    modifiers: {
+      xPercent: gsap.utils.wrap(-50, 0)
+    }
+  });
+
+  // Scroll-based skew for a bit of life
+  ScrollTrigger.create({
+    trigger: ".marquee",
+    start: "top bottom",
+    end: "bottom top",
+    scrub: true,
+    onUpdate: self => {
+      const velocity = self.getVelocity();
+      gsap.to(".marquee-inner", {
+        skewX: velocity / 80,
+        duration: 0.3,
+        ease: "power3.out",
+        overwrite: true
+      });
+    }
+  });
+
+  /* ============================
+     HORIZONTAL JOURNEY SECTION
+     - Pin container
+     - Animate track x movement
+     - scrub: true ties progress to scroll
+  ============================ */
+
+  const panels = gsap.utils.toArray(".journey-panel");
+  const track = document.querySelector(".journey-track");
+
+  gsap.to(track, {
+    xPercent: -100 * (panels.length - 1),
+    ease: "none",
+    scrollTrigger: {
+      trigger: ".journey-pin",
+      pin: true,
+      scrub: true,
+      start: "top top",
+      end: () => "+=" + (window.innerWidth * (panels.length - 0.2)),
+      anticipatePin: 1
+    }
+  });
 </script>
 </body>
 </html>
