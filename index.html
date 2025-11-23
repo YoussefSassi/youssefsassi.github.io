@@ -2,19 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Youssef Hadj Sassi – Maze Journey + Cinematic Hero</title>
+  <title>Youssef Hadj Sassi – Triple Hero + Maze Journey</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
     :root {
       --bg-alt: #e4f0ff;
       --accent: #2563eb;
-      --accent2: #22c1c3;
-      --text: #04111f;
+      --text: #020617;
       --muted: #64748b;
       --card: #ffffff;
       --radius: 18px;
-      --border-soft: rgba(15,23,42,0.08);
+      --border-soft: rgba(15,23,42,0.1);
     }
 
     * {
@@ -23,44 +22,47 @@
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #0f172a, #1e3a8a, #0ea5e9);
+      background: radial-gradient(circle at top, #0f172a, #1d4ed8, #0ea5e9);
       color: var(--text);
       overflow-x: hidden;
     }
 
     a { color: inherit; text-decoration: none; }
 
-    /* Fake browser window */
+    /* --------- Shell / fake window ---------- */
+
     .app-shell {
       max-width: 1200px;
       margin: 32px auto 40px;
-      border-radius: 18px;
-      box-shadow: 0 24px 60px rgba(15,23,42,0.55);
-      overflow: hidden;
-      background: var(--bg-alt);
+      border-radius: 20px;
+      background: #e5edff;
       border: 1px solid rgba(255,255,255,0.7);
+      box-shadow: 0 26px 70px rgba(15,23,42,0.6);
+      overflow: hidden;
     }
 
     header {
-      background: #fde9c9;
+      background: #ddeafe;
       border-bottom: 1px solid rgba(15,23,42,0.06);
       padding: 8px 18px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       font-size: 13px;
+      position: relative;
+      z-index: 20;
     }
 
     .window-dots {
       display: flex;
       gap: 6px;
+      margin-right: 10px;
     }
+
     .window-dot {
       width: 10px;
       height: 10px;
@@ -68,38 +70,25 @@
       background: #f97373;
     }
     .window-dot:nth-child(2) { background: #facc15; }
-    .window-dot:nth-child(3) { background: #22c55e; }
+    .window-dot:nth-child(3) { background: #4ade80; }
 
-    .nav-left, .nav-right {
+    .nav-left,
+    .nav-right {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 16px;
     }
 
     .logo {
       font-family: "Georgia", serif;
       font-size: 18px;
-      color: #0f172a;
-      letter-spacing: 0.08em;
+      color: #111827;
     }
 
     .nav-link {
       cursor: pointer;
-      color: #7c2d12;
-      position: relative;
-    }
-    .nav-link::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -3px;
-      width: 0;
-      height: 1px;
-      background: #7c2d12;
-      transition: width 0.25s ease;
-    }
-    .nav-link:hover::after {
-      width: 100%;
+      color: #0f172a;
+      font-size: 12px;
     }
 
     .btn-nav {
@@ -109,33 +98,23 @@
       cursor: pointer;
       font-size: 12px;
       background: #b91c1c;
-      color: #fef2f2;
-      box-shadow: 0 6px 16px rgba(148,27,27,0.35);
+      color: #f9fafb;
     }
 
-    main {
-      background: #edf2ff;
-      position: relative;
-    }
+    main { background: #e5edff; }
 
-    /* =====================================================
-       OPTION 1 – CINEMATIC HERO (TOP)
-    ===================================================== */
+    /* ----------------------------------------------------
+       GENERIC HERO LAYOUT (used by all 3 options)
+    ---------------------------------------------------- */
 
-    #cinematicHero {
+    .hero-section {
       position: relative;
       height: 100vh;
       overflow: hidden;
       background: #e0ecff;
     }
 
-    .c-hero-wrap {
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
-
-    .c-hero-inner {
+    .hero-inner {
       position: absolute;
       inset: 0;
       padding: 40px;
@@ -145,13 +124,13 @@
       align-items: center;
     }
 
-    .c-hero-left {
+    .hero-left {
       position: relative;
       height: 100%;
       overflow: hidden;
     }
 
-    .c-hero-wave {
+    .hero-wave {
       position: absolute;
       inset: 0;
       background-image: radial-gradient(circle at 0 0, #e0f2fe 0, #bfdbfe 40%, #93c5fd 70%, #e0f2fe 100%);
@@ -159,7 +138,7 @@
       filter: saturate(1.1);
     }
 
-    .c-hero-stripes {
+    .hero-stripes {
       position: absolute;
       inset: -18%;
       background-image:
@@ -168,27 +147,36 @@
       opacity: 0.7;
     }
 
-    .c-hero-bg-words {
+    .hero-bg-words {
       position: absolute;
       inset: 0;
       pointer-events: none;
       overflow: hidden;
       font-family: "Georgia", serif;
-      color: rgba(15,23,42,0.85);
+      color: rgba(15,23,42,0.74);
       opacity: 0.22;
     }
 
-    .c-hero-bg-words span {
+    .hero-bg-words span {
       position: absolute;
       font-size: clamp(72px, 17vw, 130px);
       white-space: nowrap;
     }
 
-    .c-hero-bg-words span:nth-child(1) { top: 6%; left: -8%; }
-    .c-hero-bg-words span:nth-child(2) { top: 48%; left: 14%; }
-    .c-hero-bg-words span:nth-child(3) { top: 26%; right: -12%; }
+    /* different placements so they feel like a maze */
+    .hero-option1 .hero-bg-words span:nth-child(1) { top: 8%; left: -4%; }
+    .hero-option1 .hero-bg-words span:nth-child(2) { top: 52%; left: 15%; }
+    .hero-option1 .hero-bg-words span:nth-child(3) { top: 30%; right: -12%; }
 
-    .c-hero-main-media {
+    .hero-option2 .hero-bg-words span:nth-child(1) { top: 6%; left: -10%; }
+    .hero-option2 .hero-bg-words span:nth-child(2) { top: 50%; right: -18%; }
+    .hero-option2 .hero-bg-words span:nth-child(3) { top: 78%; left: 5%; }
+
+    .hero-option3 .hero-bg-words span:nth-child(1) { top: 10%; right: -6%; }
+    .hero-option3 .hero-bg-words span:nth-child(2) { top: 40%; left: -14%; }
+    .hero-option3 .hero-bg-words span:nth-child(3) { top: 75%; right: -18%; }
+
+    .hero-main-media {
       position: absolute;
       inset: 40px;
       border-radius: 18px;
@@ -199,15 +187,39 @@
       transform-origin: center center;
     }
 
-    .c-hero-main-media img,
-    .c-hero-main-media video {
+    .hero-main-media img,
+    .hero-main-media video {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
 
-    .c-hero-right {
+    .hero-grid-frame {
+      position: absolute;
+      inset: 55px 100px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 8px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.9);
+      box-shadow: 0 24px 55px rgba(15,23,42,0.7);
+      background: #020617;
+      opacity: 0;
+      transform: scale(0.6) translateY(40px);
+      z-index: 5; /* above background text */
+    }
+
+    .hero-grid-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-right {
       position: relative;
       padding: 28px 34px;
       display: flex;
@@ -219,39 +231,40 @@
       border-radius: 22px;
       border: 1px solid rgba(255,255,255,0.9);
       box-shadow: 0 16px 40px rgba(15,23,42,0.24);
+      z-index: 10;
     }
 
-    .c-hero-tag {
+    .hero-tag {
       font-size: 11px;
       letter-spacing: 0.26em;
       text-transform: uppercase;
       color: #1d4ed8;
     }
 
-    .c-hero-title {
+    .hero-title {
       font-size: clamp(22px, 3vw, 26px);
       line-height: 1.25;
       color: #0f172a;
     }
 
-    .c-hero-body {
+    .hero-body {
       font-size: 14px;
       color: #1e293b;
     }
 
-    .c-hero-meta {
+    .hero-meta {
       font-size: 12px;
       color: #334155;
     }
 
-    .c-hero-chips {
+    .hero-chips {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       margin-top: 4px;
     }
 
-    .c-chip {
+    .chip {
       font-size: 11px;
       padding: 4px 10px;
       border-radius: 999px;
@@ -260,7 +273,7 @@
       color: #0f172a;
     }
 
-    .c-hero-scroll-hint {
+    .hero-scroll-hint {
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -269,7 +282,7 @@
       color: #0f172a;
     }
 
-    .c-hero-scroll-circle {
+    .hero-scroll-circle {
       width: 26px;
       height: 26px;
       border-radius: 999px;
@@ -281,43 +294,481 @@
       color: #9f1239;
     }
 
-    @media (max-width: 900px) {
-      .c-hero-inner {
-        grid-template-columns: minmax(0,1fr);
-        padding: 24px 18px 34px;
-        row-gap: 16px;
-      }
-      .c-hero-left {
-        min-height: 260px;
-      }
-      .c-hero-main-media {
-        inset: 30px 26px;
-      }
-      .c-hero-right {
-        margin: 0 auto;
-        max-width: none;
-      }
+    /* ---------------- FIRST TRANSITION SECTION ---------------- */
+
+    .stillness-section {
+      position: relative;
+      background: #fef3c7;
+      padding: 80px 40px 90px;
+      overflow: hidden;
     }
 
-    @media (max-width: 640px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 6px;
-      }
-      .c-hero-main-media {
-        inset: 24px 18px;
-      }
-      .c-hero-right {
-        padding: 20px 18px;
-      }
+    .stillness-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    .stillness-text {
+      position: relative;
+      font-family: "Georgia", serif;
+      color: #7f1d1d;
+    }
+
+    .stillness-text h2 {
+      font-size: clamp(40px, 6vw, 64px);
+      line-height: 0.95;
+      margin-bottom: 14px;
+    }
+
+    .stillness-text p {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 14px;
+      color: #7f1d1d;
+    }
+
+    .stillness-bg-lines {
+      position: absolute;
+      inset: -40px;
+      pointer-events: none;
+      overflow: hidden;
+      font-family: "Georgia", serif;
+      color: #7f1d1d;
+      opacity: 0.32;
+    }
+
+    .stillness-bg-lines span {
+      position: absolute;
+      white-space: nowrap;
+      font-size: clamp(26px, 3.3vw, 36px);
+    }
+
+    .stillness-bg-lines span:nth-child(1) { top: 8%; left: -10%; }
+    .stillness-bg-lines span:nth-child(2) { top: 40%; left: 40%; }
+    .stillness-bg-lines span:nth-child(3) { top: 63%; left: -12%; }
+    .stillness-bg-lines span:nth-child(4) { top: 78%; left: 32%; }
+
+    .stillness-collage {
+      position: relative;
+      width: min(360px, 90vw);
+      margin-left: auto;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 22px 60px rgba(120,53,15,0.55);
+      border: 1px solid rgba(254,249,195,0.9);
+      background: #020617;
+      z-index: 5;
+    }
+
+    .stillness-collage-inner {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      grid-template-rows: repeat(2,1fr);
+      gap: 4px;
+    }
+
+    .stillness-collage-inner img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* ---- MARQUEE ---- */
+
+    .marquee {
+      background: #fee2e2;
+      border-top: 1px solid rgba(127,29,29,0.12);
+      border-bottom: 1px solid rgba(127,29,29,0.12);
+      padding: 10px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    .marquee-track {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #7f1d1d;
+    }
+
+    .marquee-track span {
+      padding: 0 42px;
+    }
+
+    /* ---- PROJECTS – PINNED BIG SLIDER ---- */
+
+    .projects {
+      background: #e0ecff;
+      padding: 70px 40px 90px;
+    }
+
+    .projects-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: #1d4ed8;
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: #0f172a;
+    }
+
+    .section-sub {
+      font-size: 13px;
+      color: #1e293b;
+      max-width: 560px;
+    }
+
+    .projects-pin {
+      position: relative;
+      margin-top: 26px;
+      height: min(480px, 70vh);
+    }
+
+    .projects-viewport {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      perspective: 1200px;
+    }
+
+    .project-slide {
+      position: absolute;
+      width: min(520px, 92vw);
+      height: min(320px, 60vh);
+      border-radius: 24px;
+      background: #ffffff;
+      box-shadow: 0 22px 60px rgba(15,23,42,0.45);
+      border: 1px solid rgba(148,163,184,0.8);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      transform-origin: center center;
+      opacity: 0;
+      transform: scale(0.8);
+    }
+
+    .project-slide.is-initial {
+      opacity: 1;
+      transform: scale(1);
+      z-index: 5;
+    }
+
+    .project-media {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-media img,
+    .project-media video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-body {
+      padding: 16px 16px 18px;
+      font-size: 13px;
+      color: #1e293b;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: linear-gradient(135deg,#eff6ff,#f9fafb);
+    }
+
+    .project-kicker {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #2563eb;
+      margin-bottom: 4px;
+    }
+
+    .project-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+
+    .project-meta {
+      font-size: 11px;
+      color: #6b7280;
+      margin-top: 8px;
+    }
+
+    .project-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .project-chip {
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.9);
+      font-size: 10px;
+      color: #0f172a;
+      background: #eff6ff;
+    }
+
+    /* ---- SKILLS GRID ---- */
+
+    .skills {
+      background: #dbeafe;
+      padding: 70px 40px 80px;
+    }
+
+    .skills-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .skill-card {
+      background: #ffffff;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-soft);
+      padding: 14px 14px 18px;
+      font-size: 13px;
+      color: #1e293b;
+      box-shadow: 0 12px 28px rgba(15,23,42,0.22);
+    }
+
+    .skill-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #0f172a;
+    }
+
+    .skill-sub {
+      font-size: 12px;
+      color: #334155;
+      margin-bottom: 6px;
+    }
+
+    .skill-bullets {
+      padding-left: 14px;
+      font-size: 12px;
+      color: #1f2937;
+    }
+
+    .skill-bullets li + li { margin-top: 3px; }
+
+    /* ---- FLOATING KEYWORDS ---- */
+
+    .keywords {
+      background: #c7d2fe;
+      padding: 52px 40px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .keywords-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      position: relative;
+      min-height: 220px;
+    }
+
+    .keywords-title {
+      font-size: 18px;
+      margin-bottom: 6px;
+      color: #0f172a;
+    }
+
+    .keywords-sub {
+      font-size: 13px;
+      color: #1f2937;
+      max-width: 520px;
+    }
+
+    .keyword {
+      position: absolute;
+      font-family: "Georgia", serif;
+      font-size: clamp(24px, 4vw, 36px);
+      color: rgba(15,23,42,0.78);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .keyword:nth-of-type(1) { top: 28%; left: 58%; }
+    .keyword:nth-of-type(2) { top: 60%; left: 12%; }
+    .keyword:nth-of-type(3) { top: 70%; left: 52%; }
+    .keyword:nth-of-type(4) { top: 18%; left: 10%; }
+
+    /* ---- TIMELINE ---- */
+
+    .timeline {
+      background: #e0ecff;
+      padding: 70px 40px 80px;
+    }
+
+    .timeline-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+      gap: 40px;
+    }
+
+    .timeline-list {
+      position: relative;
+      padding-left: 26px;
+      font-size: 13px;
+      color: #1f2937;
+    }
+
+    .timeline-line {
+      position: absolute;
+      left: 8px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom,#2563eb,#38bdf8);
+      border-radius: 999px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 26px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -23px;
+      top: 3px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      border: 2px solid #2563eb;
+      background: #eff6ff;
+    }
+
+    .timeline-title {
+      font-weight: 600;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+
+    .timeline-meta {
+      font-size: 11px;
+      color: #64748b;
+      margin-bottom: 3px;
+    }
+
+    .timeline-body {
+      font-size: 13px;
+      color: #1f2937;
+    }
+
+    .timeline-aside {
+      font-size: 13px;
+      color: #111827;
+      background: #eff6ff;
+      border-radius: 18px;
+      padding: 16px 18px 18px;
+      border: 1px solid rgba(148,163,184,0.7);
+      box-shadow: 0 14px 32px rgba(15,23,42,0.24);
+    }
+
+    .timeline-aside h3 {
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .timeline-aside p + p {
+      margin-top: 6px;
+    }
+
+    /* ---- EXTRAS ---- */
+
+    .extras {
+      background: #dbeafe;
+      padding: 60px 40px 70px;
+    }
+
+    .extras-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .extras-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
+      gap: 22px;
+      margin-top: 18px;
+    }
+
+    .extras-box {
+      background: #ffffff;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-soft);
+      padding: 14px 14px 16px;
+      font-size: 13px;
+      color: #1e293b;
+      box-shadow: 0 10px 24px rgba(15,23,42,0.18);
+    }
+
+    .extras-title {
+      font-size: 16px;
+      margin-bottom: 6px;
+      color: #0f172a;
+    }
+
+    .extras-body p + p {
+      margin-top: 6px;
+    }
+
+    /* ---- CONTACT ---- */
+
+    .contact {
+      background: #c7d2fe;
+      padding: 40px 32px 28px;
+      font-size: 13px;
+      color: #0f172a;
+      text-align: center;
+    }
+
+    .contact a {
+      color: #1d4ed8;
+      font-weight: 600;
+    }
+
+    .lang {
+      margin-top: 6px;
+      font-size: 11px;
+      color: #1e3a8a;
     }
 
     /* =====================================================
-       OPTION 2 – YOUR ORIGINAL MAZE JOURNEY
+       MAZE JOURNEY STYLES (DOWN / RIGHT PATH)
     ===================================================== */
-
-    /* ===== PINNED MAZE JOURNEY WINDOW ===== */
 
     #journeyWrapper {
       position: relative;
@@ -404,14 +855,14 @@
       color: #334155;
     }
 
-    .chips {
+    .chips-maze {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       margin-top: 6px;
     }
 
-    .chip {
+    .chip-maze {
       font-size: 11px;
       padding: 4px 10px;
       border-radius: 999px;
@@ -439,8 +890,6 @@
       color: #7c2d12;
       max-width: 360px;
     }
-
-    /* media frames */
 
     .hero-media,
     .scene-media {
@@ -471,7 +920,6 @@
     }
     .scene-list li + li { margin-top: 4px; }
 
-    /* collage block in some scenes */
     .collage {
       position: absolute;
       inset: 60px 80px;
@@ -493,8 +941,6 @@
       display: block;
     }
 
-    /* === WORDS + COLLAGE SECTION (GIF-LIKE) === */
-
     .scene-words-collage .scene-right {
       align-items: flex-start;
     }
@@ -515,238 +961,72 @@
       margin-bottom: 8px;
     }
 
-    /* ===== MARQUEE ===== */
-
-    .marquee {
-      background: #f3e4c7;
-      border-top: 1px solid rgba(15,23,42,0.08);
-      border-bottom: 1px solid rgba(15,23,42,0.08);
-      padding: 10px 0;
-      overflow: hidden;
-      white-space: nowrap;
-      position: relative;
-    }
-
-    .marquee-track {
-      display: inline-block;
-      font-size: 12px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: #7c2d12;
-    }
-
-    .marquee-track span {
-      padding: 0 38px;
-    }
-
-    /* ===== HORIZONTAL FILMSTRIP ===== */
-
-    .filmstrip {
-      background: #e0ecff;
-      padding: 70px 40px 80px;
-    }
-
-    .filmstrip-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-    }
-
-    .film-head-eyebrow {
-      font-size: 11px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: #1d4ed8;
-      margin-bottom: 6px;
-    }
-
-    .film-head-title {
-      font-size: 22px;
-      margin-bottom: 14px;
-      color: #0f172a;
-    }
-
-    .filmstrip-inner p {
-      font-size: 13px;
-      color: #1e293b;
-      max-width: 520px;
-    }
-
-    .filmstrip-pin {
-      position: relative;
-      margin-top: 18px;
-      height: 260px;
-      overflow: hidden;
-    }
-
-    .film-track {
-      display: flex;
-      gap: 22px;
-      will-change: transform;
-    }
-
-    .film-card {
-      flex: 0 0 260px;
-      background: #ffffff;
-      border-radius: 16px;
-      border: 1px solid rgba(15,23,42,0.08);
-      box-shadow: 0 12px 30px rgba(15,23,42,0.25);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transform-origin: center center;
-    }
-
-    .film-thumb {
-      height: 130px;
-      background: #0f172a;
-      overflow: hidden;
-    }
-
-    .film-thumb img,
-    .film-thumb video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .film-content {
-      padding: 10px 12px 12px;
-      font-size: 12px;
-      color: #1e293b;
-    }
-
-    .film-title {
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 4px;
-      color: #0f172a;
-    }
-
-    /* ===== SKILLS (PINNED SECTION) ===== */
-
-    .skills {
-      background: #dbeafe;
-      padding: 70px 40px 80px;
-    }
-
-    .skills-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-    }
-
-    .section-eyebrow {
-      font-size: 11px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: #1d4ed8;
-      margin-bottom: 6px;
-    }
-
-    .section-title {
-      font-size: 22px;
-      margin-bottom: 8px;
-      color: #0f172a;
-    }
-
-    .section-sub {
-      font-size: 13px;
-      color: #1e293b;
-      max-width: 520px;
-      margin-bottom: 22px;
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .skill-card {
-      background: #ffffff;
-      border-radius: var(--radius);
-      border: 1px solid var(--border-soft);
-      padding: 14px 14px 16px;
-      font-size: 13px;
-      color: #1e293b;
-      box-shadow: 0 12px 28px rgba(15,23,42,0.22);
-    }
-
-    .skill-title {
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 4px;
-      color: #0f172a;
-    }
-
-    .skill-sub {
-      font-size: 12px;
-      color: #334155;
-    }
-
-    /* ===== EXTRAS ===== */
-
-    .extras {
-      background: #dbeafe;
-      padding: 60px 40px 70px;
-    }
-
-    .extras-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-    }
-
-    .extras-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
-      gap: 22px;
-      margin-top: 18px;
-    }
-
-    .extras-box {
-      background: #ffffff;
-      border-radius: var(--radius);
-      border: 1px solid var(--border-soft);
-      padding: 14px 14px 16px;
-      font-size: 13px;
-      color: #1e293b;
-      box-shadow: 0 10px 24px rgba(15,23,42,0.18);
-    }
-
-    .extras-title {
-      font-size: 16px;
-      margin-bottom: 6px;
-      color: #0f172a;
-    }
-
-    .extras-body p + p {
-      margin-top: 6px;
-    }
-
-    /* ===== CONTACT FOOTER ===== */
-
-    .contact {
-      background: #c7d2fe;
-      padding: 40px 32px 28px;
-      font-size: 13px;
-      color: #0f172a;
-      text-align: center;
-    }
-
-    .contact a {
-      color: #1d4ed8;
-      font-weight: 600;
-    }
-
-    .lang {
-      margin-top: 6px;
-      font-size: 11px;
-      color: #1e3a8a;
-    }
-
-    /* ===== RESPONSIVE FOR MAZE ===== */
+    /* ---- RESPONSIVE ---- */
 
     @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: minmax(0,1fr);
+        padding: 24px 18px 34px;
+        row-gap: 16px;
+      }
+      .hero-left {
+        min-height: 260px;
+      }
+      .hero-main-media {
+        inset: 30px 26px;
+      }
+      .hero-grid-frame {
+        inset: 42px 54px;
+      }
+
+      .hero-right {
+        margin: 0 auto;
+        max-width: none;
+      }
+
+      .stillness-inner {
+        grid-template-columns: minmax(0,1fr);
+        gap: 26px;
+      }
+      .stillness-collage {
+        margin: 0 auto;
+      }
+
+      .projects,
+      .skills,
+      .keywords,
+      .timeline,
+      .extras {
+        padding-inline: 20px;
+      }
+
+      .projects-pin {
+        height: auto;
+      }
+
+      .project-slide {
+        position: relative;
+        width: 100%;
+        height: auto;
+        grid-template-columns: minmax(0,1fr);
+      }
+      .project-media {
+        height: 180px;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+      }
+
+      .timeline-inner {
+        grid-template-columns: minmax(0,1fr);
+      }
+
+      .extras-grid {
+        grid-template-columns: minmax(0,1fr);
+      }
+
+      /* Maze scenes on tablet */
       .scene {
         grid-template-columns: minmax(0, 1fr);
       }
@@ -763,20 +1043,32 @@
       .collage {
         inset: 40px;
       }
-      .filmstrip,
-      .skills,
-      .extras {
-        padding-inline: 20px;
+    }
+
+    @media (max-width: 640px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+      .hero-main-media {
+        inset: 24px 18px;
+      }
+      .hero-grid-frame {
+        inset: 36px 42px;
+      }
+      .hero-right {
+        padding: 20px 18px;
       }
       .skills-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      .extras-grid {
         grid-template-columns: minmax(0,1fr);
+      }
+      .section-title {
+        font-size: 20px;
       }
     }
 
-    /* Full mobile – remove maze, stack vertically */
+    /* Full mobile – disable maze pinning, stack vertically */
     @media (max-width: 767px) {
       #journeyWrapper {
         height: auto;
@@ -793,23 +1085,12 @@
       .scene {
         position: relative;
         transform: none !important;
-        x: 0 !important;
-        y: 0 !important;
       }
       .hero-big-word {
         letter-spacing: 0.12em;
       }
-      .filmstrip-pin {
-        height: auto;
-      }
       body {
         overflow-x: hidden;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .skills-grid {
-        grid-template-columns: minmax(0, 1fr);
       }
     }
   </style>
@@ -826,104 +1107,210 @@
       <div class="logo">Youssef Aura</div>
     </div>
     <div class="nav-right">
-      <!-- Hi = cinematic hero, Journey = maze, Projects = filmstrip -->
-      <a class="nav-link" href="#cinematicHero">Hi!</a>
+      <a class="nav-link" href="#heroOption1">Hi!</a>
+      <!-- Journey now jumps to the MAZE -->
       <a class="nav-link" href="#journeyWrapper">Journey</a>
       <a class="nav-link" href="#projects">Projects</a>
-      <button class="btn-nav" onclick="window.location.href='mailto:youssefh.sassi@gmail.com'">Contact</button>
+      <button class="btn-nav" onclick="window.location.href='mailto:youssefh.sassi@gmail.com'">Email me</button>
     </div>
   </header>
 
   <main>
 
-    <!-- =======================================================
-         OPTION 1 – CINEMATIC HERO (GIF-LIKE INTRO)
-    ======================================================== -->
-    <section id="cinematicHero">
-      <div class="c-hero-wrap">
-        <div class="c-hero-inner">
-          <div class="c-hero-left">
-            <div class="c-hero-wave"></div>
-            <div class="c-hero-stripes"></div>
+    <!-- ====================================================
+         HERO OPTION 1 – your original cinematic slide
+    ==================================================== -->
+    <section class="hero-section hero-option1" id="heroOption1">
+      <div class="hero-inner">
+        <div class="hero-left">
+          <div class="hero-wave"></div>
+          <div class="hero-stripes"></div>
 
-            <div class="c-hero-bg-words">
-              <span>STILLNESS</span>
-              <span>&amp; COHERENCE</span>
-              <span>CALM SYSTEMS</span>
-            </div>
-
-            <div class="c-hero-main-media">
-              <!-- replace with your GIF / MP4 -->
-              <!-- <video src="PATH_TO_HERO.mp4" autoplay muted loop playsinline></video> -->
-              <img src="https://picsum.photos/900/600?random=10" alt="Hero main">
-            </div>
+          <div class="hero-bg-words hero1-bg-words">
+            <span>STILLNESS</span>
+            <span>&amp; COHERENCE</span>
+            <span>CALM SYSTEMS</span>
           </div>
 
-          <div class="c-hero-right">
-            <div class="c-hero-tag">AI • XR • HCI</div>
-            <h1 class="c-hero-title">
-              Youssef Hadj Sassi – Information Systems &amp; New Technologies
-            </h1>
-            <p class="c-hero-body">
-              I combine AI, XR and Human–Computer Interaction to build calm, intelligent
-              systems. Scroll down to move through my journey like a maze.
-            </p>
-            <div class="c-hero-meta">
-              T-15, ul. Edwarda WITTIGA, Wrocław · <strong>+48 453 638 776</strong><br>
-              <a href="mailto:youssefh.sassi@gmail.com">youssefh.sassi@gmail.com</a> ·
-              <a href="https://linkedin.com/in/youssefhjsassi" target="_blank">linkedin.com/in/youssefhjsassi</a>
-            </div>
-            <div class="c-hero-chips">
-              <div class="c-chip">LLMs &amp; Generative AI</div>
-              <div class="c-chip">Agent-Based Systems</div>
-              <div class="c-chip">AR/VR – Unity &amp; Oculus</div>
-              <div class="c-chip">Calm HCI</div>
-            </div>
-            <div class="c-hero-scroll-hint">
-              <div class="c-hero-scroll-circle">↓</div>
-              <span>Scroll to rearrange the pieces.</span>
-            </div>
+          <div class="hero-main-media hero1-main-media">
+            <img src="https://picsum.photos/900/600?random=10" alt="Hero main" />
+          </div>
+
+          <div class="hero-grid-frame hero1-grid-frame">
+            <img src="https://picsum.photos/600/400?random=31" alt="">
+            <img src="https://picsum.photos/600/400?random=32" alt="">
+            <img src="https://picsum.photos/600/400?random=33" alt="">
+            <img src="https://picsum.photos/600/400?random=34" alt="">
+          </div>
+        </div>
+
+        <div class="hero-right hero1-right">
+          <div class="hero-tag">AI • XR • HCI · OPTION 1</div>
+          <h1 class="hero-title">
+            Youssef Hadj Sassi – Information Systems &amp; New Technologies
+          </h1>
+          <p class="hero-body">
+            I combine AI, XR and Human–Computer Interaction to build calm, intelligent systems.
+            Scroll to see the hero behave like the GIF: big picture first, then a collage rising
+            with words moving behind.
+          </p>
+          <div class="hero-meta">
+            T-15, ul. Edwarda WITTIGA, Wrocław · <strong>+48 453 638 776</strong><br>
+            <a href="mailto:youssefh.sassi@gmail.com">youssefh.sassi@gmail.com</a> ·
+            <a href="https://linkedin.com/in/youssefhjsassi" target="_blank">linkedin.com/in/youssefhjsassi</a>
+          </div>
+          <div class="hero-chips">
+            <div class="chip">LLMs &amp; Generative AI</div>
+            <div class="chip">Agent-Based Systems</div>
+            <div class="chip">AR/VR – Unity &amp; Oculus</div>
+            <div class="chip">Calm HCI</div>
+          </div>
+          <div class="hero-scroll-hint">
+            <div class="hero-scroll-circle">↓</div>
+            <span>Option 1: cinematic zoom + collage in the middle.</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- =======================================================
-         OPTION 2 – YOUR ORIGINAL MAZE JOURNEY (DOWN/LEFT PATH)
-    ======================================================== -->
+    <!-- ====================================================
+         HERO OPTION 2 – different camera path
+    ==================================================== -->
+    <section class="hero-section hero-option2" id="heroOption2">
+      <div class="hero-inner">
+        <div class="hero-left">
+          <div class="hero-wave"></div>
+          <div class="hero-stripes"></div>
+
+          <div class="hero-bg-words hero2-bg-words">
+            <span>AGENT SYSTEMS</span>
+            <span>DIGITAL TWINS</span>
+            <span>RAILWAY XR</span>
+          </div>
+
+          <div class="hero-main-media hero2-main-media">
+            <img src="https://picsum.photos/900/600?random=11" alt="Hero 2 main" />
+          </div>
+
+          <div class="hero-grid-frame hero2-grid-frame">
+            <img src="https://picsum.photos/600/400?random=41" alt="">
+            <img src="https://picsum.photos/600/400?random=42" alt="">
+            <img src="https://picsum.photos/600/400?random=43" alt="">
+            <img src="https://picsum.photos/600/400?random=44" alt="">
+          </div>
+        </div>
+
+        <div class="hero-right hero2-right">
+          <div class="hero-tag">AI • XR • HCI · OPTION 2</div>
+          <h1 class="hero-title">
+            A maze-like camera: down, right, tilt, then settle
+          </h1>
+          <p class="hero-body">
+            This version exaggerates the “down / right / tight” feeling. The hero image
+            drifts diagonally, the words slide like a maze, and the collage grows from
+            small to big while the background text is still visible.
+          </p>
+          <div class="hero-meta">
+            Same content, different camera path – like testing variations of one shot.
+          </div>
+          <div class="hero-chips">
+            <div class="chip">Camera Maze</div>
+            <div class="chip">Diagonal Motion</div>
+            <div class="chip">Soft Tilt</div>
+          </div>
+          <div class="hero-scroll-hint">
+            <div class="hero-scroll-circle">↓</div>
+            <span>Option 2: stronger maze feeling (down-right-tight).</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================
+         HERO OPTION 3 – combo of 1 & 2 + extra zooms
+    ==================================================== -->
+    <section class="hero-section hero-option3" id="heroOption3">
+      <div class="hero-inner">
+        <div class="hero-left">
+          <div class="hero-wave"></div>
+          <div class="hero-stripes"></div>
+
+          <div class="hero-bg-words hero3-bg-words">
+            <span>STILLNESS*</span>
+            <span>FLOW &amp; BALANCE</span>
+            <span>COHERENT JOURNEYS</span>
+          </div>
+
+          <div class="hero-main-media hero3-main-media">
+            <img src="https://picsum.photos/900/600?random=12" alt="Hero 3 main" />
+          </div>
+
+          <div class="hero-grid-frame hero3-grid-frame">
+            <img src="https://picsum.photos/600/400?random=51" alt="">
+            <img src="https://picsum.photos/600/400?random=52" alt="">
+            <img src="https://picsum.photos/600/400?random=53" alt="">
+            <img src="https://picsum.photos/600/400?random=54" alt="">
+          </div>
+        </div>
+
+        <div class="hero-right hero3-right">
+          <div class="hero-tag">AI • XR • HCI · OPTION 3</div>
+          <h1 class="hero-title">
+            Hybrid: zoom, tilt, collage, text orbiting in the back
+          </h1>
+          <p class="hero-body">
+            The third option mixes everything: cinematic zoom like Option 1,
+            diagonal maze movement like Option 2, plus a gentle “camera float”.
+            Background words travel behind the collage, then slowly fade away.
+          </p>
+          <div class="hero-meta">
+            Scroll past this hero to fall into the stillness / coherence section
+            and then into the maze journey and long projects.
+          </div>
+          <div class="hero-chips">
+            <div class="chip">Combo Shot</div>
+            <div class="chip">Word Orbits</div>
+            <div class="chip">Micro Zooms</div>
+          </div>
+          <div class="hero-scroll-hint">
+            <div class="hero-scroll-circle">↓</div>
+            <span>Option 3: everything layered together.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================
+         MAZE JOURNEY – DOWN / RIGHT CAMERA PATH
+    ==================================================== -->
     <section id="journeyWrapper">
       <div class="scenes">
         <div class="scenes-inner">
-          <!-- Scene 0 – Hero summary -->
+          <!-- Scene 0 – Hero summary inside maze -->
           <section class="scene scene-hero">
             <div class="scene-left">
               <div class="wave-bg"></div>
               <div class="wave-overlay"></div>
               <div class="hero-media hero-parallax">
-                <!-- swap this with a hero GIF if you want -->
-                <img src="https://picsum.photos/800/600?random=10" alt="Hero media placeholder">
+                <img src="https://picsum.photos/800/600?random=101" alt="Hero media placeholder">
               </div>
             </div>
             <div class="scene-right hero-parallax">
               <div class="scene-tag">AI • XR • HCI</div>
-              <h1 class="scene-title">
-                Youssef Hadj Sassi – Information Systems &amp; New Technologies
-              </h1>
+              <h2 class="scene-title">
+                Maze Journey CV – Youssef Hadj Sassi
+              </h2>
               <p class="scene-body">
-                I combine AI, XR and Human–Computer Interaction to build calm, intelligent
-                systems. Scroll down to move through my journey like a maze.
+                Now you are inside the maze: scroll to move the camera down, right and across
+                different “rooms” of my journey.
               </p>
               <div class="scene-meta">
-                T-15, ul. Edwarda WITTIGA, Wrocław · <strong>+48 453 638 776</strong><br>
-                <a href="mailto:youssefh.sassi@gmail.com">youssefh.sassi@gmail.com</a> ·
-                <a href="https://linkedin.com/in/youssefhjsassi" target="_blank">linkedin.com/in/youssefhjsassi</a>
+                Same person, different lens – this time as a maze of scenes instead of slides.
               </div>
-              <div class="chips">
-                <div class="chip">LLMs &amp; Generative AI</div>
-                <div class="chip">Agent-Based Systems</div>
-                <div class="chip">AR/VR (Unity, Oculus)</div>
-                <div class="chip">UCD &amp; HCI</div>
-                <a class="chip" href="Youssef_Hadj_Sassi_CV.pdf" target="_blank">Download CV (PDF)</a>
+              <div class="chips-maze">
+                <div class="chip-maze">Maze Navigation</div>
+                <div class="chip-maze">Pinned Journey</div>
+                <div class="chip-maze">ScrollTrigger</div>
               </div>
             </div>
           </section>
@@ -934,7 +1321,7 @@
               <div class="wave-bg"></div>
               <div class="wave-overlay"></div>
               <div class="hero-media">
-                <img src="https://picsum.photos/900/600?random=11" alt="Texture placeholder">
+                <img src="https://picsum.photos/900/600?random=111" alt="Texture placeholder">
               </div>
             </div>
             <div class="scene-right">
@@ -990,7 +1377,7 @@
               <div class="wave-bg"></div>
               <div class="wave-overlay"></div>
               <div class="scene-media">
-                <img src="https://picsum.photos/900/600?random=21" alt="Education placeholder">
+                <img src="https://picsum.photos/900/600?random=121" alt="Education placeholder">
               </div>
             </div>
             <div class="scene-right">
@@ -1014,10 +1401,10 @@
               <div class="wave-bg"></div>
               <div class="wave-overlay"></div>
               <div class="collage">
-                <img src="https://picsum.photos/600/600?random=31" alt="">
-                <img src="https://picsum.photos/600/600?random=32" alt="">
-                <img src="https://picsum.photos/600/600?random=33" alt="">
-                <img src="https://picsum.photos/600/600?random=34" alt="">
+                <img src="https://picsum.photos/600/600?random=131" alt="">
+                <img src="https://picsum.photos/600/600?random=132" alt="">
+                <img src="https://picsum.photos/600/600?random=133" alt="">
+                <img src="https://picsum.photos/600/600?random=134" alt="">
               </div>
             </div>
             <div class="scene-right">
@@ -1042,7 +1429,7 @@
               <div class="wave-bg"></div>
               <div class="wave-overlay"></div>
               <div class="scene-media">
-                <img src="https://picsum.photos/900/600?random=42" alt="XR railway placeholder">
+                <img src="https://picsum.photos/900/600?random=141" alt="XR railway placeholder">
               </div>
             </div>
             <div class="scene-right">
@@ -1066,7 +1453,7 @@
               <div class="wave-bg"></div>
               <div class="wave-overlay"></div>
               <div class="scene-media">
-                <img src="https://picsum.photos/900/600?random=53" alt="AI assistant placeholder">
+                <img src="https://picsum.photos/900/600?random=151" alt="AI assistant placeholder">
               </div>
             </div>
             <div class="scene-right">
@@ -1090,7 +1477,7 @@
               <div class="wave-bg"></div>
               <div class="wave-overlay"></div>
               <div class="scene-media">
-                <img src="https://picsum.photos/900/600?random=64" alt="Web AI helper placeholder">
+                <img src="https://picsum.photos/900/600?random=161" alt="Web AI helper placeholder">
               </div>
             </div>
             <div class="scene-right">
@@ -1114,7 +1501,7 @@
               <div class="wave-bg"></div>
               <div class="wave-overlay"></div>
               <div class="scene-media">
-                <img src="https://picsum.photos/900/600?random=75" alt="Erasmus placeholder">
+                <img src="https://picsum.photos/900/600?random=171" alt="Erasmus placeholder">
               </div>
             </div>
             <div class="scene-right">
@@ -1138,10 +1525,10 @@
               <div class="wave-bg"></div>
               <div class="wave-overlay"></div>
               <div class="collage">
-                <img src="https://picsum.photos/600/600?random=85" alt="">
-                <img src="https://picsum.photos/600/600?random=86" alt="">
-                <img src="https://picsum.photos/600/600?random=87" alt="">
-                <img src="https://picsum.photos/600/600?random=88" alt="">
+                <img src="https://picsum.photos/600/600?random=181" alt="">
+                <img src="https://picsum.photos/600/600?random=182" alt="">
+                <img src="https://picsum.photos/600/600?random=183" alt="">
+                <img src="https://picsum.photos/600/600?random=184" alt="">
               </div>
             </div>
             <div class="scene-right">
@@ -1166,7 +1553,7 @@
               <div class="wave-bg"></div>
               <div class="wave-overlay"></div>
               <div class="scene-media">
-                <img src="https://picsum.photos/900/600?random=96" alt="Future placeholder">
+                <img src="https://picsum.photos/900/600?random=191" alt="Future placeholder">
               </div>
             </div>
             <div class="scene-right">
@@ -1190,7 +1577,7 @@
               <div class="wave-bg"></div>
               <div class="wave-overlay"></div>
               <div class="scene-media">
-                <img src="https://picsum.photos/900/600?random=108" alt="Human side placeholder">
+                <img src="https://picsum.photos/900/600?random=201" alt="Human side placeholder">
               </div>
             </div>
             <div class="scene-right">
@@ -1202,8 +1589,8 @@
                 ideas into visuals and prototypes.
               </p>
               <div class="scene-meta">
-                Scroll on to see selected projects, skills and certifications – or reach
-                out directly if you already have a project in mind.
+                Scroll on to see more projects, skills and reflections – or reach out if you
+                already have a project in mind.
               </div>
             </div>
           </section>
@@ -1211,179 +1598,364 @@
       </div>
     </section>
 
-    <!-- ========= INFINITE MARQUEE ========= -->
-    <section class="marquee">
-      <div class="marquee-track marquee-row">
-        <span>Stillness &amp; coherence in complex systems</span>
-        <span>AI assistants orchestrating AR train safety</span>
-        <span>Extended reality for railway scenarios</span>
-        <span>User-centred design · HCI · UCD</span>
-        <span>Erasmus · Poland · Italy · Tunisia</span>
-      </div>
-      <div class="marquee-track marquee-row">
-        <span>Stillness &amp; coherence in complex systems</span>
-        <span>AI assistants orchestrating AR train safety</span>
-        <span>Extended reality for railway scenarios</span>
-        <span>User-centred design · HCI · UCD</span>
-        <span>Erasmus · Poland · Italy · Tunisia</span>
+    <!-- ========== STILLNESS / COHERENCE SECTION ========== -->
+    <section class="stillness-section">
+      <div class="stillness-inner">
+        <div class="stillness-text">
+          <div class="stillness-bg-lines">
+            <span class="bg-line">Stillness &amp; Coherence*</span>
+            <span class="bg-line">When your inner waters calm, clarity flows.</span>
+            <span class="bg-line">Bringing balance, softness, beauty.</span>
+            <span class="bg-line">A quiet maze you can breathe in.</span>
+          </div>
+
+          <h2 class="stillness-heading">
+            STILLNESS<br>&amp; COHERENCE
+          </h2>
+          <p>
+            No, it’s not about shutting everything out. It’s about guiding complex
+            systems toward gentle order – aligning AI, humans and interfaces so
+            everything flows in the same direction.
+          </p>
+        </div>
+
+        <div class="stillness-collage">
+          <div class="stillness-collage-inner">
+            <img src="https://picsum.photos/600/600?random=60" alt="">
+            <img src="https://picsum.photos/600/600?random=61" alt="">
+            <img src="https://picsum.photos/600/600?random=62" alt="">
+            <img src="https://picsum.photos/600/600?random=63" alt="">
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- ========= HORIZONTAL FILMSTRIP ========= -->
-    <section class="filmstrip" id="projects">
-      <div class="filmstrip-inner">
-        <div class="film-head-eyebrow">Highlights</div>
-        <div class="film-head-title">Filmstrip of projects &amp; case studies</div>
-        <p>
-          This horizontal strip is controlled by scroll with scrub + pin. Replace the fake
-          thumbnails with your own screenshots, GIFs or short looping videos.
+    <!-- ========== MARQUEE “TAPE” ========== -->
+    <section class="marquee">
+      <div class="marquee-track">
+        <span>COHERENCE*</span>
+        <span>STILLNESS</span>
+        <span>CALM INTERFACES</span>
+        <span>AGENT-BASED THINKING</span>
+        <span>DIGITAL TWINS</span>
+        <span>XR JOURNEYS</span>
+        <span>LLMS &amp; RAG</span>
+        <span>RESEARCH &amp; HCI</span>
+        <span>COHERENCE*</span>
+        <span>STILLNESS</span>
+      </div>
+    </section>
+
+    <!-- ========== PROJECTS – BIG PINNED SLIDER ========== -->
+    <section class="projects" id="projects">
+      <div class="projects-inner">
+        <div class="section-eyebrow">Highlights</div>
+        <h2 class="section-title">Filmstrip of projects &amp; case studies</h2>
+        <p class="section-sub">
+          Each project comes forward as a big frame in the centre. Scroll to move through
+          the film – every notch on the scrollbar reveals a new scene (small → big → small).
         </p>
 
-        <div class="filmstrip-pin">
-          <div class="film-track">
-            <article class="film-card">
-              <div class="film-thumb">
-                <img src="https://picsum.photos/400/260?random=61" alt="XR project fake">
+        <div class="projects-pin">
+          <div class="projects-viewport">
+            <!-- Slide 1 -->
+            <article class="project-slide is-initial">
+              <div class="project-media">
+                <img src="https://picsum.photos/800/600?random=70" alt="">
               </div>
-              <div class="film-content">
-                <div class="film-title">XR Railway Safety Trainer</div>
-                <p>Oculus + Unity scenes simulating maintenance tasks for SNCFT.</p>
-              </div>
-            </article>
-            <article class="film-card">
-              <div class="film-thumb">
-                <img src="https://picsum.photos/400/260?random=62" alt="AI assistant fake">
-              </div>
-              <div class="film-content">
-                <div class="film-title">AI Assistant for AR Safety</div>
-                <p>Backend that accepts natural speech and drives AR overlays.</p>
-              </div>
-            </article>
-            <article class="film-card">
-              <div class="film-thumb">
-                <img src="https://picsum.photos/400/260?random=63" alt="web chatbot fake">
-              </div>
-              <div class="film-content">
-                <div class="film-title">AI Course Helper</div>
-                <p>Web platform with integrated chatbot answering course questions.</p>
-              </div>
-            </article>
-            <article class="film-card">
-              <div class="film-thumb">
-                <img src="https://picsum.photos/400/260?random=64" alt="anomaly detection fake">
-              </div>
-              <div class="film-content">
-                <div class="film-title">Anomaly Detection Dashboard</div>
-                <p>LSTM-based anomaly detection visualising data consistency.</p>
+              <div class="project-body">
+                <div>
+                  <div class="project-kicker">AI Assistants Orchestrating AR Train Safety</div>
+                  <h3 class="project-title">From anomaly detection to AR-powered AI</h3>
+                  <p>
+                    LSTM-based anomaly detection plus a conversational assistant that
+                    controls AR-visualised train components with natural language.
+                  </p>
+                </div>
+                <div>
+                  <div class="project-meta">
+                    Python · Flask · LSTMs · Rule-based logic · AR interfaces
+                  </div>
+                  <div class="project-chips">
+                    <span class="project-chip">LSTM</span>
+                    <span class="project-chip">Speech / Text</span>
+                    <span class="project-chip">Industrial AR</span>
+                  </div>
+                </div>
               </div>
             </article>
+
+            <!-- Slide 2 -->
+            <article class="project-slide">
+              <div class="project-media">
+                <img src="https://picsum.photos/800/600?random=71" alt="">
+              </div>
+              <div class="project-body">
+                <div>
+                  <div class="project-kicker">Learning Journeys</div>
+                  <h3 class="project-title">AI-powered course helper</h3>
+                  <p>
+                    A web platform with an LLM-powered chatbot that answers course questions,
+                    remembers context and guides students through material without noise.
+                  </p>
+                </div>
+                <div>
+                  <div class="project-meta">
+                    Python · Flask · REST APIs · LLMs · JSON storage
+                  </div>
+                  <div class="project-chips">
+                    <span class="project-chip">RAG-ish memory</span>
+                    <span class="project-chip">Contextual QA</span>
+                    <span class="project-chip">Student UX</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Slide 3 -->
+            <article class="project-slide">
+              <div class="project-media">
+                <img src="https://picsum.photos/800/600?random=72" alt="">
+              </div>
+              <div class="project-body">
+                <div>
+                  <div class="project-kicker">Extended Reality for Railway Scenarios</div>
+                  <h3 class="project-title">Immersive safety training in XR</h3>
+                  <p>
+                    VR/AR experiences for maintenance crews so they can safely practise rare
+                    or stressful situations inside a headset, not on a live track.
+                  </p>
+                </div>
+                <div>
+                  <div class="project-meta">
+                    Unity · C# · Oculus Quest · UX for field workers
+                  </div>
+                  <div class="project-chips">
+                    <span class="project-chip">Simulation</span>
+                    <span class="project-chip">Safety</span>
+                    <span class="project-chip">XR Design</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Slide 4 -->
+            <article class="project-slide">
+              <div class="project-media">
+                <img src="https://picsum.photos/800/600?random=73" alt="">
+              </div>
+              <div class="project-body">
+                <div>
+                  <div class="project-kicker">Calm Interfaces</div>
+                  <h3 class="project-title">Scroll-driven storytelling demos</h3>
+                  <p>
+                    Long-form layouts where text, background words and imagery drift past
+                    each other while the user stays oriented in the maze.
+                  </p>
+                </div>
+                <div>
+                  <div class="project-meta">
+                    GSAP · ScrollTrigger · Parallax · Pinning · Scrubbing
+                  </div>
+                  <div class="project-chips">
+                    <span class="project-chip">Scroll Story</span>
+                    <span class="project-chip">Parallax</span>
+                    <span class="project-chip">Micro-animations</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ========= SKILLS (PINNED) ========= -->
+    <!-- ========== SKILLS ========== -->
     <section class="skills">
       <div class="skills-inner">
-        <div class="section-eyebrow">Core capabilities</div>
-        <div class="section-title">What I bring into a project</div>
-        <div class="section-sub">
-          Each card connects to something concrete I can build for a client: scroll-driven
-          journeys, XR training modules, and AI pipelines.
-        </div>
+        <div class="section-eyebrow">Systems, not only tools</div>
+        <h2 class="section-title">How I think &amp; build</h2>
+        <p class="section-sub">
+          I like when AI systems behave like cities: many small agents, clear rules,
+          smooth flows. Below is the stack I use to keep everything coherent.
+        </p>
 
         <div class="skills-grid">
-          <div class="skill-card">
-            <div class="skill-title">Programming &amp; backend</div>
-            <div class="skill-sub">
-              Python, C#, Java, PHP, SQL, MATLAB · Flask, REST, SQLite, MySQL, PostgreSQL,
-              MongoDB, SQL Server.
-            </div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-title">AI &amp; machine learning</div>
-            <div class="skill-sub">
-              LLM integration, generative AI, agent-based systems, LSTM models, RAG,
-              fuzzy logic &amp; rule-based systems.
-            </div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-title">XR &amp; spatial computing</div>
-            <div class="skill-sub">
-              Unity, Vuforia, Oculus Quest 2 · AR/VR interaction design for
-              safety-critical scenarios.
-            </div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-title">UCD &amp; HCI</div>
-            <div class="skill-sub">
-              Persona development, user journey mapping, interaction design and usability
-              evaluation.
-            </div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-title">Research &amp; publication</div>
-            <div class="skill-sub">
-              Co-author of a paper on railway staff training with AR/VR for
-              safety-critical scenarios (under revision in Multimedia Tools and Applications).
-            </div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-title">Communication &amp; collaboration</div>
-            <div class="skill-sub">
-              Experience in tech clubs, workshops, academic presentations and international
-              programmes; comfortable explaining complex systems.
-            </div>
-          </div>
+          <article class="skill-card">
+            <div class="skill-title">AI &amp; Data</div>
+            <div class="skill-sub">From anomaly detection to language models.</div>
+            <ul class="skill-bullets">
+              <li>LSTMs, transformers, embeddings.</li>
+              <li>RAG-style workflows &amp; evaluation.</li>
+              <li>Fuzzy matching, regex, small heuristics.</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-title">Backend &amp; APIs</div>
+            <div class="skill-sub">Glue that lets AI breathe inside products.</div>
+            <ul class="skill-bullets">
+              <li>Python, Flask, REST APIs.</li>
+              <li>SQLite, JSON stores, lightweight auth.</li>
+              <li>Integration with web / XR front-ends.</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-title">XR &amp; Interaction</div>
+            <div class="skill-sub">Embodied interfaces, not just screens.</div>
+            <ul class="skill-bullets">
+              <li>Unity, C#, Oculus Quest.</li>
+              <li>Vuforia, AR-anchored information.</li>
+              <li>Comfort &amp; safety in immersive spaces.</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-title">Human–Computer Interaction</div>
+            <div class="skill-sub">Design research for calm technology.</div>
+            <ul class="skill-bullets">
+              <li>User journeys &amp; personas.</li>
+              <li>Usability tests with domain experts.</li>
+              <li>Design for low-friction cognition.</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-title">Agent-Based Thinking</div>
+            <div class="skill-sub">Seeing systems as small interacting agents.</div>
+            <ul class="skill-bullets">
+              <li>Simple rules → complex behaviour.</li>
+              <li>Digital twins &amp; simulation ideas.</li>
+              <li>Resilience instead of brittle rules.</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-title">Collaboration</div>
+            <div class="skill-sub">Working with engineers &amp; non-technical teams.</div>
+            <ul class="skill-bullets">
+              <li>Clear visuals, demos &amp; prototypes.</li>
+              <li>Documentation that explains “why”.</li>
+              <li>Space for feedback &amp; iteration.</li>
+            </ul>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ========= EXTRAS ========= -->
+    <!-- ========== FLOATING KEYWORDS ========== -->
+    <section class="keywords">
+      <div class="keywords-inner">
+        <h2 class="keywords-title">Words that orbit my work</h2>
+        <p class="keywords-sub">
+          These are the ideas I keep coming back to. They float around the projects
+          and pull them into shape – like subtle gravity.
+        </p>
+
+        <div class="keyword">Coherence</div>
+        <div class="keyword">Calm UX</div>
+        <div class="keyword">Explainable AI</div>
+        <div class="keyword">Embodied Learning</div>
+      </div>
+    </section>
+
+    <!-- ========== TIMELINE ========== -->
+    <section class="timeline">
+      <div class="timeline-inner">
+        <div class="timeline-list">
+          <div class="timeline-line"></div>
+
+          <article class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-title">AI Assistant for AR-Based Train Safety</div>
+            <div class="timeline-meta">LLM orchestration · anomaly detection · AR UX</div>
+            <div class="timeline-body">
+              Built an AI layer that interprets spoken commands, checks train data for anomalies
+              and responds through AR overlays, so operators can stay focused on the physical system.
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-title">AI-Powered Course Helper</div>
+            <div class="timeline-meta">LLMs · Flask backend · UX for students</div>
+            <div class="timeline-body">
+              Designed the experience and backend for a chatbot that remembers where
+              you are in a course and adapts explanations to your current module.
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-title">XR for Railway Scenarios</div>
+            <div class="timeline-meta">Unity · C# · Oculus Quest</div>
+            <div class="timeline-body">
+              Created immersive safety training where maintenance crews rehearse
+              procedures in a controlled and repeatable virtual environment.
+            </div>
+          </article>
+        </div>
+
+        <aside class="timeline-aside">
+          <h3>Where this is heading</h3>
+          <p>
+            I’m especially interested in digital twins for rehabilitation and safety – systems
+            where you can “feel” a complex process through a headset or a simple web interface
+            and adjust it in real time.
+          </p>
+          <p>
+            I’d love to help research labs or companies that want to blend AI, XR and
+            human-centred design into one coherent flow instead of three separate silos.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ========== EXTRAS / PERSONAL ========== -->
     <section class="extras">
       <div class="extras-inner">
-        <div class="section-eyebrow">Extras</div>
-        <div class="section-title">Certifications, languages &amp; more</div>
+        <div class="section-eyebrow">A bit more texture</div>
+        <h2 class="section-title">Beyond the code</h2>
 
         <div class="extras-grid">
-          <div class="extras-box">
-            <div class="extras-title">Publication</div>
+          <article class="extras-box">
+            <div class="extras-title">How I like to work</div>
             <div class="extras-body">
-              <p><strong>Railway staff training based on augmented and virtual reality for
-              safety-critical scenarios</strong> – Youssef Hadj Sassi, Imene Ouali,
-              Manel Zekri (2024), submitted to <em>Multimedia Tools and Applications</em>
-              (under revision).</p>
+              <p>I enjoy slow, focused collaboration: whiteboard first, prototypes next, code last.</p>
+              <p>I’m comfortable switching between low-level details (data pipelines, API design) and
+                 high-level story (what this feels like for the user in a stressful situation).</p>
             </div>
-          </div>
+          </article>
 
-          <div class="extras-box">
-            <div class="extras-title">Certifications &amp; languages</div>
+          <article class="extras-box">
+            <div class="extras-title">What I’m curious about right now</div>
             <div class="extras-body">
-              <p><strong>MATLAB Onramp Series</strong>: Machine Learning, Deep Learning, Image
-                Processing, Signal Processing, Data Processing &amp; Visualisation.</p>
-              <p><strong>Entrepreneurship Certificate</strong> – IEEE &amp; Smart Africa Digital Academy.</p>
-              <p><strong>English</strong> B2, <strong>French</strong> B2, <strong>Arabic</strong> native.</p>
-              <p>Driving licence (B) · Passion for reading and swimming.</p>
+              <p>Using digital twins for rehabilitation, where XR, sensors and AI reflect the body’s
+                 current state and help clinicians tune interventions in real time.</p>
+              <p>Structure-informed LLMs – where the model respects the physical or logical structure
+                 of a system instead of hallucinating outside it.</p>
             </div>
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ========= CONTACT ========= -->
+    <!-- ========== CONTACT ========== -->
     <section class="contact">
       <p>
-        I’d love to craft a similar maze-like journey page or an AI/XR system for your next
-        client: <a href="mailto:youssefh.sassi@gmail.com">youssefh.sassi@gmail.com</a>
+        If you’d like to explore calm, intelligent systems together, you can reach me at
+        <a href="mailto:youssefh.sassi@gmail.com">youssefh.sassi@gmail.com</a>.
       </p>
       <p class="lang">
-        Languages: Arabic (native), English (B2), French (B2) · Driving licence B.
+        English · Français · العربية
       </p>
       <p class="lang">
-        Powered by: ScrollTrigger · parallax layers · GSAP timelines · pinning · scrubbing ·
-        infinite marquee · horizontal filmstrip.
+        Powered by: GSAP · ScrollTrigger · timelines · pinning · scrubbing · parallax layers.
       </p>
     </section>
+
   </main>
 </div>
 
@@ -1392,527 +1964,688 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
 <script>
-  gsap.registerPlugin(ScrollTrigger);
+  document.addEventListener("DOMContentLoaded", function () {
+    gsap.registerPlugin(ScrollTrigger);
 
-  /* =====================================================
-     OPTION 1 – CINEMATIC HERO (TOP SECTION)
-  ===================================================== */
-
-  // Entrance
-  gsap.from(".c-hero-right", {
-    y: 40,
-    autoAlpha: 0,
-    duration: 1.1,
-    ease: "power3.out"
-  });
-
-  gsap.from(".c-hero-main-media", {
-    scale: 1.12,
-    y: 20,
-    autoAlpha: 0,
-    duration: 1.2,
-    ease: "power3.out"
-  });
-
-  // Floating background words idle motion
-  gsap.to(".c-hero-bg-words span", {
-    xPercent: (i) => (i % 2 === 0 ? -10 : 12),
-    yPercent: (i) => (i % 2 === 0 ? 6 : -6),
-    rotation: (i) => (i % 2 === 0 ? -5 : 6),
-    ease: "sine.inOut",
-    duration: 7,
-    repeat: -1,
-    yoyo: true
-  });
-
-  // Scroll-based cinematic pin
-  ScrollTrigger.matchMedia({
-    "(min-width: 768px)": function () {
-      const cHeroTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: "#cinematicHero",
-          start: "top top",
-          end: "+=200%",
-          scrub: true,
-          pin: true
-        }
+    /* ----------------- BASIC ENTRANCE for all heroes ----------------- */
+    gsap.utils.toArray(".hero-right").forEach(function(right){
+      gsap.from(right, {
+        y: 40,
+        autoAlpha: 0,
+        duration: 1.1,
+        ease: "power3.out"
       });
+    });
 
-      cHeroTl
-        .to(".c-hero-main-media", {
-          scale: 0.86,
-          yPercent: -8,
-          duration: 1.2,
-          ease: "none"
-        }, 0)
-        .to(".c-hero-right", {
-          yPercent: -40,
-          autoAlpha: 0,
-          duration: 1.0,
-          ease: "none"
-        }, 0)
-        .to(".c-hero-bg-words span:nth-child(1)", {
-          xPercent: -40,
-          rotation: -12,
-          ease: "none"
-        }, 0)
-        .to(".c-hero-bg-words span:nth-child(2)", {
-          xPercent: 25,
-          rotation: 10,
-          ease: "none"
-        }, 0)
-        .to(".c-hero-bg-words span:nth-child(3)", {
-          xPercent: -30,
-          rotation: -8,
-          ease: "none"
-        }, 0.05);
-    }
-  });
-
-  /* =====================================================
-     HERO INTRO – MAZE HERO (RUNS ONCE)
-  ===================================================== */
-
-  const heroIntroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
-
-  heroIntroTl
-    .from(".scene-hero .scene-tag", {
-      y: 40,
-      opacity: 0,
-      duration: 0.6
-    })
-    .from(".scene-hero .scene-title", {
-      y: 60,
-      opacity: 0,
-      scale: 1.1,
-      duration: 0.9
-    }, "-=0.35")
-    .from(".scene-hero .scene-body", {
-      y: 40,
-      opacity: 0,
-      duration: 0.7
-    }, "-=0.4")
-    .from(".scene-hero .scene-meta", {
-      y: 30,
-      opacity: 0,
-      duration: 0.7
-    }, "-=0.45")
-    .from(".scene-hero .chips .chip", {
-      y: 30,
-      opacity: 0,
-      stagger: 0.08,
-      duration: 0.5
-    }, "-=0.45")
-    .from(".scene-hero .hero-media", {
-      scale: 1.12,
-      autoAlpha: 0,
-      duration: 1.1
-    }, "-=0.9");
-
-  /* =====================================================
-     GLOBAL: INFINITE MARQUEE + SKEW ON SCROLL
-  ===================================================== */
-
-  const marqueeTl = gsap.timeline({ repeat: -1, ease: "none" });
-
-  marqueeTl.to(".marquee-row", {
-    xPercent: -50,
-    duration: 20,
-    ease: "none",
-    modifiers: {
-      xPercent: gsap.utils.wrap(-50, 0)
-    }
-  });
-
-  ScrollTrigger.create({
-    trigger: ".marquee",
-    start: "top bottom",
-    end: "bottom top",
-    scrub: true,
-    onUpdate: self => {
-      const v = self.getVelocity();
-      gsap.to(".marquee-row", {
-        skewX: v / 70,
-        duration: 0.3,
-        ease: "power3.out",
-        overwrite: true
+    gsap.utils.toArray(".hero-main-media").forEach(function(media){
+      gsap.from(media, {
+        scale: 1.12,
+        y: 20,
+        autoAlpha: 0,
+        duration: 1.2,
+        ease: "power3.out"
       });
-    }
-  });
+    });
 
-  /* =====================================================
-     OPTION 2 – MAZE JOURNEY: DESKTOP / MOBILE
-  ===================================================== */
+    /* Floating background big words in all hero options */
+    gsap.to(".hero-bg-words span", {
+      xPercent: (i) => (i % 2 === 0 ? -12 : 10),
+      yPercent: (i) => (i % 2 === 0 ? 6 : -8),
+      rotation: (i) => (i % 2 === 0 ? -6 : 5),
+      ease: "sine.inOut",
+      duration: 8,
+      repeat: -1,
+      yoyo: true
+    });
 
-  ScrollTrigger.matchMedia({
-
-    /* ================= DESKTOP / LAPTOP ================= */
-    "(min-width: 768px)": function() {
-      const scenes = gsap.utils.toArray(".scene");
-      const inner  = document.querySelector(".scenes-inner");
-
-      /* ---- Maze coordinates (camera path) ---- */
-      const coords = [
-        { x: 0, y: 0 }, // 0 hero
-        { x: 0, y: 1 }, // 1 hero words
-        { x: 0, y: 2 }, // 2 words+collage
-        { x: 1, y: 2 }, // 3 edu
-        { x: 2, y: 2 }, // 4 collage
-        { x: 2, y: 3 }, // 5 XR
-        { x: 3, y: 3 }, // 6 AI
-        { x: 4, y: 3 }, // 7 web AI
-        { x: 4, y: 4 }, // 8 intl
-        { x: 5, y: 4 }, // 9 stacks
-        { x: 5, y: 5 }, //10 future
-        { x: 6, y: 5 }  //11 end
-      ];
-
-      scenes.forEach((scene, i) => {
-        const c = coords[i];
-        if (!c) return;
-        gsap.set(scene, {
-          xPercent: c.x * 100,
-          yPercent: c.y * 100,
-          position: "absolute"
+    /* ================================================================
+       DESKTOP: 3 different pinned hero options (three timelines)
+    ================================================================ */
+    ScrollTrigger.matchMedia({
+      "(min-width: 768px)": function() {
+        /* ---------- OPTION 1 ---------- */
+        const heroTL1 = gsap.timeline({
+          scrollTrigger: {
+            trigger: "#heroOption1",
+            start: "top top",
+            end: "+=220%",
+            scrub: true,
+            pin: true
+          }
         });
-      });
 
-      const journeyTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: "#journeyWrapper",
-          start: "top top",
-          end: () => "+=" + window.innerHeight * (scenes.length + 2),
-          scrub: true,
-          pin: true
-        }
-      });
-
-      gsap.set(inner, {
-        xPercent: 0,
-        yPercent: 0,
-        scale: 1,
-        rotation: 0,
-        transformOrigin: "50% 50%"
-      });
-
-      const maxZoom = 1.18;
-      const zoomStep = (maxZoom - 1) / (coords.length - 1);
-
-      coords.forEach((c, i) => {
-        if (i === 0 || !c) return;
-
-        const tilt = (i % 2 === 0 ? -2 : 2);   // gentle rotation
-        const zoom = 1 + zoomStep * i;
-
-        journeyTl.to(inner, {
-          xPercent: -c.x * 100,
-          yPercent: -c.y * 100,
-          scale: zoom,
-          rotation: tilt,
-          duration: 1,
-          ease: "power2.inOut"
-        });
-      });
-
-      /* ---- Focus effect per NON-hero scene ---- */
-      scenes.forEach(scene => {
-        if (scene.classList.contains("scene-hero") ||
-            scene.classList.contains("scene-hero-words")) {
-          gsap.set(scene, { autoAlpha: 1, scale: 1 });
-          return;
-        }
-
-        gsap.fromTo(scene,
-          { scale: 0.96, autoAlpha: 0.6 },
-          {
-            scale: 1,
+        heroTL1
+          .to(".hero1-main-media", {
+            scale: 0.86,
+            yPercent: -8,
+            duration: 1.2,
+            ease: "none"
+          }, 0)
+          .to(".hero1-right", {
+            yPercent: -30,
+            autoAlpha: 0,
+            duration: 1.0,
+            ease: "none"
+          }, 0)
+          .to(".hero1-bg-words span:nth-child(1)", {
+            xPercent: -40,
+            rotation: -12,
+            ease: "none"
+          }, 0)
+          .to(".hero1-bg-words span:nth-child(2)", {
+            xPercent: 25,
+            rotation: 10,
+            ease: "none"
+          }, 0)
+          .to(".hero1-bg-words span:nth-child(3)", {
+            xPercent: -30,
+            rotation: -8,
+            ease: "none"
+          }, 0)
+          .to(".hero1-grid-frame", {
             autoAlpha: 1,
+            scale: 1,
+            y: 0,
+            duration: 1.2,
+            ease: "power2.out"
+          }, 0.35)
+          .from(".hero1-grid-frame img", {
+            y: 60,
+            autoAlpha: 0,
+            stagger: 0.15,
+            duration: 0.9,
+            ease: "power2.out"
+          }, 0.45)
+          .to(".hero1-bg-words span", {
+            autoAlpha: 0,
+            duration: 0.8,
+            ease: "power1.out"
+          }, 1.4); // fade background text at end
+
+        /* ---------- OPTION 2 (strong maze / diagonal) ---------- */
+        const heroTL2 = gsap.timeline({
+          scrollTrigger: {
+            trigger: "#heroOption2",
+            start: "top top",
+            end: "+=220%",
+            scrub: true,
+            pin: true
+          }
+        });
+
+        heroTL2
+          .to(".hero2-main-media", {
+            scale: 0.9,
+            xPercent: -10,
+            yPercent: 12,
+            rotation: -6,
+            ease: "none"
+          }, 0)
+          .to(".hero2-right", {
+            yPercent: -20,
+            xPercent: 10,
+            autoAlpha: 0,
+            ease: "none"
+          }, 0.2)
+          .to(".hero2-bg-words span:nth-child(1)", {
+            xPercent: -30,
+            yPercent: -10,
+            rotation: -14,
+            ease: "none"
+          }, 0)
+          .to(".hero2-bg-words span:nth-child(2)", {
+            xPercent: 35,
+            rotation: 10,
+            ease: "none"
+          }, 0)
+          .to(".hero2-bg-words span:nth-child(3)", {
+            xPercent: -20,
+            rotation: -8,
+            ease: "none"
+          }, 0)
+          .to(".hero2-grid-frame", {
+            autoAlpha: 1,
+            scale: 1.05,
+            y: -10,
+            duration: 1.2,
+            ease: "power2.out"
+          }, 0.4)
+          .from(".hero2-grid-frame img", {
+            y: 80,
+            autoAlpha: 0,
+            stagger: 0.12,
+            duration: 0.9,
+            ease: "power2.out"
+          }, 0.45);
+
+        /* ---------- OPTION 3 (combo) ---------- */
+        const heroTL3 = gsap.timeline({
+          scrollTrigger: {
+            trigger: "#heroOption3",
+            start: "top top",
+            end: "+=220%",
+            scrub: true,
+            pin: true
+          }
+        });
+
+        heroTL3
+          .to(".hero3-main-media", {
+            scale: 0.84,
+            yPercent: -6,
+            xPercent: 4,
+            rotation: 4,
+            ease: "none"
+          }, 0)
+          .to(".hero3-right", {
+            yPercent: -25,
+            autoAlpha: 0,
+            ease: "none"
+          }, 0.1)
+          .to(".hero3-bg-words span:nth-child(1)", {
+            xPercent: -25,
+            rotation: -10,
+            ease: "none"
+          }, 0)
+          .to(".hero3-bg-words span:nth-child(2)", {
+            xPercent: 30,
+            rotation: 12,
+            ease: "none"
+          }, 0)
+          .to(".hero3-bg-words span:nth-child(3)", {
+            xPercent: -15,
+            rotation: -8,
+            ease: "none"
+          }, 0)
+          .to(".hero3-grid-frame", {
+            autoAlpha: 1,
+            scale: 1.08,
+            y: -6,
+            duration: 1.2,
+            ease: "power2.out"
+          }, 0.35)
+          .from(".hero3-grid-frame img", {
+            y: 70,
+            autoAlpha: 0,
+            stagger: 0.13,
+            duration: 0.9,
+            ease: "power2.out"
+          }, 0.45)
+          .to(".hero3-bg-words span", {
+            autoAlpha: 0,
+            duration: 0.9,
+            ease: "power1.out"
+          }, 1.5);
+
+        /* =====================================================
+           PROJECTS PINNED BIG SLIDER – small→big→small cards
+        ===================================================== */
+        const slides = gsap.utils.toArray(".project-slide");
+        if (slides.length) {
+          const projTL = gsap.timeline({
             scrollTrigger: {
-              containerAnimation: journeyTl,
-              trigger: scene,
-              start: "center center",
-              end: "center center",
+              trigger: ".projects-pin",
+              start: "top top",
+              end: "+=" + (slides.length * 180) + "%", // long scroll
+              scrub: true,
+              pin: true
+            }
+          });
+
+          slides.forEach((slide, i) => {
+            const enterAt = i * 1.0;
+            const leaveAt = enterAt + 0.75;
+
+            projTL.to(slide, {
+              autoAlpha: 1,
+              scale: 1.08,
+              zIndex: 10 + i,
+              duration: 0.8,
+              ease: "power2.out"
+            }, enterAt);
+
+            if (i < slides.length - 1) {
+              projTL.to(slide, {
+                autoAlpha: 0,
+                scale: 0.9,
+                duration: 0.8,
+                ease: "power2.in"
+              }, leaveAt);
+            }
+          });
+        }
+      },
+
+      /* ----------------------------------------------------
+         MOBILE: no pin, softer parallax so it stays readable
+      ---------------------------------------------------- */
+      "(max-width: 767px)": function() {
+        // simple parallax on each hero main media & bg words
+        ["#heroOption1", "#heroOption2", "#heroOption3"].forEach((id, idx) => {
+          const mainSel = ".hero" + (idx+1) + "-main-media";
+          const wordsSel = ".hero" + (idx+1) + "-bg-words span";
+
+          gsap.to(mainSel, {
+            yPercent: -10,
+            scrollTrigger: {
+              trigger: id,
+              start: "top top",
+              end: "bottom top",
               scrub: true
             }
-          }
-        );
-      });
+          });
 
-      /* ---- Parallax in hero (image + right column) ---- */
-      gsap.utils.toArray(".hero-parallax").forEach(el => {
-        gsap.to(el, {
-          yPercent: -10,
-          ease: "none",
+          gsap.to(wordsSel, {
+            xPercent: (i) => (i % 2 === 0 ? -6 : 6),
+            scrollTrigger: {
+              trigger: id,
+              start: "top top",
+              end: "bottom top",
+              scrub: true
+            }
+          });
+
+          gsap.from(".hero" + (idx+1) + "-grid-frame", {
+            autoAlpha: 0,
+            scale: 0.9,
+            y: 40,
+            scrollTrigger: {
+              trigger: id,
+              start: "top 70%",
+              end: "bottom top",
+              scrub: true
+            }
+          });
+        });
+
+        // projects: just fade / slide, no pin
+        gsap.from(".project-slide", {
+          y: 40,
+          autoAlpha: 0,
+          scale: 0.95,
+          stagger: 0.15,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".projects",
+            start: "top 80%"
+          }
+        });
+      }
+    });
+
+    /* =====================================================
+       MAZE JOURNEY – PINNED CAMERA PATH
+    ===================================================== */
+    ScrollTrigger.matchMedia({
+      "(min-width: 768px)": function() {
+        const scenes = gsap.utils.toArray(".scene");
+        const inner  = document.querySelector(".scenes-inner");
+
+        if (!inner || !scenes.length) return;
+
+        /* ---- Maze coordinates (camera path) ---- */
+        const coords = [
+          { x: 0, y: 0 }, // 0 hero
+          { x: 0, y: 1 }, // 1 hero words
+          { x: 0, y: 2 }, // 2 words+collage
+          { x: 1, y: 2 }, // 3 edu
+          { x: 2, y: 2 }, // 4 collage
+          { x: 2, y: 3 }, // 5 XR
+          { x: 3, y: 3 }, // 6 AI
+          { x: 4, y: 3 }, // 7 web AI
+          { x: 4, y: 4 }, // 8 intl
+          { x: 5, y: 4 }, // 9 stacks
+          { x: 5, y: 5 }, //10 future
+          { x: 6, y: 5 }  //11 end
+        ];
+
+        scenes.forEach((scene, i) => {
+          const c = coords[i];
+          if (!c) return;
+          gsap.set(scene, {
+            xPercent: c.x * 100,
+            yPercent: c.y * 100,
+            position: "absolute"
+          });
+        });
+
+        const journeyTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: "#journeyWrapper",
+            start: "top top",
+            end: () => "+=" + window.innerHeight * (coords.length + 2),
+            scrub: true,
+            pin: true
+          }
+        });
+
+        gsap.set(inner, {
+          xPercent: 0,
+          yPercent: 0,
+          scale: 1,
+          rotation: 0,
+          transformOrigin: "50% 50%"
+        });
+
+        const maxZoom = 1.18;
+        const zoomStep = (maxZoom - 1) / (coords.length - 1);
+
+        coords.forEach((c, i) => {
+          if (i === 0 || !c) return;
+
+          const tilt = (i % 2 === 0 ? -2 : 2);   // gentle rotation
+          const zoom = 1 + zoomStep * i;
+
+          journeyTl.to(inner, {
+            xPercent: -c.x * 100,
+            yPercent: -c.y * 100,
+            scale: zoom,
+            rotation: tilt,
+            duration: 1,
+            ease: "power2.inOut"
+          });
+        });
+
+        /* ---- Focus effect per NON-hero scene ---- */
+        scenes.forEach(scene => {
+          if (scene.classList.contains("scene-hero") ||
+              scene.classList.contains("scene-hero-words")) {
+            gsap.set(scene, { autoAlpha: 1, scale: 1 });
+            return;
+          }
+
+          gsap.fromTo(scene,
+            { scale: 0.96, autoAlpha: 0.6 },
+            {
+              scale: 1,
+              autoAlpha: 1,
+              scrollTrigger: {
+                containerAnimation: journeyTl,
+                trigger: scene,
+                start: "center center",
+                end: "center center",
+                scrub: true
+              }
+            }
+          );
+        });
+
+        /* ---- Parallax in maze hero (image + right column) ---- */
+        gsap.utils.toArray(".hero-parallax").forEach(el => {
+          gsap.to(el, {
+            yPercent: -10,
+            ease: "none",
+            scrollTrigger: {
+              containerAnimation: journeyTl,
+              trigger: ".scene-hero",
+              start: "center center",
+              end: "bottom top",
+              scrub: true
+            }
+          });
+        });
+
+        /* ---- STILLNESS & COHERENCE big word animation inside maze ---- */
+        const heroWordsTl = gsap.timeline({
           scrollTrigger: {
             containerAnimation: journeyTl,
-            trigger: ".scene-hero",
-            start: "center center",
+            trigger: ".scene-hero-words",
+            start: "top center",
             end: "bottom top",
             scrub: true
           }
         });
-      });
 
-      /* ---- STILLNESS & COHERENCE big word animation ---- */
-      const heroWordsTl = gsap.timeline({
-        scrollTrigger: {
-          containerAnimation: journeyTl,
-          trigger: ".scene-hero-words",
-          start: "top center",
-          end: "bottom top",
-          scrub: true
-        }
-      });
+        heroWordsTl
+          .fromTo(".scene-hero-words .hero-big-word", {
+            scale: 1.6,
+            yPercent: 30,
+            letterSpacing: "0.35em"
+          }, {
+            scale: 1,
+            yPercent: 0,
+            letterSpacing: "0.18em",
+            ease: "power2.out"
+          })
+          .fromTo(".scene-hero-words .hero-pill", {
+            y: 60,
+            opacity: 0
+          }, {
+            y: 0,
+            opacity: 1
+          }, "-=0.2");
 
-      heroWordsTl
-        .fromTo(".hero-big-word", {
-          scale: 1.6,
-          yPercent: 30,
-          letterSpacing: "0.35em"
-        }, {
-          scale: 1,
-          yPercent: 0,
-          letterSpacing: "0.18em",
-          ease: "power2.out"
-        })
-        .fromTo(".hero-pill", {
-          y: 60,
-          opacity: 0
-        }, {
-          y: 0,
-          opacity: 1
-        }, "-=0.2");
-
-      /* ---- words-collage background movement ---- */
-      const wordsCollageScene = document.querySelector(".scene-words-collage");
-      if (wordsCollageScene) {
-        gsap.to(wordsCollageScene.querySelector(".floating-words"), {
-          xPercent: -20,
-          yPercent: -10,
-          rotation: -4,
-          ease: "none",
-          scrollTrigger: {
-            containerAnimation: journeyTl,
-            trigger: wordsCollageScene,
-            start: "top bottom",
-            end: "bottom -200%",   // keep words visible longer
-            scrub: true
-          }
-        });
-
-        gsap.fromTo(wordsCollageScene.querySelector(".collage"),
-          { scale: 1.1 },
-          {
-            scale: 0.95,
-            scrollTrigger: {
-              containerAnimation: journeyTl,
-              trigger: wordsCollageScene,
-              start: "top center",
-              end: "bottom top",
-              scrub: true
-            }
-          }
-        );
-      }
-
-      /* ---- Per-scene content reveal (EXCEPT hero scenes) ---- */
-      scenes.forEach(scene => {
-        if (scene.classList.contains("scene-hero") ||
-            scene.classList.contains("scene-hero-words")) return;
-
-        const items = gsap.utils.toArray(
-          scene.querySelectorAll(".scene-tag, .scene-title, .scene-body, .scene-list li, .scene-meta")
-        );
-        if (!items.length) return;
-
-        gsap.from(items, {
-          y: 30,
-          opacity: 0,
-          stagger: 0.08,
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            containerAnimation: journeyTl,
-            trigger: scene,
-            start: "center center+=80",
-            toggleActions: "play none none reverse"
-          }
-        });
-      });
-
-      /* ---- Subtle zoom on scene media / collages ---- */
-      gsap.utils.toArray(".scene-media, .collage").forEach(el => {
-        gsap.fromTo(el,
-          { scale: 1.04 },
-          {
-            scale: 0.98,
+        /* ---- words-collage background movement (behind collage) ---- */
+        const wordsCollageScene = document.querySelector(".scene-words-collage");
+        if (wordsCollageScene) {
+          gsap.to(wordsCollageScene.querySelector(".floating-words"), {
+            xPercent: -20,
+            yPercent: -10,
+            rotation: -4,
             ease: "none",
             scrollTrigger: {
               containerAnimation: journeyTl,
-              trigger: el.closest(".scene"),
+              trigger: wordsCollageScene,
               start: "top bottom",
-              end: "bottom top",
+              end: "bottom -200%",   // stay visible while you pass the collage
               scrub: true
             }
-          }
-        );
-      });
+          });
 
-      /* =====================================================
-         FILMSTRIP – PIN + SCRUB + SMALL→BIG→SMALL CARDS
-      ===================================================== */
-
-      const filmCards = gsap.utils.toArray(".film-card");
-      const filmTrack = document.querySelector(".film-track");
-
-      const filmTween = gsap.to(filmTrack, {
-        xPercent: -100 * (filmCards.length - 1),
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".filmstrip-pin",
-          start: "top 80%",
-          end: () => "+=" + (window.innerWidth * 0.9),
-          scrub: true,
-          pin: true
+          gsap.fromTo(wordsCollageScene.querySelector(".collage"),
+            { scale: 1.1 },
+            {
+              scale: 0.95,
+              scrollTrigger: {
+                containerAnimation: journeyTl,
+                trigger: wordsCollageScene,
+                start: "top center",
+                end: "bottom top",
+                scrub: true
+              }
+            }
+          );
         }
-      });
 
-      filmCards.forEach(card => {
-        gsap.fromTo(card,
-          {
-            scale: 0.65,
-            autoAlpha: 0.35,
-            y: 40
-          },
-          {
-            scale: 1.1,
-            autoAlpha: 1,
-            y: 0,
+        /* ---- Per-scene content reveal (EXCEPT hero scenes) ---- */
+        scenes.forEach(scene => {
+          if (scene.classList.contains("scene-hero") ||
+              scene.classList.contains("scene-hero-words")) return;
+
+          const items = gsap.utils.toArray(
+            scene.querySelectorAll(".scene-tag, .scene-title, .scene-body, .scene-list li, .scene-meta")
+          );
+          if (!items.length) return;
+
+          gsap.from(items, {
+            y: 30,
+            opacity: 0,
+            stagger: 0.08,
+            duration: 0.8,
+            ease: "power3.out",
             scrollTrigger: {
-              containerAnimation: filmTween,
-              trigger: card,
-              start: "left center",
-              end: "right center",
-              scrub: true
+              containerAnimation: journeyTl,
+              trigger: scene,
+              start: "center center+=80",
+              toggleActions: "play none none reverse"
             }
-          }
-        );
-      });
-
-      /* =====================================================
-         SKILLS – PINNED SECTION
-      ===================================================== */
-
-      const skillsTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".skills",
-          start: "top center",
-          end: "bottom+=250 center",
-          scrub: true,
-          pin: true
-        }
-      });
-
-      skillsTl
-        .from(".skills .section-eyebrow", { y: 40, opacity: 0 })
-        .from(".skills .section-title", { y: 40, opacity: 0 }, "-=0.2")
-        .from(".skills .section-sub", { y: 40, opacity: 0 }, "-=0.2")
-        .from(".skill-card", {
-          y: 60,
-          opacity: 0,
-          stagger: 0.15,
-          ease: "power3.out"
-        }, "-=0.1");
-
-      /* =====================================================
-         EXTRAS – SOFT FADE/SLIDE
-      ===================================================== */
-
-      gsap.from(".extras-box", {
-        y: 50,
-        opacity: 0,
-        stagger: 0.2,
-        scrollTrigger: {
-          trigger: ".extras",
-          start: "top 80%",
-          end: "bottom 40%",
-          scrub: true
-        }
-      });
-
-      window.addEventListener("resize", () => ScrollTrigger.refresh());
-    },
-
-    /* ====================== MOBILE ====================== */
-    "(max-width: 767px)": function() {
-      // Simple vertical layout: fade/slide each scene
-      gsap.utils.toArray(".scene").forEach((scene, index) => {
-        gsap.from(scene, {
-          y: 40,
-          opacity: 0,
-          duration: 0.8,
-          ease: "power3.out",
-          delay: index * 0.05,
-          scrollTrigger: {
-            trigger: scene,
-            start: "top 85%",
-            toggleActions: "play none none reverse"
-          }
+          });
         });
+
+        /* ---- Subtle zoom on scene media / collages ---- */
+        gsap.utils.toArray(".scene-media, .collage").forEach(el => {
+          gsap.fromTo(el,
+            { scale: 1.04 },
+            {
+              scale: 0.98,
+              ease: "none",
+              scrollTrigger: {
+                containerAnimation: journeyTl,
+                trigger: el.closest(".scene"),
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true
+              }
+            }
+          );
+        });
+
+        window.addEventListener("resize", () => ScrollTrigger.refresh());
+      },
+
+      "(max-width: 767px)": function() {
+        // Simple vertical layout: fade/slide each maze scene
+        gsap.utils.toArray("#journeyWrapper .scene").forEach((scene, index) => {
+          gsap.from(scene, {
+            y: 40,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power3.out",
+            delay: index * 0.05,
+            scrollTrigger: {
+              trigger: scene,
+              start: "top 85%",
+              toggleActions: "play none none reverse"
+            }
+          });
+        });
+      }
+    });
+
+    /* ----------------- STILLNESS SECTION BG WORDS ----------------- */
+
+    const bgLines = gsap.utils.toArray(".bg-line");
+    bgLines.forEach((line, i) => {
+      gsap.fromTo(line,
+        {
+          xPercent: i % 2 === 0 ? -20 : 20,
+          rotation: i % 2 === 0 ? -8 : 8
+        },
+        {
+          xPercent: i % 2 === 0 ? 10 : -10,
+          rotation: i % 2 === 0 ? 4 : -4,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".stillness-section",
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true
+          }
+        }
+      );
+    });
+
+    gsap.from(".stillness-heading", {
+      y: 40,
+      autoAlpha: 0,
+      duration: 1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".stillness-section",
+        start: "top 80%"
+      }
+    });
+
+    gsap.from(".stillness-collage", {
+      y: 60,
+      scale: 0.85,
+      autoAlpha: 0,
+      duration: 1.1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".stillness-section",
+        start: "top 75%"
+      }
+    });
+
+    /* ----------------- MARQUEE (INFINITE) ----------------- */
+
+    const marquee = document.querySelector(".marquee-track");
+    if (marquee) {
+      gsap.to(marquee, {
+        xPercent: -50,
+        repeat: -1,
+        duration: 30,
+        ease: "none"
       });
 
-      // Filmstrip: no pin, soft slide + scale on cards
-      gsap.to(".film-track", {
-        xPercent: -20,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".filmstrip",
-          start: "top 80%",
-          end: "bottom top",
-          scrub: true
-        }
-      });
-
-      gsap.from(".film-card", {
-        y: 30,
-        scale: 0.9,
-        opacity: 0,
-        stagger: 0.15,
-        duration: 0.6,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".filmstrip",
-          start: "top 85%",
-          toggleActions: "play none none reverse"
-        }
-      });
-
-      gsap.from(".skills .skill-card", {
-        y: 30,
-        opacity: 0,
-        stagger: 0.15,
-        duration: 0.6,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".skills",
-          start: "top 85%",
-          toggleActions: "play none none reverse"
-        }
-      });
-
-      gsap.from(".extras-box", {
-        y: 30,
-        opacity: 0,
-        stagger: 0.2,
-        duration: 0.6,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".extras",
-          start: "top 85%",
-          toggleActions: "play none none reverse"
-        }
+      gsap.to(marquee, {
+        skewX: 5,
+        repeat: -1,
+        yoyo: true,
+        duration: 3,
+        ease: "sine.inOut"
       });
     }
+
+    /* ----------------- SKILLS: zoom-in cards ----------------- */
+
+    gsap.from(".skill-card", {
+      y: 40,
+      autoAlpha: 0,
+      scale: 0.96,
+      stagger: 0.1,
+      duration: 0.8,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".skills-grid",
+        start: "top 80%"
+      }
+    });
+
+    /* ----------------- FLOATING KEYWORDS ----------------- */
+
+    gsap.to(".keyword", {
+      y: (i) => (i % 2 === 0 ? 20 : -20),
+      x: (i) => (i % 2 === 0 ? -10 : 8),
+      duration: 4,
+      ease: "sine.inOut",
+      repeat: -1,
+      yoyo: true,
+      stagger: 0.2
+    });
+
+    /* ----------------- TIMELINE ITEMS ----------------- */
+
+    gsap.from(".timeline-item", {
+      x: -40,
+      autoAlpha: 0,
+      stagger: 0.18,
+      duration: 0.8,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".timeline-inner",
+        start: "top 80%"
+      }
+    });
+
+    gsap.from(".timeline-aside", {
+      x: 40,
+      autoAlpha: 0,
+      duration: 0.8,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".timeline-inner",
+        start: "top 75%"
+      }
+    });
+
+    /* ----------------- EXTRAS ----------------- */
+
+    gsap.from(".extras-box", {
+      y: 40,
+      autoAlpha: 0,
+      scale: 0.97,
+      stagger: 0.12,
+      duration: 0.8,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".extras-inner",
+        start: "top 80%"
+      }
+    });
+
   });
 </script>
 </body>
