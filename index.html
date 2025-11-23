@@ -2,19 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Youssef Hadj Sassi – Ultimate Maze Journey</title>
+  <title>Youssef Hadj Sassi – Maze Journey CV</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
     :root {
-      --bg-alt: #f8e3b3;
-      --accent: #ff7c5c;
-      --accent2: #ffb547;
-      --text: #1b1420;
-      --muted: #7b7087;
-      --card: #fff;
+      --bg-alt: #e4f0ff;
+      --accent: #2563eb;
+      --accent2: #22c1c3;
+      --text: #04111f;
+      --muted: #64748b;
+      --card: #ffffff;
       --radius: 18px;
-      --border-soft: rgba(0,0,0,0.08);
+      --border-soft: rgba(15,23,42,0.08);
     }
 
     * {
@@ -29,7 +29,7 @@
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #c6c4ff, #9ea8ff, #c9a1ff);
+      background: radial-gradient(circle at top, #0f172a, #1e3a8a, #0ea5e9);
       color: var(--text);
       overflow-x: hidden;
     }
@@ -41,15 +41,15 @@
       max-width: 1200px;
       margin: 32px auto 40px;
       border-radius: 18px;
-      box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+      box-shadow: 0 24px 60px rgba(15,23,42,0.55);
       overflow: hidden;
       background: var(--bg-alt);
       border: 1px solid rgba(255,255,255,0.7);
     }
 
     header {
-      background: #f5d99b;
-      border-bottom: 1px solid rgba(0,0,0,0.06);
+      background: #ddeafe;
+      border-bottom: 1px solid rgba(15,23,42,0.06);
       padding: 8px 18px;
       display: flex;
       align-items: center;
@@ -65,10 +65,10 @@
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background: #ff5f57;
+      background: #f97373;
     }
-    .window-dot:nth-child(2) { background: #ffbd2e; }
-    .window-dot:nth-child(3) { background: #28c840; }
+    .window-dot:nth-child(2) { background: #facc15; }
+    .window-dot:nth-child(3) { background: #22c55e; }
 
     .nav-left, .nav-right {
       display: flex;
@@ -79,11 +79,12 @@
     .logo {
       font-family: "Georgia", serif;
       font-size: 18px;
+      color: #0f172a;
     }
 
     .nav-link {
       cursor: pointer;
-      color: #7b4b19;
+      color: #0f172a;
     }
 
     .btn-nav {
@@ -92,12 +93,12 @@
       border: none;
       cursor: pointer;
       font-size: 12px;
-      background: #b4161b;
-      color: #fff;
+      background: var(--accent);
+      color: #f9fafb;
     }
 
     main {
-      background: #fff7e6;
+      background: #edf2ff;
       position: relative;
     }
 
@@ -107,7 +108,7 @@
       position: relative;
       height: 100vh;
       overflow: hidden;
-      background: #fff7e6;
+      background: #e5edff;
     }
 
     .scenes {
@@ -141,18 +142,18 @@
     .wave-bg {
       position: absolute;
       inset: 0;
-      background-image: radial-gradient(circle at 0 0, #f1f3ff 0, #b1efe2 40%, #88d9ff 70%, #c0fff4 100%);
+      background-image: radial-gradient(circle at 0 0, #e0f2fe 0, #bfdbfe 40%, #93c5fd 70%, #e0f2fe 100%);
       background-size: 140% 140%;
-      filter: saturate(1.2);
+      filter: saturate(1.15);
     }
 
     .wave-overlay {
       position: absolute;
       inset: -20%;
       background-image:
-        repeating-linear-gradient(135deg, rgba(255,255,255,0.4) 0, rgba(255,255,255,0.4) 10px, transparent 10px, transparent 20px);
+        repeating-linear-gradient(135deg, rgba(255,255,255,0.25) 0, rgba(255,255,255,0.25) 10px, transparent 10px, transparent 20px);
       mix-blend-mode: soft-light;
-      opacity: 0.7;
+      opacity: 0.8;
     }
 
     .scene-right {
@@ -168,23 +169,24 @@
       font-size: 11px;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: #b07b3b;
+      color: #2563eb;
     }
 
     .scene-title {
       font-size: 26px;
       line-height: 1.2;
+      color: #0f172a;
     }
 
     .scene-body {
       font-size: 14px;
-      color: #785f3b;
+      color: #1e293b;
       max-width: 430px;
     }
 
     .scene-meta {
       font-size: 12px;
-      color: #8a6f42;
+      color: #334155;
     }
 
     .chips {
@@ -198,16 +200,17 @@
       font-size: 11px;
       padding: 4px 10px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.85);
-      border: 1px solid rgba(0,0,0,0.08);
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(15,23,42,0.08);
+      color: #0f172a;
     }
 
     .hero-big-word {
-      font-size: clamp(42px, 10vw, 72px);
+      font-size: clamp(42px, 10vw, 74px);
       font-family: "Georgia", serif;
       letter-spacing: 0.12em;
-      color: #fef0dd;
-      text-shadow: 0 10px 40px rgba(0,0,0,0.45);
+      color: #e0ecff;
+      text-shadow: 0 12px 40px rgba(15,23,42,0.75);
     }
 
     .hero-big-word span {
@@ -217,7 +220,7 @@
     .hero-pill {
       margin-top: 16px;
       font-size: 12px;
-      color: #b25a34;
+      color: #0f172a;
     }
 
     /* media frames */
@@ -228,9 +231,9 @@
       inset: 40px;
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+      box-shadow: 0 18px 45px rgba(15,23,42,0.55);
       border: 1px solid rgba(255,255,255,0.7);
-      background: #111;
+      background: #020617;
     }
 
     .hero-media img,
@@ -245,13 +248,13 @@
 
     .scene-list {
       font-size: 13px;
-      color: #5f4a2a;
+      color: #1e293b;
       margin-top: 4px;
       padding-left: 16px;
     }
     .scene-list li + li { margin-top: 4px; }
 
-    /* collage block in one scene */
+    /* collage block in some scenes */
     .collage {
       position: absolute;
       inset: 60px 80px;
@@ -261,8 +264,9 @@
       gap: 8px;
       border-radius: 12px;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.7);
-      box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.8);
+      box-shadow: 0 18px 45px rgba(15,23,42,0.55);
+      background: #020617;
     }
 
     .collage img {
@@ -275,9 +279,9 @@
     /* ===== MARQUEE ===== */
 
     .marquee {
-      background: #f4dfb3;
-      border-top: 1px solid rgba(0,0,0,0.08);
-      border-bottom: 1px solid rgba(0,0,0,0.08);
+      background: #dbeafe;
+      border-top: 1px solid rgba(15,23,42,0.08);
+      border-bottom: 1px solid rgba(15,23,42,0.08);
       padding: 10px 0;
       overflow: hidden;
       white-space: nowrap;
@@ -289,7 +293,7 @@
       font-size: 12px;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: #b07b3b;
+      color: #1e3a8a;
     }
 
     .marquee-track span {
@@ -299,7 +303,7 @@
     /* ===== HORIZONTAL FILMSTRIP ===== */
 
     .filmstrip {
-      background: #fff6e9;
+      background: #e0ecff;
       padding: 70px 40px 80px;
     }
 
@@ -312,18 +316,19 @@
       font-size: 11px;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: #b07b3b;
+      color: #1d4ed8;
       margin-bottom: 6px;
     }
 
     .film-head-title {
       font-size: 22px;
       margin-bottom: 14px;
+      color: #0f172a;
     }
 
     .filmstrip-inner p {
       font-size: 13px;
-      color: #7b4b19;
+      color: #1e293b;
       max-width: 520px;
     }
 
@@ -342,10 +347,10 @@
 
     .film-card {
       flex: 0 0 260px;
-      background: #fff;
+      background: #ffffff;
       border-radius: 16px;
-      border: 1px solid rgba(0,0,0,0.08);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+      border: 1px solid rgba(15,23,42,0.08);
+      box-shadow: 0 12px 30px rgba(15,23,42,0.25);
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -353,7 +358,7 @@
 
     .film-thumb {
       height: 130px;
-      background: #ddd;
+      background: #0f172a;
       overflow: hidden;
     }
 
@@ -367,19 +372,20 @@
     .film-content {
       padding: 10px 12px 12px;
       font-size: 12px;
-      color: #5f4a2a;
+      color: #1e293b;
     }
 
     .film-title {
       font-size: 13px;
       font-weight: 600;
       margin-bottom: 4px;
+      color: #0f172a;
     }
 
     /* ===== SKILLS (PINNED SECTION) ===== */
 
     .skills {
-      background: #fff3d2;
+      background: #dbeafe;
       padding: 70px 40px 80px;
     }
 
@@ -392,18 +398,19 @@
       font-size: 11px;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: #b07b3b;
+      color: #1d4ed8;
       margin-bottom: 6px;
     }
 
     .section-title {
       font-size: 22px;
       margin-bottom: 8px;
+      color: #0f172a;
     }
 
     .section-sub {
       font-size: 13px;
-      color: #7b4b19;
+      color: #1e293b;
       max-width: 520px;
       margin-bottom: 22px;
     }
@@ -415,30 +422,31 @@
     }
 
     .skill-card {
-      background: #fff;
+      background: #ffffff;
       border-radius: var(--radius);
       border: 1px solid var(--border-soft);
       padding: 14px 14px 16px;
       font-size: 13px;
-      color: #5f4a2a;
-      box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+      color: #1e293b;
+      box-shadow: 0 12px 28px rgba(15,23,42,0.22);
     }
 
     .skill-title {
       font-size: 14px;
       font-weight: 600;
       margin-bottom: 4px;
+      color: #0f172a;
     }
 
     .skill-sub {
       font-size: 12px;
-      color: #7b5c32;
+      color: #334155;
     }
 
     /* ===== EXTRAS ===== */
 
     .extras {
-      background: #fff0c2;
+      background: #dbeafe;
       padding: 60px 40px 70px;
     }
 
@@ -455,18 +463,19 @@
     }
 
     .extras-box {
-      background: #fff;
+      background: #ffffff;
       border-radius: var(--radius);
       border: 1px solid var(--border-soft);
       padding: 14px 14px 16px;
       font-size: 13px;
-      color: #5f4a2a;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.16);
+      color: #1e293b;
+      box-shadow: 0 10px 24px rgba(15,23,42,0.18);
     }
 
     .extras-title {
       font-size: 16px;
       margin-bottom: 6px;
+      color: #0f172a;
     }
 
     .extras-body p + p {
@@ -476,22 +485,22 @@
     /* ===== CONTACT FOOTER ===== */
 
     .contact {
-      background: #fbe7b9;
+      background: #c7d2fe;
       padding: 40px 32px 28px;
       font-size: 13px;
-      color: #7b4b19;
+      color: #0f172a;
       text-align: center;
     }
 
     .contact a {
-      color: #b4161b;
+      color: #1d4ed8;
       font-weight: 600;
     }
 
     .lang {
       margin-top: 6px;
       font-size: 11px;
-      color: #9b723a;
+      color: #1e3a8a;
     }
 
     /* ===== RESPONSIVE ===== */
@@ -568,18 +577,18 @@
               <div class="wave-bg"></div>
               <div class="wave-overlay"></div>
               <div class="hero-media hero-parallax">
+                <!-- replace with your hero video / GIF poster -->
                 <img src="https://picsum.photos/800/600?random=10" alt="Hero media placeholder">
               </div>
             </div>
             <div class="scene-right hero-parallax">
               <div class="scene-tag">AI • XR • HCI</div>
               <h1 class="scene-title">
-                Youssef Hadj Sassi – Master’s student in Information Systems &amp; New Technologies
+                Youssef Hadj Sassi – Information Systems &amp; New Technologies
               </h1>
               <p class="scene-body">
-                I design AI-powered backends and XR experiences with a strong foundation in
-                Human–Computer Interaction and User-Centred Design. Scroll to move through my
-                journey like a maze.
+                I combine AI, XR and Human–Computer Interaction to build calm, intelligent
+                systems. Scroll down to move through my journey like a maze.
               </p>
               <div class="scene-meta">
                 T-15, ul. Edwarda WITTIGA, Wrocław · <strong>+48 453 638 776</strong><br>
@@ -611,8 +620,8 @@
                 <span>COHERENCE</span>
               </div>
               <p class="hero-pill">
-                Not silence – but when complex systems finally feel calm and everything
-                flows together. That’s what I try to build with AI &amp; XR.
+                Not silence – but when code, data and people finally line up and everything
+                flows. That’s the feeling I aim for in XR and AI projects.
               </p>
             </div>
           </section>
@@ -630,8 +639,8 @@
               <div class="scene-tag">Foundations</div>
               <h2 class="scene-title">Education – information meets business</h2>
               <p class="scene-body">
-                My foundations combine information systems, AI and business computing, so I can
-                speak both the technical and organisational languages.
+                My foundations combine information systems, AI, and business computing, so I
+                can speak both the technical and organisational languages.
               </p>
               <ul class="scene-list">
                 <li><strong>Master’s in Information Systems &amp; New Technologies</strong> – University of Sfax (double degree with Le Mans University).</li>
@@ -658,8 +667,8 @@
               <h2 class="scene-title">What ties my projects together</h2>
               <p class="scene-body">
                 Whether it’s XR for railway staff or an AI assistant for course content,
-                I look for one thing: keeping users calm and oriented while the system
-                does the heavy lifting in the background.
+                I look for calm interfaces that keep users oriented while the system
+                handles complexity.
               </p>
               <ul class="scene-list">
                 <li>Visual &amp; interaction design inspired by calm technology.</li>
@@ -683,10 +692,10 @@
               <h2 class="scene-title">AR &amp; VR development – SNCFT</h2>
               <p class="scene-body">
                 Built immersive training environments for the National Railway Company of
-                Tunisia, helping staff rehearse safety-critical scenarios.
+                Tunisia, helping staff practice safety-critical scenarios.
               </p>
               <ul class="scene-list">
-                <li>AR/VR system for maintenance &amp; safety procedures.</li>
+                <li>XR system for maintenance and safety procedures.</li>
                 <li>Tech stack: C#, PHP, SQL, Unity, Vuforia, Oculus Quest 2, Android SDK, MySQL, XAMPP, Photoshop.</li>
                 <li>Focused on clear feedback and intuitive spatial interaction.</li>
               </ul>
@@ -731,7 +740,7 @@
               <h2 class="scene-title">AI-powered course helper</h2>
               <p class="scene-body">
                 Built a web platform with an integrated AI chatbot that answers course
-                questions and guides students through content.
+                questions and guides students through their material.
               </p>
               <ul class="scene-list">
                 <li>Clean UI for browsing lessons and asking contextual questions.</li>
@@ -751,8 +760,8 @@
               </div>
             </div>
             <div class="scene-right">
-              <div class="scene-tag">Mobility &amp; stack</div>
-              <h2 class="scene-title">International experience &amp; core skills</h2>
+              <div class="scene-tag">Mobility &amp; culture</div>
+              <h2 class="scene-title">International experience</h2>
               <p class="scene-body">
                 Erasmus exchanges in Poland and Italy shaped how I design for different
                 cultures, teams and workflows.
@@ -760,15 +769,13 @@
               <ul class="scene-list">
                 <li>Erasmus at Wrocław University of Science and Technology.</li>
                 <li>Voluntary mobility &amp; Erasmus at University of Messina.</li>
-                <li>Programming: Python, C#, Java, PHP, SQL, MATLAB.</li>
-                <li>AI &amp; ML: LLMs, generative AI, agent-based systems, LSTM, RAG, fuzzy logic.</li>
-                <li>XR: Unity, Vuforia, Oculus Quest 2 · UCD &amp; HCI methods.</li>
+                <li>Experience coordinating multicultural team projects.</li>
               </ul>
             </div>
           </section>
 
-          <!-- Scene 8 – Skills collage / stacks -->
-          <section class="scene scene-skills">
+          <!-- Scene 8 – Stacks / skills collage -->
+          <section class="scene scene-stacks">
             <div class="scene-left">
               <div class="wave-bg"></div>
               <div class="wave-overlay"></div>
@@ -781,10 +788,10 @@
             </div>
             <div class="scene-right">
               <div class="scene-tag">Stacks</div>
-              <h2 class="scene-title">From code to interaction</h2>
+              <h2 class="scene-title">From backend to interaction</h2>
               <p class="scene-body">
                 I move comfortably between programming, AI pipelines, XR, and interaction
-                design. That makes it easier to ship end-to-end experiences.
+                design, which makes it easier to ship end-to-end experiences.
               </p>
               <ul class="scene-list">
                 <li>Programming &amp; backend · Databases · RESTful APIs.</li>
@@ -795,7 +802,7 @@
             </div>
           </section>
 
-          <!-- Scene 9 – Future / CTA -->
+          <!-- Scene 9 – Future direction -->
           <section class="scene scene-future">
             <div class="scene-left">
               <div class="wave-bg"></div>
@@ -809,18 +816,36 @@
               <h2 class="scene-title">Where I’d love to go next</h2>
               <p class="scene-body">
                 I’m especially interested in projects that combine AI agents, XR, and
-                human-centred design – safety-critical training, industrial workflows,
-                and educational platforms.
+                human-centred design – safety-critical training, industrial workflows and
+                educational platforms.
               </p>
               <div class="scene-meta">
                 If you’re planning something ambitious in that space, I’d be excited to
                 help shape the experience and ship the system.
               </div>
-              <div class="chips">
-                <div class="chip">AI &amp; XR R&amp;D</div>
-                <div class="chip">Digital Twins</div>
-                <div class="chip">Explainable Interfaces</div>
-                <div class="chip">Interactive Prototypes</div>
+            </div>
+          </section>
+
+          <!-- Scene 10 – Human side / CTA -->
+          <section class="scene scene-end">
+            <div class="scene-left">
+              <div class="wave-bg"></div>
+              <div class="wave-overlay"></div>
+              <div class="scene-media">
+                <img src="https://picsum.photos/900/600?random=108" alt="Human side placeholder">
+              </div>
+            </div>
+            <div class="scene-right">
+              <div class="scene-tag">Human side</div>
+              <h2 class="scene-title">Collaboration, language &amp; life</h2>
+              <p class="scene-body">
+                Beyond code, I enjoy reading, swimming and community work. I communicate
+                clearly in Arabic, English (B2) and French (B2), and I like turning complex
+                ideas into visuals and prototypes.
+              </p>
+              <div class="scene-meta">
+                Scroll on to see selected projects, skills and certifications – or reach
+                out directly if you already have a project in mind.
               </div>
             </div>
           </section>
@@ -1011,26 +1036,29 @@
 <script>
   gsap.registerPlugin(ScrollTrigger);
 
-  /* ==============
-     MAZE CAMERA PATH
-     Longer path: down, right, right, down, left, left, down, right, down
-  ============== */
+  /* ========================================
+     MAZE CAMERA PATH WITH STRONGER ZOOM/ROTATION
+     Path: down → down → right → right → down
+           → right → right → down → right → down
+     (11 scenes = indices 0..10)
+  ======================================== */
 
   const scenes = gsap.utils.toArray(".scene");
   const inner = document.querySelector(".scenes-inner");
 
-  // grid coordinates for each scene (x,y)
+  // coordinates for each scene (x, y) matching your maze path
   const coords = [
-    { x: 0, y: 0 }, // 0 hero
+    { x: 0, y: 0 }, // 0
     { x: 0, y: 1 }, // 1 down
-    { x: 1, y: 1 }, // 2 right
-    { x: 2, y: 1 }, // 3 right
-    { x: 2, y: 2 }, // 4 down
-    { x: 1, y: 2 }, // 5 left
-    { x: 0, y: 2 }, // 6 left
-    { x: 0, y: 3 }, // 7 down
-    { x: 1, y: 3 }, // 8 right
-    { x: 1, y: 4 }  // 9 down
+    { x: 0, y: 2 }, // 2 down
+    { x: 1, y: 2 }, // 3 right
+    { x: 2, y: 2 }, // 4 right
+    { x: 2, y: 3 }, // 5 down
+    { x: 3, y: 3 }, // 6 right
+    { x: 4, y: 3 }, // 7 right
+    { x: 4, y: 4 }, // 8 down
+    { x: 5, y: 4 }, // 9 right
+    { x: 5, y: 5 }  // 10 down
   ];
 
   scenes.forEach((scene, i) => {
@@ -1041,11 +1069,12 @@
     });
   });
 
+  // Main journey timeline – with stronger zoom + subtle rotation
   const journeyTl = gsap.timeline({
     scrollTrigger: {
       trigger: "#journeyWrapper",
       start: "top top",
-      end: () => "+=" + window.innerHeight * (scenes.length + 1.5),
+      end: () => "+=" + window.innerHeight * (scenes.length + 2),
       scrub: true,
       pin: true
     }
@@ -1055,8 +1084,10 @@
 
   coords.forEach((c, i) => {
     if (i === 0) return;
-    const tilt = (i % 2 === 0 ? -2 : 2);   // small alternating tilt
-    const zoom = 1 + i * 0.01;             // tiny zoom as we go deeper
+
+    // stronger zoom and gentle tilt so you feel the movement
+    const tilt = (i % 2 === 0 ? -5 : 5);     // ±5 degrees
+    const zoom = 1 + i * 0.04;              // each step zooms in more
 
     journeyTl.to(inner, {
       xPercent: -c.x * 100,
@@ -1068,10 +1099,10 @@
     });
   });
 
-  // Focus each scene (scale & opacity) as camera reaches it
+  // Focus effect for each scene (scale & opacity)
   scenes.forEach(scene => {
     gsap.fromTo(scene,
-      { scale: 0.96, autoAlpha: 0.45 },
+      { scale: 0.94, autoAlpha: 0.45 },
       {
         scale: 1,
         autoAlpha: 1,
@@ -1086,10 +1117,10 @@
     );
   });
 
-  // Hero parallax layers
+  // Parallax in the hero (media + text)
   gsap.utils.toArray(".hero-parallax").forEach(el => {
     gsap.to(el, {
-      yPercent: -8,
+      yPercent: -10,
       ease: "none",
       scrollTrigger: {
         containerAnimation: journeyTl,
@@ -1101,9 +1132,9 @@
     });
   });
 
-  /* ==============
-     INFINITE MARQUEE
-  ============== */
+  /* ========================================
+     INFINITE MARQUEE (repeat:-1 + skew by scroll)
+  ======================================== */
 
   const marqueeTl = gsap.timeline({ repeat: -1, ease: "none" });
 
@@ -1132,9 +1163,9 @@
     }
   });
 
-  /* ==============
-     HORIZONTAL FILMSTRIP
-  ============== */
+  /* ========================================
+     HORIZONTAL FILMSTRIP – PINNED + SCRUBBED
+  ======================================== */
 
   const filmCards = gsap.utils.toArray(".film-card");
   const filmTrack = document.querySelector(".film-track");
@@ -1151,9 +1182,9 @@
     }
   });
 
-  /* ==============
+  /* ========================================
      SKILLS – PINNED TIMELINE
-  ============== */
+  ======================================== */
 
   const skillsTl = gsap.timeline({
     scrollTrigger: {
@@ -1176,9 +1207,9 @@
       ease: "power3.out"
     }, "-=0.1");
 
-  /* ==============
-     EXTRAS – FADE IN
-  ============== */
+  /* ========================================
+     EXTRAS – SOFT FADE/SLIDE
+  ======================================== */
 
   gsap.from(".extras-box", {
     y: 50,
