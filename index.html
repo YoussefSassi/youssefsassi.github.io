@@ -36,7 +36,7 @@
 
     a { color: inherit; text-decoration: none; }
 
-    /* Fake browser window like the GIF */
+    /* Fake browser window */
     .app-shell {
       max-width: 1200px;
       margin: 32px auto 40px;
@@ -292,6 +292,28 @@
       height: 100%;
       object-fit: cover;
       display: block;
+    }
+
+    /* === WORDS + COLLAGE SECTION (GIF-LIKE) === */
+
+    .scene-words-collage .scene-right {
+      align-items: flex-start;
+    }
+
+    .floating-words {
+      position: absolute;
+      inset: 10% -40%;
+      font-family: "Georgia", serif;
+      font-size: 42px;
+      color: rgba(124,45,18,0.36);
+      line-height: 1.2;
+      pointer-events: none;
+      transform: rotate(-8deg);
+    }
+
+    .floating-words span {
+      display: block;
+      margin-bottom: 8px;
     }
 
     /* ===== MARQUEE ===== */
@@ -555,6 +577,37 @@
       }
     }
 
+    /* Full mobile – remove maze, stack vertically */
+    @media (max-width: 767px) {
+      #journeyWrapper {
+        height: auto;
+      }
+      .scenes {
+        position: static;
+        height: auto;
+        overflow: visible;
+      }
+      .scenes-inner {
+        position: static;
+        transform: none !important;
+      }
+      .scene {
+        position: relative;
+        transform: none !important;
+        x: 0 !important;
+        y: 0 !important;
+      }
+      .hero-big-word {
+        letter-spacing: 0.12em;
+      }
+      .filmstrip-pin {
+        height: auto;
+      }
+      body {
+        overflow-x: hidden;
+      }
+    }
+
     @media (max-width: 640px) {
       header {
         flex-direction: column;
@@ -563,9 +616,6 @@
       }
       .skills-grid {
         grid-template-columns: minmax(0, 1fr);
-      }
-      .hero-big-word {
-        letter-spacing: 0.12em;
       }
     }
   </style>
@@ -579,7 +629,7 @@
         <div class="window-dot"></div>
         <div class="window-dot"></div>
       </div>
-      <div class="logo">Youssef profile</div>
+      <div class="logo">Youssef Aura</div>
     </div>
     <div class="nav-right">
       <a class="nav-link" href="#journeyWrapper">Hi!</a>
@@ -650,7 +700,41 @@
             </div>
           </section>
 
-          <!-- Scene 2 – Education -->
+          <!-- Scene 2 – Words + collage like GIF -->
+          <section class="scene scene-words-collage">
+            <div class="scene-left">
+              <div class="wave-bg"></div>
+              <div class="wave-overlay"></div>
+
+              <div class="floating-words">
+                <span>Stillness &amp; Coherence*</span>
+                <span>When inner waters calm,</span>
+                <span>clarity flows.</span>
+                <span>Design that feels like breathing.</span>
+              </div>
+
+              <div class="collage">
+                <img src="https://picsum.photos/600/600?random=120" alt="">
+                <img src="https://picsum.photos/600/600?random=121" alt="">
+                <img src="https://picsum.photos/600/600?random=122" alt="">
+                <img src="https://picsum.photos/600/600?random=123" alt="">
+              </div>
+            </div>
+            <div class="scene-right">
+              <div class="scene-tag">Calm interaction</div>
+              <h2 class="scene-title">Interfaces that let people breathe</h2>
+              <p class="scene-body">
+                I like big, cinematic layouts where imagery and words drift past each
+                other. The system works hard; the interface stays quiet and reassuring.
+              </p>
+              <div class="scene-meta">
+                This section is where your GIF shots can live – drop in looping videos
+                instead of static images for the collage tiles.
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 3 – Education -->
           <section class="scene scene-edu">
             <div class="scene-left">
               <div class="wave-bg"></div>
@@ -674,7 +758,7 @@
             </div>
           </section>
 
-          <!-- Scene 3 – Collage / mood board -->
+          <!-- Scene 4 – Collage / mood board -->
           <section class="scene scene-collage">
             <div class="scene-left">
               <div class="wave-bg"></div>
@@ -702,7 +786,7 @@
             </div>
           </section>
 
-          <!-- Scene 4 – SNCFT XR internship -->
+          <!-- Scene 5 – SNCFT XR internship -->
           <section class="scene scene-xr">
             <div class="scene-left">
               <div class="wave-bg"></div>
@@ -726,7 +810,7 @@
             </div>
           </section>
 
-          <!-- Scene 5 – AI/Data + AI assistant -->
+          <!-- Scene 6 – AI/Data + AI assistant -->
           <section class="scene scene-ai">
             <div class="scene-left">
               <div class="wave-bg"></div>
@@ -750,7 +834,7 @@
             </div>
           </section>
 
-          <!-- Scene 6 – Web AI course helper -->
+          <!-- Scene 7 – Web AI course helper -->
           <section class="scene scene-webai">
             <div class="scene-left">
               <div class="wave-bg"></div>
@@ -774,7 +858,7 @@
             </div>
           </section>
 
-          <!-- Scene 7 – Erasmus & mobility -->
+          <!-- Scene 8 – Erasmus & mobility -->
           <section class="scene scene-intl">
             <div class="scene-left">
               <div class="wave-bg"></div>
@@ -798,14 +882,14 @@
             </div>
           </section>
 
-          <!-- Scene 8 – Stacks / skills collage -->
+          <!-- Scene 9 – Stacks / skills collage -->
           <section class="scene scene-stacks">
             <div class="scene-left">
               <div class="wave-bg"></div>
               <div class="wave-overlay"></div>
               <div class="collage">
                 <img src="https://picsum.photos/600/600?random=85" alt="">
-                <img src="https://picsum.photos/600/600?random=86" alt="">
+                <img src="httpsum.photos/600/600?random=86" alt="">
                 <img src="https://picsum.photos/600/600?random=87" alt="">
                 <img src="https://picsum.photos/600/600?random=88" alt="">
               </div>
@@ -826,7 +910,7 @@
             </div>
           </section>
 
-          <!-- Scene 9 – Future direction -->
+          <!-- Scene 10 – Future direction -->
           <section class="scene scene-future">
             <div class="scene-left">
               <div class="wave-bg"></div>
@@ -850,7 +934,7 @@
             </div>
           </section>
 
-          <!-- Scene 10 – Human side / CTA -->
+          <!-- Scene 11 – Human side / CTA -->
           <section class="scene scene-end">
             <div class="scene-left">
               <div class="wave-bg"></div>
@@ -1060,93 +1144,9 @@
 <script>
   gsap.registerPlugin(ScrollTrigger);
 
-  /* ========================================
-     MAZE CAMERA PATH (SOFTER, READABLE)
-  ======================================== */
-
-  const scenes = gsap.utils.toArray(".scene");
-  const inner = document.querySelector(".scenes-inner");
-
-  const coords = [
-    { x: 0, y: 0 }, // 0
-    { x: 0, y: 1 }, // 1 down
-    { x: 0, y: 2 }, // 2 down
-    { x: 1, y: 2 }, // 3 right
-    { x: 2, y: 2 }, // 4 right
-    { x: 2, y: 3 }, // 5 down
-    { x: 3, y: 3 }, // 6 right
-    { x: 4, y: 3 }, // 7 right
-    { x: 4, y: 4 }, // 8 down
-    { x: 5, y: 4 }, // 9 right
-    { x: 5, y: 5 }  // 10 down
-  ];
-
-  scenes.forEach((scene, i) => {
-    const c = coords[i];
-    gsap.set(scene, {
-      xPercent: c.x * 100,
-      yPercent: c.y * 100
-    });
-  });
-
-  const journeyTl = gsap.timeline({
-    scrollTrigger: {
-      trigger: "#journeyWrapper",
-      start: "top top",
-      end: () => "+=" + window.innerHeight * (scenes.length + 2),
-      scrub: true,
-      pin: true
-    }
-  });
-
-  gsap.set(inner, {
-    xPercent: 0,
-    yPercent: 0,
-    scale: 1,
-    rotation: 0,
-    transformOrigin: "50% 50%"
-  });
-
-  const maxZoom = 1.2;
-  const zoomStep = (maxZoom - 1) / (coords.length - 1);
-
-  coords.forEach((c, i) => {
-    if (i === 0) return;
-
-    const tilt = (i % 2 === 0 ? -2.5 : 2.5);
-    const zoom = 1 + zoomStep * i;
-
-    journeyTl.to(inner, {
-      xPercent: -c.x * 100,
-      yPercent: -c.y * 100,
-      scale: zoom,
-      rotation: tilt,
-      duration: 1,
-      ease: "power2.inOut"
-    });
-  });
-
-  // Dim non-focused scenes a bit
-  scenes.forEach(scene => {
-    gsap.fromTo(scene,
-      { scale: 0.94, autoAlpha: 0.45 },
-      {
-        scale: 1,
-        autoAlpha: 1,
-        scrollTrigger: {
-          containerAnimation: journeyTl,
-          trigger: scene,
-          start: "center center",
-          end: "center center",
-          scrub: true
-        }
-      }
-    );
-  });
-
-  /* ========================================
-     HERO INTRO (ON LOAD)
-  ======================================== */
+  /* =====================================================
+     HERO INTRO – RUNS ONCE ON LOAD (BIG TEXT + IMAGE)
+  ===================================================== */
 
   const heroIntroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
@@ -1159,7 +1159,7 @@
     .from(".scene-hero .scene-title", {
       y: 60,
       opacity: 0,
-      scale: 1.08,
+      scale: 1.1,
       duration: 0.9
     }, "-=0.35")
     .from(".scene-hero .scene-body", {
@@ -1179,87 +1179,14 @@
       duration: 0.5
     }, "-=0.45")
     .from(".scene-hero .hero-media", {
-      scale: 1.08,
+      scale: 1.12,
       autoAlpha: 0,
-      duration: 0.9
+      duration: 1.1
     }, "-=0.9");
 
-  /* ========================================
-     HERO WORDS – BIG TEXT ZOOM / LETTER SPACING
-  ======================================== */
-
-  const heroScrollTl = gsap.timeline({
-    scrollTrigger: {
-      containerAnimation: journeyTl,
-      trigger: ".scene-hero-words",
-      start: "top center",
-      end: "bottom top",
-      scrub: true
-    }
-  });
-
-  heroScrollTl
-    .fromTo(".hero-big-word", {
-      scale: 1.4,
-      yPercent: 20,
-      letterSpacing: "0.3em"
-    }, {
-      scale: 1,
-      yPercent: 0,
-      letterSpacing: "0.18em",
-      ease: "power2.out"
-    })
-    .fromTo(".hero-pill", {
-      y: 40,
-      opacity: 0
-    }, {
-      y: 0,
-      opacity: 1
-    }, "-=0.2");
-
-  // Parallax layers in hero
-  gsap.utils.toArray(".hero-parallax").forEach(el => {
-    gsap.to(el, {
-      yPercent: -10,
-      ease: "none",
-      scrollTrigger: {
-        containerAnimation: journeyTl,
-        trigger: ".scene-hero",
-        start: "center center",
-        end: "bottom top",
-        scrub: true
-      }
-    });
-  });
-
-  /* ========================================
-     PER-SCENE CONTENT REVEAL
-  ======================================== */
-
-  scenes.forEach(scene => {
-    const elements = gsap.utils.toArray(
-      scene.querySelectorAll(".scene-tag, .scene-title, .scene-body, .scene-list li, .scene-meta")
-    );
-    if (!elements.length) return;
-
-    gsap.from(elements, {
-      y: 30,
-      opacity: 0,
-      stagger: 0.07,
-      duration: 0.8,
-      ease: "power3.out",
-      scrollTrigger: {
-        containerAnimation: journeyTl,
-        trigger: scene,
-        start: "center center+=80",
-        toggleActions: "play none none reverse"
-      }
-    });
-  });
-
-  /* ========================================
-     INFINITE MARQUEE + SKEW ON SCROLL
-  ======================================== */
+  /* =====================================================
+     GLOBAL: INFINITE MARQUEE + SKEW ON SCROLL
+  ===================================================== */
 
   const marqueeTl = gsap.timeline({ repeat: -1, ease: "none" });
 
@@ -1288,95 +1215,380 @@
     }
   });
 
-  /* ========================================
-     HORIZONTAL FILMSTRIP – PINNED + SCRUBBED
-  ======================================== */
+  /* =====================================================
+     RESPONSIVE ANIMATION SETUP
+     - Desktop (>=768px): maze, pinning, filmstrip scrub
+     - Mobile (<768px): simple fade/slide, no pin
+  ===================================================== */
 
-  const filmCards = gsap.utils.toArray(".film-card");
-  const filmTrack = document.querySelector(".film-track");
+  ScrollTrigger.matchMedia({
 
-  const filmTween = gsap.to(filmTrack, {
-    xPercent: -100 * (filmCards.length - 1),
-    ease: "none",
-    scrollTrigger: {
-      trigger: ".filmstrip-pin",
-      start: "top 80%",
-      end: () => "+=" + (window.innerWidth * 0.9),
-      scrub: true,
-      pin: true
-    }
-  });
+    /* ================= DESKTOP / LAPTOP ================= */
+    "(min-width: 768px)": function() {
+      const scenes = gsap.utils.toArray(".scene");
+      const inner  = document.querySelector(".scenes-inner");
 
-  // small → big → small effect
-  filmCards.forEach(card => {
-    gsap.fromTo(card,
-      {
-        scale: 0.75,
-        autoAlpha: 0.4,
-        y: 40
-      },
-      {
-        scale: 1,
-        autoAlpha: 1,
-        y: 0,
+      /* ---- Maze coordinates (camera path) ---- */
+      const coords = [
+        { x: 0, y: 0 }, // 0 hero
+        { x: 0, y: 1 }, // 1 hero words
+        { x: 0, y: 2 }, // 2 words+collage
+        { x: 1, y: 2 }, // 3 edu
+        { x: 2, y: 2 }, // 4 collage
+        { x: 2, y: 3 }, // 5 XR
+        { x: 3, y: 3 }, // 6 AI
+        { x: 4, y: 3 }, // 7 web AI
+        { x: 4, y: 4 }, // 8 intl
+        { x: 5, y: 4 }, // 9 stacks
+        { x: 5, y: 5 }, //10 future
+        { x: 6, y: 5 }  //11 end
+      ];
+
+      scenes.forEach((scene, i) => {
+        const c = coords[i];
+        gsap.set(scene, {
+          xPercent: c.x * 100,
+          yPercent: c.y * 100,
+          position: "absolute"
+        });
+      });
+
+      const journeyTl = gsap.timeline({
         scrollTrigger: {
-          containerAnimation: filmTween,
-          trigger: card,
-          start: "left center",
-          end: "right center",
+          trigger: "#journeyWrapper",
+          start: "top top",
+          end: () => "+=" + window.innerHeight * (scenes.length + 2),
+          scrub: true,
+          pin: true
+        }
+      });
+
+      gsap.set(inner, {
+        xPercent: 0,
+        yPercent: 0,
+        scale: 1,
+        rotation: 0,
+        transformOrigin: "50% 50%"
+      });
+
+      const maxZoom = 1.18;
+      const zoomStep = (maxZoom - 1) / (coords.length - 1);
+
+      coords.forEach((c, i) => {
+        if (i === 0) return;
+
+        const tilt = (i % 2 === 0 ? -2 : 2);   // gentle rotation
+        const zoom = 1 + zoomStep * i;
+
+        journeyTl.to(inner, {
+          xPercent: -c.x * 100,
+          yPercent: -c.y * 100,
+          scale: zoom,
+          rotation: tilt,
+          duration: 1,
+          ease: "power2.inOut"
+        });
+      });
+
+      /* ---- Focus effect per NON-hero scene ---- */
+      scenes.forEach(scene => {
+        if (scene.classList.contains("scene-hero") ||
+            scene.classList.contains("scene-hero-words")) {
+          gsap.set(scene, { autoAlpha: 1, scale: 1 });
+          return;
+        }
+
+        gsap.fromTo(scene,
+          { scale: 0.96, autoAlpha: 0.6 },
+          {
+            scale: 1,
+            autoAlpha: 1,
+            scrollTrigger: {
+              containerAnimation: journeyTl,
+              trigger: scene,
+              start: "center center",
+              end: "center center",
+              scrub: true
+            }
+          }
+        );
+      });
+
+      /* ---- Parallax in hero (image + right column) ---- */
+      gsap.utils.toArray(".hero-parallax").forEach(el => {
+        gsap.to(el, {
+          yPercent: -10,
+          ease: "none",
+          scrollTrigger: {
+            containerAnimation: journeyTl,
+            trigger: ".scene-hero",
+            start: "center center",
+            end: "bottom top",
+            scrub: true
+          }
+        });
+      });
+
+      /* ---- STILLNESS & COHERENCE big word animation ---- */
+      const heroWordsTl = gsap.timeline({
+        scrollTrigger: {
+          containerAnimation: journeyTl,
+          trigger: ".scene-hero-words",
+          start: "top center",
+          end: "bottom top",
           scrub: true
         }
+      });
+
+      heroWordsTl
+        .fromTo(".hero-big-word", {
+          scale: 1.6,
+          yPercent: 30,
+          letterSpacing: "0.35em"
+        }, {
+          scale: 1,
+          yPercent: 0,
+          letterSpacing: "0.18em",
+          ease: "power2.out"
+        })
+        .fromTo(".hero-pill", {
+          y: 60,
+          opacity: 0
+        }, {
+          y: 0,
+          opacity: 1
+        }, "-=0.2");
+
+      /* ---- words-collage background movement ---- */
+      const wordsCollageScene = document.querySelector(".scene-words-collage");
+      if (wordsCollageScene) {
+        gsap.to(wordsCollageScene.querySelector(".floating-words"), {
+          xPercent: -20,
+          yPercent: -10,
+          rotation: -4,
+          ease: "none",
+          scrollTrigger: {
+            containerAnimation: journeyTl,
+            trigger: wordsCollageScene,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true
+          }
+        });
+
+        gsap.fromTo(wordsCollageScene.querySelector(".collage"),
+          { scale: 1.1 },
+          {
+            scale: 0.95,
+            scrollTrigger: {
+              containerAnimation: journeyTl,
+              trigger: wordsCollageScene,
+              start: "top center",
+              end: "bottom top",
+              scrub: true
+            }
+          }
+        );
       }
-    );
-  });
 
-  /* ========================================
-     SKILLS – PINNED TIMELINE
-  ======================================== */
+      /* ---- Per-scene content reveal (EXCEPT hero scenes) ---- */
+      scenes.forEach(scene => {
+        if (scene.classList.contains("scene-hero") ||
+            scene.classList.contains("scene-hero-words")) return;
 
-  const skillsTl = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".skills",
-      start: "top center",
-      end: "bottom+=250 center",
-      scrub: true,
-      pin: true
+        const items = gsap.utils.toArray(
+          scene.querySelectorAll(".scene-tag, .scene-title, .scene-body, .scene-list li, .scene-meta")
+        );
+        if (!items.length) return;
+
+        gsap.from(items, {
+          y: 30,
+          opacity: 0,
+          stagger: 0.08,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            containerAnimation: journeyTl,
+            trigger: scene,
+            start: "center center+=80",
+            toggleActions: "play none none reverse"
+          }
+        });
+      });
+
+      /* ---- Subtle zoom on scene media / collages ---- */
+      gsap.utils.toArray(".scene-media, .collage").forEach(el => {
+        gsap.fromTo(el,
+          { scale: 1.04 },
+          {
+            scale: 0.98,
+            ease: "none",
+            scrollTrigger: {
+              containerAnimation: journeyTl,
+              trigger: el.closest(".scene"),
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true
+            }
+          }
+        );
+      });
+
+      /* =====================================================
+         FILMSTRIP – PIN + SCRUB + SMALL→BIG→SMALL CARDS
+      ===================================================== */
+
+      const filmCards = gsap.utils.toArray(".film-card");
+      const filmTrack = document.querySelector(".film-track");
+
+      const filmTween = gsap.to(filmTrack, {
+        xPercent: -100 * (filmCards.length - 1),
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".filmstrip-pin",
+          start: "top 80%",
+          end: () => "+=" + (window.innerWidth * 0.9),
+          scrub: true,
+          pin: true
+        }
+      });
+
+      filmCards.forEach(card => {
+        gsap.fromTo(card,
+          {
+            scale: 0.65,
+            autoAlpha: 0.35,
+            y: 40
+          },
+          {
+            scale: 1.1,
+            autoAlpha: 1,
+            y: 0,
+            scrollTrigger: {
+              containerAnimation: filmTween,
+              trigger: card,
+              start: "left center",
+              end: "right center",
+              scrub: true
+            }
+          }
+        );
+      });
+
+      /* =====================================================
+         SKILLS – PINNED SECTION
+      ===================================================== */
+
+      const skillsTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".skills",
+          start: "top center",
+          end: "bottom+=250 center",
+          scrub: true,
+          pin: true
+        }
+      });
+
+      skillsTl
+        .from(".skills .section-eyebrow", { y: 40, opacity: 0 })
+        .from(".skills .section-title", { y: 40, opacity: 0 }, "-=0.2")
+        .from(".skills .section-sub", { y: 40, opacity: 0 }, "-=0.2")
+        .from(".skill-card", {
+          y: 60,
+          opacity: 0,
+          stagger: 0.15,
+          ease: "power3.out"
+        }, "-=0.1");
+
+      /* =====================================================
+         EXTRAS – SOFT FADE/SLIDE
+      ===================================================== */
+
+      gsap.from(".extras-box", {
+        y: 50,
+        opacity: 0,
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: ".extras",
+          start: "top 80%",
+          end: "bottom 40%",
+          scrub: true
+        }
+      });
+
+      window.addEventListener("resize", () => ScrollTrigger.refresh());
+    },
+
+    /* ====================== MOBILE ====================== */
+    "(max-width: 767px)": function() {
+      // Simple vertical layout: fade/slide each scene
+      gsap.utils.toArray(".scene").forEach((scene, index) => {
+        gsap.from(scene, {
+          y: 40,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          delay: index * 0.05,
+          scrollTrigger: {
+            trigger: scene,
+            start: "top 85%",
+            toggleActions: "play none none reverse"
+          }
+        });
+      });
+
+      // Filmstrip: no pin, soft slide + scale on cards
+      gsap.to(".film-track", {
+        xPercent: -20,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".filmstrip",
+          start: "top 80%",
+          end: "bottom top",
+          scrub: true
+        }
+      });
+
+      gsap.from(".film-card", {
+        y: 30,
+        scale: 0.9,
+        opacity: 0,
+        stagger: 0.15,
+        duration: 0.6,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".filmstrip",
+          start: "top 85%",
+          toggleActions: "play none none reverse"
+        }
+      });
+
+      gsap.from(".skills .skill-card", {
+        y: 30,
+        opacity: 0,
+        stagger: 0.15,
+        duration: 0.6,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".skills",
+          start: "top 85%",
+          toggleActions: "play none none reverse"
+        }
+      });
+
+      gsap.from(".extras-box", {
+        y: 30,
+        opacity: 0,
+        stagger: 0.2,
+        duration: 0.6,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".extras",
+          start: "top 85%",
+          toggleActions: "play none none reverse"
+        }
+      });
     }
-  });
-
-  skillsTl
-    .from(".skills .section-eyebrow", { y: 40, opacity: 0 })
-    .from(".skills .section-title", { y: 40, opacity: 0 }, "-=0.2")
-    .from(".skills .section-sub", { y: 40, opacity: 0 }, "-=0.2")
-    .from(".skill-card", {
-      y: 60,
-      opacity: 0,
-      stagger: 0.15,
-      ease: "power3.out"
-    }, "-=0.1");
-
-  /* ========================================
-     EXTRAS – SOFT FADE/SLIDE
-  ======================================== */
-
-  gsap.from(".extras-box", {
-    y: 50,
-    opacity: 0,
-    stagger: 0.2,
-    scrollTrigger: {
-      trigger: ".extras",
-      start: "top 80%",
-      end: "bottom 40%",
-      scrub: true
-    }
-  });
-
-  /* ========================================
-     RESIZE HANDLING
-  ======================================== */
-
-  window.addEventListener("resize", () => {
-    ScrollTrigger.refresh();
   });
 </script>
 </body>
