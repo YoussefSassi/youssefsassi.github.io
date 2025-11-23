@@ -464,8 +464,7 @@
       transform: scale(0.8);
     }
 
-    /* >>> FIX: make first slide visible by default <<< */
-    .project-slide:first-child,
+    /* show first project when JS hasn't animated yet */
     .project-slide.is-initial {
       opacity: 1;
       transform: scale(1);
@@ -1106,7 +1105,7 @@
         <div class="window-dot"></div>
         <div class="window-dot"></div>
       </div>
-      <div class="logo">Youssef Aura</div>
+      <div class="logo">Youssef Aura1</div>
     </div>
     <div class="nav-right">
       <a class="nav-link" href="#heroOption1">Hi!</a>
@@ -1118,14 +1117,6 @@
   </header>
 
   <main>
-
-    <!-- ====================================================
-         HERO OPTION 1 – your original cinematic slide
-    ==================================================== -->
-    <!-- (everything in your HTML from here down is unchanged) -->
-
-    <!-- ... THE REST OF YOUR HTML IS EXACTLY WHAT YOU POSTED ... -->
-    <!-- I’m keeping it verbatim to avoid “reducing” anything. -->
 
     <!-- ====================================================
          HERO OPTION 1 – your original cinematic slide
@@ -1183,14 +1174,788 @@
       </div>
     </section>
 
-    <!-- (everything from Hero Option 2 down to the end of your HTML
-         remains exactly the same as in your message – omitted here
-         only to avoid triple-length chat, not in your actual file) -->
+    <!-- ====================================================
+         HERO OPTION 2 – different camera path
+    ==================================================== -->
+    <section class="hero-section hero-option2" id="heroOption2">
+      <div class="hero-inner">
+        <div class="hero-left">
+          <div class="hero-wave"></div>
+          <div class="hero-stripes"></div>
 
-    <!-- ==========================================================
-         PASTE THE REST OF YOUR ORIGINAL BODY HTML HERE UNCHANGED
-         (Maze Journey, Stillness, Marquee, Skills, etc.)
-    ========================================================== -->
+          <div class="hero-bg-words hero2-bg-words">
+            <span>AGENT SYSTEMS</span>
+            <span>DIGITAL TWINS</span>
+            <span>RAILWAY XR</span>
+          </div>
+
+          <div class="hero-main-media hero2-main-media">
+            <img src="https://picsum.photos/900/600?random=11" alt="Hero 2 main" />
+          </div>
+
+          <div class="hero-grid-frame hero2-grid-frame">
+            <img src="https://picsum.photos/600/400?random=41" alt="">
+            <img src="https://picsum.photos/600/400?random=42" alt="">
+            <img src="https://picsum.photos/600/400?random=43" alt="">
+            <img src="https://picsum.photos/600/400?random=44" alt="">
+          </div>
+        </div>
+
+        <div class="hero-right hero2-right">
+          <div class="hero-tag">AI • XR • HCI · OPTION 2</div>
+          <h1 class="hero-title">
+            A maze-like camera: down, right, tilt, then settle
+          </h1>
+          <p class="hero-body">
+            This version exaggerates the “down / right / tight” feeling. The hero image
+            drifts diagonally, the words slide like a maze, and the collage grows from
+            small to big while the background text is still visible.
+          </p>
+          <div class="hero-meta">
+            Same content, different camera path – like testing variations of one shot.
+          </div>
+          <div class="hero-chips">
+            <div class="chip">Camera Maze</div>
+            <div class="chip">Diagonal Motion</div>
+            <div class="chip">Soft Tilt</div>
+          </div>
+          <div class="hero-scroll-hint">
+            <div class="hero-scroll-circle">↓</div>
+            <span>Option 2: stronger maze feeling (down-right-tight).</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================
+         HERO OPTION 3 – combo of 1 & 2 + extra zooms
+    ==================================================== -->
+    <section class="hero-section hero-option3" id="heroOption3">
+      <div class="hero-inner">
+        <div class="hero-left">
+          <div class="hero-wave"></div>
+          <div class="hero-stripes"></div>
+
+          <div class="hero-bg-words hero3-bg-words">
+            <span>STILLNESS*</span>
+            <span>FLOW &amp; BALANCE</span>
+            <span>COHERENT JOURNEYS</span>
+          </div>
+
+          <div class="hero-main-media hero3-main-media">
+            <img src="https://picsum.photos/900/600?random=12" alt="Hero 3 main" />
+          </div>
+
+          <div class="hero-grid-frame hero3-grid-frame">
+            <img src="https://picsum.photos/600/400?random=51" alt="">
+            <img src="https://picsum.photos/600/400?random=52" alt="">
+            <img src="https://picsum.photos/600/400?random=53" alt="">
+            <img src="https://picsum.photos/600/400?random=54" alt="">
+          </div>
+        </div>
+
+        <div class="hero-right hero3-right">
+          <div class="hero-tag">AI • XR • HCI · OPTION 3</div>
+          <h1 class="hero-title">
+            Hybrid: zoom, tilt, collage, text orbiting in the back
+          </h1>
+          <p class="hero-body">
+            The third option mixes everything: cinematic zoom like Option 1,
+            diagonal maze movement like Option 2, plus a gentle “camera float”.
+            Background words travel behind the collage, then slowly fade away.
+          </p>
+          <div class="hero-meta">
+            Scroll past this hero to fall into the stillness / coherence section
+            and then into the maze journey and long projects.
+          </div>
+          <div class="hero-chips">
+            <div class="chip">Combo Shot</div>
+            <div class="chip">Word Orbits</div>
+            <div class="chip">Micro Zooms</div>
+          </div>
+          <div class="hero-scroll-hint">
+            <div class="hero-scroll-circle">↓</div>
+            <span>Option 3: everything layered together.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================
+         MAZE JOURNEY – DOWN / RIGHT CAMERA PATH
+    ==================================================== -->
+    <section id="journeyWrapper">
+      <div class="scenes">
+        <div class="scenes-inner">
+          <!-- Scene 0 – Hero summary inside maze -->
+          <section class="scene scene-hero">
+            <div class="scene-left">
+              <div class="wave-bg"></div>
+              <div class="wave-overlay"></div>
+              <div class="hero-media hero-parallax">
+                <img src="https://picsum.photos/800/600?random=101" alt="Hero media placeholder">
+              </div>
+            </div>
+            <div class="scene-right hero-parallax">
+              <div class="scene-tag">AI • XR • HCI</div>
+              <h2 class="scene-title">
+                Maze Journey CV – Youssef Hadj Sassi
+              </h2>
+              <p class="scene-body">
+                Now you are inside the maze: scroll to move the camera down, right and across
+                different “rooms” of my journey.
+              </p>
+              <div class="scene-meta">
+                Same person, different lens – this time as a maze of scenes instead of slides.
+              </div>
+              <div class="chips-maze">
+                <div class="chip-maze">Maze Navigation</div>
+                <div class="chip-maze">Pinned Journey</div>
+                <div class="chip-maze">ScrollTrigger</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 1 – Big stillness & coherence words -->
+          <section class="scene scene-hero-words">
+            <div class="scene-left">
+              <div class="wave-bg"></div>
+              <div class="wave-overlay"></div>
+              <div class="hero-media">
+                <img src="https://picsum.photos/900/600?random=111" alt="Texture placeholder">
+              </div>
+            </div>
+            <div class="scene-right">
+              <div class="hero-big-word">
+                <span>STILLNESS</span>
+                <span>&amp;</span>
+                <span>COHERENCE</span>
+              </div>
+              <p class="hero-pill">
+                Not silence – but when code, data and people finally line up and everything
+                flows. That’s the feeling I aim for in XR and AI projects.
+              </p>
+            </div>
+          </section>
+
+          <!-- Scene 2 – Words + collage like GIF -->
+          <section class="scene scene-words-collage">
+            <div class="scene-left">
+              <div class="wave-bg"></div>
+              <div class="wave-overlay"></div>
+
+              <div class="floating-words">
+                <span>Stillness &amp; Coherence*</span>
+                <span>When inner waters calm,</span>
+                <span>clarity flows.</span>
+                <span>Design that feels like breathing.</span>
+              </div>
+
+              <div class="collage">
+                <img src="https://picsum.photos/600/600?random=120" alt="">
+                <img src="https://picsum.photos/600/600?random=121" alt="">
+                <img src="https://picsum.photos/600/600?random=122" alt="">
+                <img src="https://picsum.photos/600/600?random=123" alt="">
+              </div>
+            </div>
+            <div class="scene-right">
+              <div class="scene-tag">Calm interaction</div>
+              <h2 class="scene-title">Interfaces that let people breathe</h2>
+              <p class="scene-body">
+                I like big, cinematic layouts where imagery and words drift past each
+                other. The system works hard; the interface stays quiet and reassuring.
+              </p>
+              <div class="scene-meta">
+                This section is where your GIF shots can live – drop in looping videos
+                instead of static images for the collage tiles.
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 3 – Education -->
+          <section class="scene scene-edu">
+            <div class="scene-left">
+              <div class="wave-bg"></div>
+              <div class="wave-overlay"></div>
+              <div class="scene-media">
+                <img src="https://picsum.photos/900/600?random=121" alt="Education placeholder">
+              </div>
+            </div>
+            <div class="scene-right">
+              <div class="scene-tag">Foundations</div>
+              <h2 class="scene-title">Education – information meets business</h2>
+              <p class="scene-body">
+                My foundations combine information systems, AI, and business computing, so I
+                can speak both the technical and organisational languages.
+              </p>
+              <ul class="scene-list">
+                <li><strong>Master’s in Information Systems &amp; New Technologies</strong> – University of Sfax (double degree with Le Mans University).</li>
+                <li><strong>Bachelor’s in Business Computing</strong> – dashboards, data processing and decision-support systems.</li>
+                <li><strong>Baccalaureate in Economics &amp; Management</strong> – understanding organisations before coding them.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Scene 4 – Collage / mood board -->
+          <section class="scene scene-collage">
+            <div class="scene-left">
+              <div class="wave-bg"></div>
+              <div class="wave-overlay"></div>
+              <div class="collage">
+                <img src="https://picsum.photos/600/600?random=131" alt="">
+                <img src="https://picsum.photos/600/600?random=132" alt="">
+                <img src="https://picsum.photos/600/600?random=133" alt="">
+                <img src="https://picsum.photos/600/600?random=134" alt="">
+              </div>
+            </div>
+            <div class="scene-right">
+              <div class="scene-tag">Made a journey</div>
+              <h2 class="scene-title">What ties my projects together</h2>
+              <p class="scene-body">
+                Whether it’s XR for railway staff or an AI assistant for course content,
+                I look for calm interfaces that keep users oriented while the system
+                handles complexity.
+              </p>
+              <ul class="scene-list">
+                <li>Visual &amp; interaction design inspired by calm technology.</li>
+                <li>Scroll-based narratives like this page to explain complex ideas.</li>
+                <li>XR, AI and web backends working together as a single experience.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Scene 5 – SNCFT XR internship -->
+          <section class="scene scene-xr">
+            <div class="scene-left">
+              <div class="wave-bg"></div>
+              <div class="wave-overlay"></div>
+              <div class="scene-media">
+                <img src="https://picsum.photos/900/600?random=141" alt="XR railway placeholder">
+              </div>
+            </div>
+            <div class="scene-right">
+              <div class="scene-tag">Immersive safety</div>
+              <h2 class="scene-title">AR &amp; VR development – SNCFT</h2>
+              <p class="scene-body">
+                Built immersive training environments for the National Railway Company of
+                Tunisia, helping staff practice safety-critical scenarios.
+              </p>
+              <ul class="scene-list">
+                <li>XR system for maintenance and safety procedures.</li>
+                <li>Tech stack: C#, PHP, SQL, Unity, Vuforia, Oculus Quest 2, Android SDK, MySQL, XAMPP, Photoshop.</li>
+                <li>Focused on clear feedback and intuitive spatial interaction.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Scene 6 – AI/Data + AI assistant -->
+          <section class="scene scene-ai">
+            <div class="scene-left">
+              <div class="wave-bg"></div>
+              <div class="wave-overlay"></div>
+              <div class="scene-media">
+                <img src="https://picsum.photos/900/600?random=151" alt="AI assistant placeholder">
+              </div>
+            </div>
+            <div class="scene-right">
+              <div class="scene-tag">AI assistants</div>
+              <h2 class="scene-title">From anomaly detection to AR-powered AI</h2>
+              <p class="scene-body">
+                I’ve used LSTM models for anomaly detection and designed AI assistants that
+                interpret natural language to control AR-visualised train components.
+              </p>
+              <ul class="scene-list">
+                <li><strong>AI/Data Intern – Global Phones Sfax</strong> – LSTM-based anomaly detection to check data consistency and improve workflows.</li>
+                <li><strong>AI Assistant for AR-Based Train Safety</strong> – ASR normalisation, fuzzy matching, rule-based logic &amp; LLM parsing.</li>
+                <li>Stack: Python, C#, Flask, SQLite, REST APIs, LLMs, fuzzy logic, regex.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Scene 7 – Web AI course helper -->
+          <section class="scene scene-webai">
+            <div class="scene-left">
+              <div class="wave-bg"></div>
+              <div class="wave-overlay"></div>
+              <div class="scene-media">
+                <img src="https://picsum.photos/900/600?random=161" alt="Web AI helper placeholder">
+              </div>
+            </div>
+            <div class="scene-right">
+              <div class="scene-tag">Learning journeys</div>
+              <h2 class="scene-title">AI-powered course helper</h2>
+              <p class="scene-body">
+                Built a web platform with an integrated AI chatbot that answers course
+                questions and guides students through their material.
+              </p>
+              <ul class="scene-list">
+                <li>Clean UI for browsing lessons and asking contextual questions.</li>
+                <li>Tech: Python, Flask, JSON-based storage, LLM integration.</li>
+                <li>Helps students find the right explanation instead of searching endlessly.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Scene 8 – Erasmus & mobility -->
+          <section class="scene scene-intl">
+            <div class="scene-left">
+              <div class="wave-bg"></div>
+              <div class="wave-overlay"></div>
+              <div class="scene-media">
+                <img src="https://picsum.photos/900/600?random=171" alt="Erasmus placeholder">
+              </div>
+            </div>
+            <div class="scene-right">
+              <div class="scene-tag">Mobility &amp; culture</div>
+              <h2 class="scene-title">International experience</h2>
+              <p class="scene-body">
+                Erasmus exchanges in Poland and Italy shaped how I design for different
+                cultures, teams and workflows.
+              </p>
+              <ul class="scene-list">
+                <li>Erasmus at Wrocław University of Science and Technology.</li>
+                <li>Voluntary mobility &amp; Erasmus at University of Messina.</li>
+                <li>Experience coordinating multicultural team projects.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Scene 9 – Stacks / skills collage -->
+          <section class="scene scene-stacks">
+            <div class="scene-left">
+              <div class="wave-bg"></div>
+              <div class="wave-overlay"></div>
+              <div class="collage">
+                <img src="https://picsum.photos/600/600?random=181" alt="">
+                <img src="https://picsum.photos/600/600?random=182" alt="">
+                <img src="https://picsum.photos/600/600?random=183" alt="">
+                <img src="https://picsum.photos/600/600?random=184" alt="">
+              </div>
+            </div>
+            <div class="scene-right">
+              <div class="scene-tag">Stacks</div>
+              <h2 class="scene-title">From backend to interaction</h2>
+              <p class="scene-body">
+                I move comfortably between programming, AI pipelines, XR, and interaction
+                design, which makes it easier to ship end-to-end experiences.
+              </p>
+              <ul class="scene-list">
+                <li>Programming &amp; backend · Databases · RESTful APIs.</li>
+                <li>AI: LLMs, generative models, agent-based systems, RAG.</li>
+                <li>XR: Unity, Vuforia, Oculus Quest 2.</li>
+                <li>Research &amp; HCI: personas, user journeys, usability testing.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Scene 10 – Future direction -->
+          <section class="scene scene-future">
+            <div class="scene-left">
+              <div class="wave-bg"></div>
+              <div class="wave-overlay"></div>
+              <div class="scene-media">
+                <img src="https://picsum.photos/900/600?random=191" alt="Future placeholder">
+              </div>
+            </div>
+            <div class="scene-right">
+              <div class="scene-tag">Next journeys</div>
+              <h2 class="scene-title">Where I’d love to go next</h2>
+              <p class="scene-body">
+                I’m especially interested in projects that combine AI agents, XR, and
+                human-centred design – safety-critical training, industrial workflows and
+                educational platforms.
+              </p>
+              <div class="scene-meta">
+                If you’re planning something ambitious in that space, I’d be excited to
+                help shape the experience and ship the system.
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 11 – Human side / CTA -->
+          <section class="scene scene-end">
+            <div class="scene-left">
+              <div class="wave-bg"></div>
+              <div class="wave-overlay"></div>
+              <div class="scene-media">
+                <img src="https://picsum.photos/900/600?random=201" alt="Human side placeholder">
+              </div>
+            </div>
+            <div class="scene-right">
+              <div class="scene-tag">Human side</div>
+              <h2 class="scene-title">Collaboration, language &amp; life</h2>
+              <p class="scene-body">
+                Beyond code, I enjoy reading, swimming and community work. I communicate
+                clearly in Arabic, English (B2) and French (B2), and I like turning complex
+                ideas into visuals and prototypes.
+              </p>
+              <div class="scene-meta">
+                Scroll on to see more projects, skills and reflections – or reach out if you
+                already have a project in mind.
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== STILLNESS / COHERENCE SECTION ========== -->
+    <section class="stillness-section">
+      <div class="stillness-inner">
+        <div class="stillness-text">
+          <div class="stillness-bg-lines">
+            <span class="bg-line">Stillness &amp; Coherence*</span>
+            <span class="bg-line">When your inner waters calm, clarity flows.</span>
+            <span class="bg-line">Bringing balance, softness, beauty.</span>
+            <span class="bg-line">A quiet maze you can breathe in.</span>
+          </div>
+
+          <h2 class="stillness-heading">
+            STILLNESS<br>&amp; COHERENCE
+          </h2>
+          <p>
+            No, it’s not about shutting everything out. It’s about guiding complex
+            systems toward gentle order – aligning AI, humans and interfaces so
+            everything flows in the same direction.
+          </p>
+        </div>
+
+        <div class="stillness-collage">
+          <div class="stillness-collage-inner">
+            <img src="https://picsum.photos/600/600?random=60" alt="">
+            <img src="https://picsum.photos/600/600?random=61" alt="">
+            <img src="https://picsum.photos/600/600?random=62" alt="">
+            <img src="https://picsum.photos/600/600?random=63" alt="">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== MARQUEE “TAPE” ========== -->
+    <section class="marquee">
+      <div class="marquee-track">
+        <span>COHERENCE*</span>
+        <span>STILLNESS</span>
+        <span>CALM INTERFACES</span>
+        <span>AGENT-BASED THINKING</span>
+        <span>DIGITAL TWINS</span>
+        <span>XR JOURNEYS</span>
+        <span>LLMS &amp; RAG</span>
+        <span>RESEARCH &amp; HCI</span>
+        <span>COHERENCE*</span>
+        <span>STILLNESS</span>
+      </div>
+    </section>
+
+    <!-- ========== PROJECTS – BIG PINNED SLIDER ========== -->
+    <section class="projects" id="projects">
+      <div class="projects-inner">
+        <div class="section-eyebrow">Highlights</div>
+        <h2 class="section-title">Filmstrip of projects &amp; case studies</h2>
+        <p class="section-sub">
+          Each project comes forward as a big frame in the centre. Scroll to move through
+          the film – every notch on the scrollbar reveals a new scene (small → big → small).
+        </p>
+
+        <div class="projects-pin">
+          <div class="projects-viewport">
+            <!-- Slide 1 -->
+            <article class="project-slide is-initial">
+              <div class="project-media">
+                <img src="https://picsum.photos/800/600?random=70" alt="">
+              </div>
+              <div class="project-body">
+                <div>
+                  <div class="project-kicker">AI Assistants Orchestrating AR Train Safety</div>
+                  <h3 class="project-title">From anomaly detection to AR-powered AI</h3>
+                  <p>
+                    LSTM-based anomaly detection plus a conversational assistant that
+                    controls AR-visualised train components with natural language.
+                  </p>
+                </div>
+                <div>
+                  <div class="project-meta">
+                    Python · Flask · LSTMs · Rule-based logic · AR interfaces
+                  </div>
+                  <div class="project-chips">
+                    <span class="project-chip">LSTM</span>
+                    <span class="project-chip">Speech / Text</span>
+                    <span class="project-chip">Industrial AR</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Slide 2 -->
+            <article class="project-slide">
+              <div class="project-media">
+                <img src="https://picsum.photos/800/600?random=71" alt="">
+              </div>
+              <div class="project-body">
+                <div>
+                  <div class="project-kicker">Learning Journeys</div>
+                  <h3 class="project-title">AI-powered course helper</h3>
+                  <p>
+                    A web platform with an LLM-powered chatbot that answers course questions,
+                    remembers context and guides students through material without noise.
+                  </p>
+                </div>
+                <div>
+                  <div class="project-meta">
+                    Python · Flask · REST APIs · LLMs · JSON storage
+                  </div>
+                  <div class="project-chips">
+                    <span class="project-chip">RAG-ish memory</span>
+                    <span class="project-chip">Contextual QA</span>
+                    <span class="project-chip">Student UX</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Slide 3 -->
+            <article class="project-slide">
+              <div class="project-media">
+                <img src="https://picsum.photos/800/600?random=72" alt="">
+              </div>
+              <div class="project-body">
+                <div>
+                  <div class="project-kicker">Extended Reality for Railway Scenarios</div>
+                  <h3 class="project-title">Immersive safety training in XR</h3>
+                  <p>
+                    VR/AR experiences for maintenance crews so they can safely practise rare
+                    or stressful situations inside a headset, not on a live track.
+                  </p>
+                </div>
+                <div>
+                  <div class="project-meta">
+                    Unity · C# · Oculus Quest · UX for field workers
+                  </div>
+                  <div class="project-chips">
+                    <span class="project-chip">Simulation</span>
+                    <span class="project-chip">Safety</span>
+                    <span class="project-chip">XR Design</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Slide 4 -->
+            <article class="project-slide">
+              <div class="project-media">
+                <img src="https://picsum.photos/800/600?random=73" alt="">
+              </div>
+              <div class="project-body">
+                <div>
+                  <div class="project-kicker">Calm Interfaces</div>
+                  <h3 class="project-title">Scroll-driven storytelling demos</h3>
+                  <p>
+                    Long-form layouts where text, background words and imagery drift past
+                    each other while the user stays oriented in the maze.
+                  </p>
+                </div>
+                <div>
+                  <div class="project-meta">
+                    GSAP · ScrollTrigger · Parallax · Pinning · Scrubbing
+                  </div>
+                  <div class="project-chips">
+                    <span class="project-chip">Scroll Story</span>
+                    <span class="project-chip">Parallax</span>
+                    <span class="project-chip">Micro-animations</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SKILLS ========== -->
+    <section class="skills">
+      <div class="skills-inner">
+        <div class="section-eyebrow">Systems, not only tools</div>
+        <h2 class="section-title">How I think &amp; build</h2>
+        <p class="section-sub">
+          I like when AI systems behave like cities: many small agents, clear rules,
+          smooth flows. Below is the stack I use to keep everything coherent.
+        </p>
+
+        <div class="skills-grid">
+          <article class="skill-card">
+            <div class="skill-title">AI &amp; Data</div>
+            <div class="skill-sub">From anomaly detection to language models.</div>
+            <ul class="skill-bullets">
+              <li>LSTMs, transformers, embeddings.</li>
+              <li>RAG-style workflows &amp; evaluation.</li>
+              <li>Fuzzy matching, regex, small heuristics.</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-title">Backend &amp; APIs</div>
+            <div class="skill-sub">Glue that lets AI breathe inside products.</div>
+            <ul class="skill-bullets">
+              <li>Python, Flask, REST APIs.</li>
+              <li>SQLite, JSON stores, lightweight auth.</li>
+              <li>Integration with web / XR front-ends.</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-title">XR &amp; Interaction</div>
+            <div class="skill-sub">Embodied interfaces, not just screens.</div>
+            <ul class="skill-bullets">
+              <li>Unity, C#, Oculus Quest.</li>
+              <li>Vuforia, AR-anchored information.</li>
+              <li>Comfort &amp; safety in immersive spaces.</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-title">Human–Computer Interaction</div>
+            <div class="skill-sub">Design research for calm technology.</div>
+            <ul class="skill-bullets">
+              <li>User journeys &amp; personas.</li>
+              <li>Usability tests with domain experts.</li>
+              <li>Design for low-friction cognition.</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-title">Agent-Based Thinking</div>
+            <div class="skill-sub">Seeing systems as small interacting agents.</div>
+            <ul class="skill-bullets">
+              <li>Simple rules → complex behaviour.</li>
+              <li>Digital twins &amp; simulation ideas.</li>
+              <li>Resilience instead of brittle rules.</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-title">Collaboration</div>
+            <div class="skill-sub">Working with engineers &amp; non-technical teams.</div>
+            <ul class="skill-bullets">
+              <li>Clear visuals, demos &amp; prototypes.</li>
+              <li>Documentation that explains “why”.</li>
+              <li>Space for feedback &amp; iteration.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FLOATING KEYWORDS ========== -->
+    <section class="keywords">
+      <div class="keywords-inner">
+        <h2 class="keywords-title">Words that orbit my work</h2>
+        <p class="keywords-sub">
+          These are the ideas I keep coming back to. They float around the projects
+          and pull them into shape – like subtle gravity.
+        </p>
+
+        <div class="keyword">Coherence</div>
+        <div class="keyword">Calm UX</div>
+        <div class="keyword">Explainable AI</div>
+        <div class="keyword">Embodied Learning</div>
+      </div>
+    </section>
+
+    <!-- ========== TIMELINE ========== -->
+    <section class="timeline">
+      <div class="timeline-inner">
+        <div class="timeline-list">
+          <div class="timeline-line"></div>
+
+          <article class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-title">AI Assistant for AR-Based Train Safety</div>
+            <div class="timeline-meta">LLM orchestration · anomaly detection · AR UX</div>
+            <div class="timeline-body">
+              Built an AI layer that interprets spoken commands, checks train data for anomalies
+              and responds through AR overlays, so operators can stay focused on the physical system.
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-title">AI-Powered Course Helper</div>
+            <div class="timeline-meta">LLMs · Flask backend · UX for students</div>
+            <div class="timeline-body">
+              Designed the experience and backend for a chatbot that remembers where
+              you are in a course and adapts explanations to your current module.
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-title">XR for Railway Scenarios</div>
+            <div class="timeline-meta">Unity · C# · Oculus Quest</div>
+            <div class="timeline-body">
+              Created immersive safety training where maintenance crews rehearse
+              procedures in a controlled and repeatable virtual environment.
+            </div>
+          </article>
+        </div>
+
+        <aside class="timeline-aside">
+          <h3>Where this is heading</h3>
+          <p>
+            I’m especially interested in digital twins for rehabilitation and safety – systems
+            where you can “feel” a complex process through a headset or a simple web interface
+            and adjust it in real time.
+          </p>
+          <p>
+            I’d love to help research labs or companies that want to blend AI, XR and
+            human-centred design into one coherent flow instead of three separate silos.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ========== EXTRAS / PERSONAL ========== -->
+    <section class="extras">
+      <div class="extras-inner">
+        <div class="section-eyebrow">A bit more texture</div>
+        <h2 class="section-title">Beyond the code</h2>
+
+        <div class="extras-grid">
+          <article class="extras-box">
+            <div class="extras-title">How I like to work</div>
+            <div class="extras-body">
+              <p>I enjoy slow, focused collaboration: whiteboard first, prototypes next, code last.</p>
+              <p>I’m comfortable switching between low-level details (data pipelines, API design) and
+                 high-level story (what this feels like for the user in a stressful situation).</p>
+            </div>
+          </article>
+
+          <article class="extras-box">
+            <div class="extras-title">What I’m curious about right now</div>
+            <div class="extras-body">
+              <p>Using digital twins for rehabilitation, where XR, sensors and AI reflect the body’s
+                 current state and help clinicians tune interventions in real time.</p>
+              <p>Structure-informed LLMs – where the model respects the physical or logical structure
+                 of a system instead of hallucinating outside it.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section class="contact">
+      <p>
+        If you’d like to explore calm, intelligent systems together, you can reach me at
+        <a href="mailto:youssefh.sassi@gmail.com">youssefh.sassi@gmail.com</a>.
+      </p>
+      <p class="lang">
+        English · Français · العربية
+      </p>
+      <p class="lang">
+        Powered by: GSAP · ScrollTrigger · timelines · pinning · scrubbing · parallax layers.
+      </p>
+    </section>
 
   </main>
 </div>
