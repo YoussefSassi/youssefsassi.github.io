@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Youssef Hadj Sassi – Maze Journey (GSAP)</title>
+  <title>Youssef Hadj Sassi – Ultimate Maze Journey</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
@@ -36,8 +36,7 @@
 
     a { color: inherit; text-decoration: none; }
 
-    /* Fake browser window like GIF */
-
+    /* Fake browser window like the GIF */
     .app-shell {
       max-width: 1200px;
       margin: 32px auto 40px;
@@ -122,6 +121,7 @@
       position: absolute;
       inset: 0;
       will-change: transform;
+      transform-origin: center center;
     }
 
     .scene {
@@ -179,7 +179,7 @@
     .scene-body {
       font-size: 14px;
       color: #785f3b;
-      max-width: 420px;
+      max-width: 430px;
     }
 
     .scene-meta {
@@ -200,6 +200,24 @@
       border-radius: 999px;
       background: rgba(255,255,255,0.85);
       border: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .hero-big-word {
+      font-size: clamp(42px, 10vw, 72px);
+      font-family: "Georgia", serif;
+      letter-spacing: 0.12em;
+      color: #fef0dd;
+      text-shadow: 0 10px 40px rgba(0,0,0,0.45);
+    }
+
+    .hero-big-word span {
+      display: block;
+    }
+
+    .hero-pill {
+      margin-top: 16px;
+      font-size: 12px;
+      color: #b25a34;
     }
 
     /* media frames */
@@ -232,6 +250,27 @@
       padding-left: 16px;
     }
     .scene-list li + li { margin-top: 4px; }
+
+    /* collage block in one scene */
+    .collage {
+      position: absolute;
+      inset: 60px 80px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 8px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.7);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+    }
+
+    .collage img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
     /* ===== MARQUEE ===== */
 
@@ -410,7 +449,7 @@
 
     .extras-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.4fr);
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
       gap: 22px;
       margin-top: 18px;
     }
@@ -471,6 +510,9 @@
       .scene-media {
         inset: 26px;
       }
+      .collage {
+        inset: 40px;
+      }
       .filmstrip,
       .skills,
       .extras {
@@ -516,29 +558,28 @@
   </header>
 
   <main>
-    <!-- ========= PINNED MAZE JOURNEY ========= -->
+    <!-- ========= LONG MAZE JOURNEY ========= -->
     <section id="journeyWrapper">
       <div class="scenes">
         <div class="scenes-inner">
-          <!-- Scene 0 – Hero -->
+          <!-- Scene 0 – Hero summary -->
           <section class="scene scene-hero">
             <div class="scene-left">
               <div class="wave-bg"></div>
               <div class="wave-overlay"></div>
               <div class="hero-media hero-parallax">
-                <!-- FAKE HERO IMAGE – replace src with your video or GIF poster -->
                 <img src="https://picsum.photos/800/600?random=10" alt="Hero media placeholder">
               </div>
             </div>
             <div class="scene-right hero-parallax">
               <div class="scene-tag">AI • XR • HCI</div>
               <h1 class="scene-title">
-                Youssef Hadj Sassi – Master’s in Information Systems &amp; New Technologies
+                Youssef Hadj Sassi – Master’s student in Information Systems &amp; New Technologies
               </h1>
               <p class="scene-body">
                 I design AI-powered backends and XR experiences with a strong foundation in
-                Human–Computer Interaction and User-Centred Design. Scroll through this maze
-                to walk my journey scene by scene.
+                Human–Computer Interaction and User-Centred Design. Scroll to move through my
+                journey like a maze.
               </p>
               <div class="scene-meta">
                 T-15, ul. Edwarda WITTIGA, Wrocław · <strong>+48 453 638 776</strong><br>
@@ -554,7 +595,29 @@
             </div>
           </section>
 
-          <!-- Scene 1 – Education -->
+          <!-- Scene 1 – Big stillness & coherence words -->
+          <section class="scene scene-hero-words">
+            <div class="scene-left">
+              <div class="wave-bg"></div>
+              <div class="wave-overlay"></div>
+              <div class="hero-media">
+                <img src="https://picsum.photos/900/600?random=11" alt="Texture placeholder">
+              </div>
+            </div>
+            <div class="scene-right">
+              <div class="hero-big-word">
+                <span>STILLNESS</span>
+                <span>&amp;</span>
+                <span>COHERENCE</span>
+              </div>
+              <p class="hero-pill">
+                Not silence – but when complex systems finally feel calm and everything
+                flows together. That’s what I try to build with AI &amp; XR.
+              </p>
+            </div>
+          </section>
+
+          <!-- Scene 2 – Education -->
           <section class="scene scene-edu">
             <div class="scene-left">
               <div class="wave-bg"></div>
@@ -578,13 +641,41 @@
             </div>
           </section>
 
-          <!-- Scene 2 – SNCFT XR internship -->
+          <!-- Scene 3 – Collage / mood board -->
+          <section class="scene scene-collage">
+            <div class="scene-left">
+              <div class="wave-bg"></div>
+              <div class="wave-overlay"></div>
+              <div class="collage">
+                <img src="https://picsum.photos/600/600?random=31" alt="">
+                <img src="https://picsum.photos/600/600?random=32" alt="">
+                <img src="https://picsum.photos/600/600?random=33" alt="">
+                <img src="https://picsum.photos/600/600?random=34" alt="">
+              </div>
+            </div>
+            <div class="scene-right">
+              <div class="scene-tag">Made a journey</div>
+              <h2 class="scene-title">What ties my projects together</h2>
+              <p class="scene-body">
+                Whether it’s XR for railway staff or an AI assistant for course content,
+                I look for one thing: keeping users calm and oriented while the system
+                does the heavy lifting in the background.
+              </p>
+              <ul class="scene-list">
+                <li>Visual &amp; interaction design inspired by calm technology.</li>
+                <li>Scroll-based narratives like this page to explain complex ideas.</li>
+                <li>XR, AI and web backends working together as a single experience.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Scene 4 – SNCFT XR internship -->
           <section class="scene scene-xr">
             <div class="scene-left">
               <div class="wave-bg"></div>
               <div class="wave-overlay"></div>
               <div class="scene-media">
-                <img src="https://picsum.photos/900/600?random=32" alt="XR railway placeholder">
+                <img src="https://picsum.photos/900/600?random=42" alt="XR railway placeholder">
               </div>
             </div>
             <div class="scene-right">
@@ -595,59 +686,142 @@
                 Tunisia, helping staff rehearse safety-critical scenarios.
               </p>
               <ul class="scene-list">
-                <li>Developed AR/VR system for railway safety and maintenance.</li>
-                <li>Technologies: C#, PHP, SQL, Unity, Vuforia, Oculus Quest 2, Android SDK, MySQL, XAMPP, Photoshop.</li>
-                <li>Focused on clear interactions and feedback in stressful conditions.</li>
+                <li>AR/VR system for maintenance &amp; safety procedures.</li>
+                <li>Tech stack: C#, PHP, SQL, Unity, Vuforia, Oculus Quest 2, Android SDK, MySQL, XAMPP, Photoshop.</li>
+                <li>Focused on clear feedback and intuitive spatial interaction.</li>
               </ul>
             </div>
           </section>
 
-          <!-- Scene 3 – AI / Data & AI assistant -->
+          <!-- Scene 5 – AI/Data + AI assistant -->
           <section class="scene scene-ai">
             <div class="scene-left">
               <div class="wave-bg"></div>
               <div class="wave-overlay"></div>
               <div class="scene-media">
-                <img src="https://picsum.photos/900/600?random=44" alt="AI assistant placeholder">
+                <img src="https://picsum.photos/900/600?random=53" alt="AI assistant placeholder">
               </div>
             </div>
             <div class="scene-right">
               <div class="scene-tag">AI assistants</div>
-              <h2 class="scene-title">From anomaly detection to AR-powered AI assistants</h2>
+              <h2 class="scene-title">From anomaly detection to AR-powered AI</h2>
               <p class="scene-body">
                 I’ve used LSTM models for anomaly detection and designed AI assistants that
                 interpret natural language to control AR-visualised train components.
               </p>
               <ul class="scene-list">
-                <li><strong>AI/Data Intern – Global Phones Sfax</strong> – LSTM-based anomaly detection to check data consistency and improve internal workflows.</li>
-                <li><strong>AI Assistant for AR-Based Train Safety</strong> – backend combining ASR normalisation, fuzzy matching, rule-based logic and LLM parsing.</li>
+                <li><strong>AI/Data Intern – Global Phones Sfax</strong> – LSTM-based anomaly detection to check data consistency and improve workflows.</li>
+                <li><strong>AI Assistant for AR-Based Train Safety</strong> – ASR normalisation, fuzzy matching, rule-based logic &amp; LLM parsing.</li>
                 <li>Stack: Python, C#, Flask, SQLite, REST APIs, LLMs, fuzzy logic, regex.</li>
               </ul>
             </div>
           </section>
 
-          <!-- Scene 4 – International + skills -->
+          <!-- Scene 6 – Web AI course helper -->
+          <section class="scene scene-webai">
+            <div class="scene-left">
+              <div class="wave-bg"></div>
+              <div class="wave-overlay"></div>
+              <div class="scene-media">
+                <img src="https://picsum.photos/900/600?random=64" alt="Web AI helper placeholder">
+              </div>
+            </div>
+            <div class="scene-right">
+              <div class="scene-tag">Learning journeys</div>
+              <h2 class="scene-title">AI-powered course helper</h2>
+              <p class="scene-body">
+                Built a web platform with an integrated AI chatbot that answers course
+                questions and guides students through content.
+              </p>
+              <ul class="scene-list">
+                <li>Clean UI for browsing lessons and asking contextual questions.</li>
+                <li>Tech: Python, Flask, JSON-based storage, LLM integration.</li>
+                <li>Helps students find the right explanation instead of searching endlessly.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Scene 7 – Erasmus & mobility -->
           <section class="scene scene-intl">
             <div class="scene-left">
               <div class="wave-bg"></div>
               <div class="wave-overlay"></div>
               <div class="scene-media">
-                <img src="https://picsum.photos/900/600?random=55" alt="Erasmus placeholder">
+                <img src="https://picsum.photos/900/600?random=75" alt="Erasmus placeholder">
               </div>
             </div>
             <div class="scene-right">
               <div class="scene-tag">Mobility &amp; stack</div>
               <h2 class="scene-title">International experience &amp; core skills</h2>
               <p class="scene-body">
-                Erasmus exchanges in Poland and Italy shaped how I design for different cultures,
-                teams and workflows.
+                Erasmus exchanges in Poland and Italy shaped how I design for different
+                cultures, teams and workflows.
               </p>
               <ul class="scene-list">
-                <li>Erasmus at Wrocław University of Science and Technology · Erasmus &amp; voluntary mobility at University of Messina.</li>
+                <li>Erasmus at Wrocław University of Science and Technology.</li>
+                <li>Voluntary mobility &amp; Erasmus at University of Messina.</li>
                 <li>Programming: Python, C#, Java, PHP, SQL, MATLAB.</li>
-                <li>AI &amp; ML: LLMs, generative AI, agent-based systems, LSTM, RAG, fuzzy logic, rule-based systems.</li>
-                <li>XR: Unity, Vuforia, Oculus Quest 2 · HCI &amp; UCD: persona design, user journeys, usability evaluation.</li>
+                <li>AI &amp; ML: LLMs, generative AI, agent-based systems, LSTM, RAG, fuzzy logic.</li>
+                <li>XR: Unity, Vuforia, Oculus Quest 2 · UCD &amp; HCI methods.</li>
               </ul>
+            </div>
+          </section>
+
+          <!-- Scene 8 – Skills collage / stacks -->
+          <section class="scene scene-skills">
+            <div class="scene-left">
+              <div class="wave-bg"></div>
+              <div class="wave-overlay"></div>
+              <div class="collage">
+                <img src="https://picsum.photos/600/600?random=85" alt="">
+                <img src="https://picsum.photos/600/600?random=86" alt="">
+                <img src="https://picsum.photos/600/600?random=87" alt="">
+                <img src="https://picsum.photos/600/600?random=88" alt="">
+              </div>
+            </div>
+            <div class="scene-right">
+              <div class="scene-tag">Stacks</div>
+              <h2 class="scene-title">From code to interaction</h2>
+              <p class="scene-body">
+                I move comfortably between programming, AI pipelines, XR, and interaction
+                design. That makes it easier to ship end-to-end experiences.
+              </p>
+              <ul class="scene-list">
+                <li>Programming &amp; backend · Databases · RESTful APIs.</li>
+                <li>AI: LLMs, generative models, agent-based systems, RAG.</li>
+                <li>XR: Unity, Vuforia, Oculus Quest 2.</li>
+                <li>Research &amp; HCI: personas, user journeys, usability testing.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Scene 9 – Future / CTA -->
+          <section class="scene scene-future">
+            <div class="scene-left">
+              <div class="wave-bg"></div>
+              <div class="wave-overlay"></div>
+              <div class="scene-media">
+                <img src="https://picsum.photos/900/600?random=96" alt="Future placeholder">
+              </div>
+            </div>
+            <div class="scene-right">
+              <div class="scene-tag">Next journeys</div>
+              <h2 class="scene-title">Where I’d love to go next</h2>
+              <p class="scene-body">
+                I’m especially interested in projects that combine AI agents, XR, and
+                human-centred design – safety-critical training, industrial workflows,
+                and educational platforms.
+              </p>
+              <div class="scene-meta">
+                If you’re planning something ambitious in that space, I’d be excited to
+                help shape the experience and ship the system.
+              </div>
+              <div class="chips">
+                <div class="chip">AI &amp; XR R&amp;D</div>
+                <div class="chip">Digital Twins</div>
+                <div class="chip">Explainable Interfaces</div>
+                <div class="chip">Interactive Prototypes</div>
+              </div>
             </div>
           </section>
         </div>
@@ -837,58 +1011,64 @@
 <script>
   gsap.registerPlugin(ScrollTrigger);
 
-  /* ================================
-     MAZE CAMERA PATH OVER GRID
-     Each scene sits on a 2D grid.
-     We move the scenes-inner container,
-     like sliding through a maze.
-  ================================ */
+  /* ==============
+     MAZE CAMERA PATH
+     Longer path: down, right, right, down, left, left, down, right, down
+  ============== */
 
   const scenes = gsap.utils.toArray(".scene");
   const inner = document.querySelector(".scenes-inner");
 
-  // Define maze coordinates for each scene (x,y cells)
+  // grid coordinates for each scene (x,y)
   const coords = [
-    { x: 0, y: 0 }, // hero
-    { x: 1, y: 0 }, // move RIGHT
-    { x: 1, y: 1 }, // move DOWN
-    { x: 0, y: 1 }, // move LEFT
-    { x: 0, y: 2 }  // move DOWN
+    { x: 0, y: 0 }, // 0 hero
+    { x: 0, y: 1 }, // 1 down
+    { x: 1, y: 1 }, // 2 right
+    { x: 2, y: 1 }, // 3 right
+    { x: 2, y: 2 }, // 4 down
+    { x: 1, y: 2 }, // 5 left
+    { x: 0, y: 2 }, // 6 left
+    { x: 0, y: 3 }, // 7 down
+    { x: 1, y: 3 }, // 8 right
+    { x: 1, y: 4 }  // 9 down
   ];
 
-  // Place each scene on the grid
   scenes.forEach((scene, i) => {
-    const c = coords[i] || { x: i, y: 0 };
+    const c = coords[i];
     gsap.set(scene, {
       xPercent: c.x * 100,
       yPercent: c.y * 100
     });
   });
 
-  // Journey timeline: move the inner container along the path
   const journeyTl = gsap.timeline({
     scrollTrigger: {
       trigger: "#journeyWrapper",
       start: "top top",
-      end: () => "+=" + window.innerHeight * (scenes.length + 0.3),
+      end: () => "+=" + window.innerHeight * (scenes.length + 1.5),
       scrub: true,
       pin: true
     }
   });
 
-  journeyTl.set(inner, { xPercent: 0, yPercent: 0 });
+  journeyTl.set(inner, { xPercent: 0, yPercent: 0, scale: 1, rotation: 0 });
 
-  for (let i = 1; i < scenes.length; i++) {
-    const c = coords[i] || { x: i, y: 0 };
+  coords.forEach((c, i) => {
+    if (i === 0) return;
+    const tilt = (i % 2 === 0 ? -2 : 2);   // small alternating tilt
+    const zoom = 1 + i * 0.01;             // tiny zoom as we go deeper
+
     journeyTl.to(inner, {
       xPercent: -c.x * 100,
       yPercent: -c.y * 100,
+      scale: zoom,
+      rotation: tilt,
       duration: 1,
       ease: "power2.inOut"
     });
-  }
+  });
 
-  // Subtle scale/opacity focus for each scene as camera reaches it
+  // Focus each scene (scale & opacity) as camera reaches it
   scenes.forEach(scene => {
     gsap.fromTo(scene,
       { scale: 0.96, autoAlpha: 0.45 },
@@ -906,7 +1086,7 @@
     );
   });
 
-  // Hero parallax layers inside the maze
+  // Hero parallax layers
   gsap.utils.toArray(".hero-parallax").forEach(el => {
     gsap.to(el, {
       yPercent: -8,
@@ -921,9 +1101,9 @@
     });
   });
 
-  /* ================================
-     INFINITE MARQUEE with SKEW
-  ================================ */
+  /* ==============
+     INFINITE MARQUEE
+  ============== */
 
   const marqueeTl = gsap.timeline({ repeat: -1, ease: "none" });
 
@@ -952,9 +1132,9 @@
     }
   });
 
-  /* ================================
+  /* ==============
      HORIZONTAL FILMSTRIP
-  ================================ */
+  ============== */
 
   const filmCards = gsap.utils.toArray(".film-card");
   const filmTrack = document.querySelector(".film-track");
@@ -971,9 +1151,9 @@
     }
   });
 
-  /* ================================
+  /* ==============
      SKILLS – PINNED TIMELINE
-  ================================ */
+  ============== */
 
   const skillsTl = gsap.timeline({
     scrollTrigger: {
@@ -996,9 +1176,9 @@
       ease: "power3.out"
     }, "-=0.1");
 
-  /* ================================
-     EXTRAS – simple fade on scroll
-  ================================ */
+  /* ==============
+     EXTRAS – FADE IN
+  ============== */
 
   gsap.from(".extras-box", {
     y: 50,
