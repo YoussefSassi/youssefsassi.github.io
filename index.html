@@ -4,21 +4,16 @@
   <meta charset="UTF-8" />
   <title>Youssef Hadj Sassi – Triple Hero Journey</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Youssef Hadj Sassi – AI, XR & Human–Computer Interaction. Calm, coherent systems, digital twins and XR journeys for safety and rehabilitation." />
-  <meta name="theme-color" content="#0f172a" />
 
   <style>
     :root {
       --bg-alt: #e4f0ff;
       --accent: #2563eb;
-      --accent-strong: #1d4ed8;
       --text: #020617;
       --muted: #64748b;
       --card: #ffffff;
       --radius: 18px;
       --border-soft: rgba(15,23,42,0.1);
-      --danger: #b91c1c;
-      --danger-soft: #fee2e2;
     }
 
     * {
@@ -34,16 +29,9 @@
       background: radial-gradient(circle at top, #0f172a, #1d4ed8, #0ea5e9);
       color: var(--text);
       overflow-x: hidden;
-      min-height: 100vh;
     }
 
     a { color: inherit; text-decoration: none; }
-
-    a:focus-visible,
-    button:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 2px;
-    }
 
     /* --------- Shell / fake window ---------- */
 
@@ -55,24 +43,6 @@
       border: 1px solid rgba(255,255,255,0.7);
       box-shadow: 0 26px 70px rgba(15,23,42,0.6);
       overflow: hidden;
-      position: relative;
-    }
-
-    .skip-link {
-      position: absolute;
-      top: -40px;
-      left: 16px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: #111827;
-      color: #f9fafb;
-      font-size: 13px;
-      z-index: 50;
-      transition: top 0.2s ease;
-    }
-
-    .skip-link:focus {
-      top: 10px;
     }
 
     header {
@@ -85,13 +55,6 @@
       font-size: 13px;
       position: relative;
       z-index: 20;
-      transition: box-shadow 0.2s ease, background 0.2s ease;
-    }
-
-    body.is-scrolled .app-shell header {
-      background: rgba(221,234,254,0.96);
-      box-shadow: 0 8px 24px rgba(15,23,42,0.22);
-      backdrop-filter: blur(8px);
     }
 
     .window-dots {
@@ -120,45 +83,12 @@
       font-family: "Georgia", serif;
       font-size: 18px;
       color: #111827;
-      letter-spacing: 0.03em;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 12px;
     }
 
     .nav-link {
       cursor: pointer;
       color: #0f172a;
       font-size: 12px;
-      padding: 4px 8px;
-      border-radius: 999px;
-      position: relative;
-      transition: color 0.15s ease, background-color 0.15s ease;
-    }
-
-    .nav-link:hover {
-      background: rgba(37,99,235,0.08);
-      color: var(--accent-strong);
-    }
-
-    .nav-link.is-active {
-      color: var(--accent-strong);
-      background: rgba(37,99,235,0.14);
-    }
-
-    .nav-link.is-active::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: -4px;
-      width: 18px;
-      height: 2px;
-      border-radius: 999px;
-      background: var(--accent-strong);
-      transform: translateX(-50%);
     }
 
     .btn-nav {
@@ -167,24 +97,8 @@
       border: none;
       cursor: pointer;
       font-size: 12px;
-      background: var(--danger);
+      background: #b91c1c;
       color: #f9fafb;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    .btn-nav:hover {
-      background: #7f1d1d;
-      transform: translateY(-1px);
-      box-shadow: 0 8px 18px rgba(127,29,29,0.4);
-    }
-
-    .btn-nav-icon {
-      font-size: 14px;
-      display: inline-block;
-      transform: translateY(1px);
     }
 
     main { background: #e5edff; }
@@ -468,7 +382,7 @@
     /* ---- MARQUEE ---- */
 
     .marquee {
-      background: var(--danger-soft);
+      background: #fee2e2;
       border-top: 1px solid rgba(127,29,29,0.12);
       border-bottom: 1px solid rgba(127,29,29,0.12);
       padding: 10px 0;
@@ -857,26 +771,17 @@
     /* ---- RESPONSIVE ---- */
 
     @media (max-width: 900px) {
-      .hero-section {
-        height: auto;
-        min-height: 100vh;
-      }
-
       .hero-inner {
-        position: relative;
         grid-template-columns: minmax(0,1fr);
         padding: 24px 18px 34px;
         row-gap: 16px;
       }
-
       .hero-left {
         min-height: 260px;
       }
-
       .hero-main-media {
         inset: 30px 26px;
       }
-
       .hero-grid-frame {
         inset: 42px 54px;
       }
@@ -890,7 +795,6 @@
         grid-template-columns: minmax(0,1fr);
         gap: 26px;
       }
-
       .stillness-collage {
         margin: 0 auto;
       }
@@ -913,7 +817,6 @@
         height: auto;
         grid-template-columns: minmax(0,1fr);
       }
-
       .project-media {
         height: 180px;
       }
@@ -929,10 +832,6 @@
       .extras-grid {
         grid-template-columns: minmax(0,1fr);
       }
-
-      nav {
-        gap: 8px;
-      }
     }
 
     @media (max-width: 640px) {
@@ -941,81 +840,51 @@
         align-items: flex-start;
         gap: 6px;
       }
-
       .hero-main-media {
         inset: 24px 18px;
       }
-
       .hero-grid-frame {
         inset: 36px 42px;
       }
-
       .hero-right {
         padding: 20px 18px;
       }
-
       .skills-grid {
         grid-template-columns: minmax(0,1fr);
       }
-
       .section-title {
         font-size: 20px;
-      }
-
-      .nav-right {
-        width: 100%;
-        justify-content: space-between;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        scroll-behavior: auto !important;
-        animation-duration: 0.001ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.001ms !important;
-        scroll-snap-type: none !important;
       }
     }
   </style>
 </head>
 <body>
 <div class="app-shell">
-  <a href="#mainContent" class="skip-link">Skip to main content</a>
-
   <header>
     <div class="nav-left">
-      <div class="window-dots" aria-hidden="true">
+      <div class="window-dots">
         <div class="window-dot"></div>
         <div class="window-dot"></div>
         <div class="window-dot"></div>
       </div>
-      <div class="logo" aria-label="Youssef Aura brand">
-        Youssef Aura
-      </div>
+      <div class="logo">Youssef Aura</div>
     </div>
-
     <div class="nav-right">
-      <nav aria-label="Primary navigation">
-        <a class="nav-link" href="#heroOption1" data-nav-target="heroOption1">Hi!</a>
-        <a class="nav-link" href="#heroOption2" data-nav-target="heroOption2">Journey</a>
-        <a class="nav-link" href="#projects" data-nav-target="projects">Projects</a>
-      </nav>
-      <button class="btn-nav" type="button" onclick="window.location.href='mailto:youssefh.sassi@gmail.com'">
-        <span class="btn-nav-icon">✉</span>
-        <span>Email me</span>
-      </button>
+      <a class="nav-link" href="#heroOption1">Hi!</a>
+      <a class="nav-link" href="#heroOption2">Journey</a>
+      <a class="nav-link" href="#projects">Projects</a>
+      <button class="btn-nav" onclick="window.location.href='mailto:youssefh.sassi@gmail.com'">Email me</button>
     </div>
   </header>
 
-  <main id="mainContent">
+  <main>
 
     <!-- ====================================================
          HERO OPTION 1 – original cinematic slide
     ==================================================== -->
-    <section class="hero-section hero-option1" id="heroOption1" aria-labelledby="hero-main-title">
+    <section class="hero-section hero-option1" id="heroOption1">
       <div class="hero-inner">
-        <div class="hero-left" aria-hidden="true">
+        <div class="hero-left">
           <div class="hero-wave"></div>
           <div class="hero-stripes"></div>
 
@@ -1026,20 +895,20 @@
           </div>
 
           <div class="hero-main-media hero1-main-media">
-            <img src="https://picsum.photos/900/600?random=10" alt="Soft abstract city of calm blue lights" />
+            <img src="https://picsum.photos/900/600?random=10" alt="Hero main" />
           </div>
 
           <div class="hero-grid-frame hero1-grid-frame">
-            <img src="https://picsum.photos/600/400?random=31" alt="Detail of a calm interface" loading="lazy">
-            <img src="https://picsum.photos/600/400?random=32" alt="XR-inspired geometry" loading="lazy">
-            <img src="https://picsum.photos/600/400?random=33" alt="Light paths as data flows" loading="lazy">
-            <img src="https://picsum.photos/600/400?random=34" alt="Soft grids representing coherence" loading="lazy">
+            <img src="https://picsum.photos/600/400?random=31" alt="">
+            <img src="https://picsum.photos/600/400?random=32" alt="">
+            <img src="https://picsum.photos/600/400?random=33" alt="">
+            <img src="https://picsum.photos/600/400?random=34" alt="">
           </div>
         </div>
 
         <div class="hero-right hero1-right">
           <div class="hero-tag">AI • XR • HCI · OPTION 1</div>
-          <h1 class="hero-title" id="hero-main-title">
+          <h1 class="hero-title">
             Youssef Hadj Sassi – Information Systems &amp; New Technologies
           </h1>
           <p class="hero-body">
@@ -1050,15 +919,15 @@
           <div class="hero-meta">
             T-15, ul. Edwarda WITTIGA, Wrocław · <strong>+48 453 638 776</strong><br>
             <a href="mailto:youssefh.sassi@gmail.com">youssefh.sassi@gmail.com</a> ·
-            <a href="https://linkedin.com/in/youssefhjsassi" target="_blank" rel="noreferrer">linkedin.com/in/youssefhjsassi</a>
+            <a href="https://linkedin.com/in/youssefhjsassi" target="_blank">linkedin.com/in/youssefhjsassi</a>
           </div>
-          <div class="hero-chips" aria-label="Core focus areas">
+          <div class="hero-chips">
             <div class="chip">LLMs &amp; Generative AI</div>
             <div class="chip">Agent-Based Systems</div>
             <div class="chip">AR/VR – Unity &amp; Oculus</div>
             <div class="chip">Calm HCI</div>
           </div>
-          <div class="hero-scroll-hint" aria-hidden="true">
+          <div class="hero-scroll-hint">
             <div class="hero-scroll-circle">↓</div>
             <span>Option 1: cinematic zoom + collage in the middle.</span>
           </div>
@@ -1069,9 +938,9 @@
     <!-- ====================================================
          HERO OPTION 2 – different camera path
     ==================================================== -->
-    <section class="hero-section hero-option2" id="heroOption2" aria-labelledby="hero-option2-title">
+    <section class="hero-section hero-option2" id="heroOption2">
       <div class="hero-inner">
-        <div class="hero-left" aria-hidden="true">
+        <div class="hero-left">
           <div class="hero-wave"></div>
           <div class="hero-stripes"></div>
 
@@ -1082,22 +951,22 @@
           </div>
 
           <div class="hero-main-media hero2-main-media">
-            <img src="https://picsum.photos/900/600?random=11" alt="Diagonal maze-like camera mood" />
+            <img src="https://picsum.photos/900/600?random=11" alt="Hero 2 main" />
           </div>
 
           <div class="hero-grid-frame hero2-grid-frame">
-            <img src="https://picsum.photos/600/400?random=41" alt="Agent-based diagrams" loading="lazy">
-            <img src="https://picsum.photos/600/400?random=42" alt="Digital twin abstract model" loading="lazy">
-            <img src="https://picsum.photos/600/400?random=43" alt="Railway XR concept art" loading="lazy">
-            <img src="https://picsum.photos/600/400?random=44" alt="Layered camera paths" loading="lazy">
+            <img src="https://picsum.photos/600/400?random=41" alt="">
+            <img src="https://picsum.photos/600/400?random=42" alt="">
+            <img src="https://picsum.photos/600/400?random=43" alt="">
+            <img src="https://picsum.photos/600/400?random=44" alt="">
           </div>
         </div>
 
         <div class="hero-right hero2-right">
           <div class="hero-tag">AI • XR • HCI · OPTION 2</div>
-          <h2 class="hero-title" id="hero-option2-title">
+          <h1 class="hero-title">
             A maze-like camera: down, right, tilt, then settle
-          </h2>
+          </h1>
           <p class="hero-body">
             This version exaggerates the “down / right / tight” feeling. The hero image
             drifts diagonally, the words slide like a maze, and the collage grows from
@@ -1111,7 +980,7 @@
             <div class="chip">Diagonal Motion</div>
             <div class="chip">Soft Tilt</div>
           </div>
-          <div class="hero-scroll-hint" aria-hidden="true">
+          <div class="hero-scroll-hint">
             <div class="hero-scroll-circle">↓</div>
             <span>Option 2: stronger maze feeling (down-right-tight).</span>
           </div>
@@ -1122,9 +991,9 @@
     <!-- ====================================================
          HERO OPTION 3 – combo of 1 & 2 + extra zooms
     ==================================================== -->
-    <section class="hero-section hero-option3" id="heroOption3" aria-labelledby="hero-option3-title">
+    <section class="hero-section hero-option3" id="heroOption3">
       <div class="hero-inner">
-        <div class="hero-left" aria-hidden="true">
+        <div class="hero-left">
           <div class="hero-wave"></div>
           <div class="hero-stripes"></div>
 
@@ -1135,22 +1004,22 @@
           </div>
 
           <div class="hero-main-media hero3-main-media">
-            <img src="https://picsum.photos/900/600?random=12" alt="Hybrid of calm zoom and maze movement" />
+            <img src="https://picsum.photos/900/600?random=12" alt="Hero 3 main" />
           </div>
 
           <div class="hero-grid-frame hero3-grid-frame">
-            <img src="https://picsum.photos/600/400?random=51" alt="Hybrid shot 1" loading="lazy">
-            <img src="https://picsum.photos/600/400?random=52" alt="Hybrid shot 2" loading="lazy">
-            <img src="https://picsum.photos/600/400?random=53" alt="Hybrid shot 3" loading="lazy">
-            <img src="https://picsum.photos/600/400?random=54" alt="Hybrid shot 4" loading="lazy">
+            <img src="https://picsum.photos/600/400?random=51" alt="">
+            <img src="https://picsum.photos/600/400?random=52" alt="">
+            <img src="https://picsum.photos/600/400?random=53" alt="">
+            <img src="https://picsum.photos/600/400?random=54" alt="">
           </div>
         </div>
 
         <div class="hero-right hero3-right">
           <div class="hero-tag">AI • XR • HCI · OPTION 3</div>
-          <h2 class="hero-title" id="hero-option3-title">
+          <h1 class="hero-title">
             Hybrid: zoom, tilt, collage, text orbiting in the back
-          </h2>
+          </h1>
           <p class="hero-body">
             The third option mixes everything: cinematic zoom like Option 1,
             diagonal maze movement like Option 2, plus a gentle “camera float”.
@@ -1165,7 +1034,7 @@
             <div class="chip">Word Orbits</div>
             <div class="chip">Micro Zooms</div>
           </div>
-          <div class="hero-scroll-hint" aria-hidden="true">
+          <div class="hero-scroll-hint">
             <div class="hero-scroll-circle">↓</div>
             <span>Option 3: everything layered together.</span>
           </div>
@@ -1174,17 +1043,17 @@
     </section>
 
     <!-- ========== STILLNESS / COHERENCE SECTION ========== -->
-    <section class="stillness-section" aria-labelledby="stillness-title">
+    <section class="stillness-section">
       <div class="stillness-inner">
         <div class="stillness-text">
-          <div class="stillness-bg-lines" aria-hidden="true">
+          <div class="stillness-bg-lines">
             <span class="bg-line">Stillness &amp; Coherence*</span>
             <span class="bg-line">When your inner waters calm, clarity flows.</span>
             <span class="bg-line">Bringing balance, softness, beauty.</span>
             <span class="bg-line">A quiet maze you can breathe in.</span>
           </div>
 
-          <h2 class="stillness-heading" id="stillness-title">
+          <h2 class="stillness-heading">
             STILLNESS<br>&amp; COHERENCE
           </h2>
           <p>
@@ -1194,19 +1063,19 @@
           </p>
         </div>
 
-        <div class="stillness-collage" aria-label="Stillness & coherence collage of four XR-inspired images">
+        <div class="stillness-collage">
           <div class="stillness-collage-inner">
-            <img src="https://picsum.photos/600/600?random=60" alt="Soft desert and sky" loading="lazy">
-            <img src="https://picsum.photos/600/600?random=61" alt="Minimal architecture" loading="lazy">
-            <img src="https://picsum.photos/600/600?random=62" alt="Water reflections" loading="lazy">
-            <img src="https://picsum.photos/600/600?random=63" alt="Calm gradients" loading="lazy">
+            <img src="https://picsum.photos/600/600?random=60" alt="">
+            <img src="https://picsum.photos/600/600?random=61" alt="">
+            <img src="https://picsum.photos/600/600?random=62" alt="">
+            <img src="https://picsum.photos/600/600?random=63" alt="">
           </div>
         </div>
       </div>
     </section>
 
     <!-- ========== MARQUEE “TAPE” ========== -->
-    <section class="marquee" aria-label="Core themes marquee">
+    <section class="marquee">
       <div class="marquee-track">
         <span>COHERENCE*</span>
         <span>STILLNESS</span>
@@ -1222,21 +1091,21 @@
     </section>
 
     <!-- ========== PROJECTS – BIG PINNED SLIDER ========== -->
-    <section class="projects" id="projects" aria-labelledby="projects-title">
+    <section class="projects" id="projects">
       <div class="projects-inner">
         <div class="section-eyebrow">Highlights</div>
-        <h2 class="section-title" id="projects-title">Filmstrip of projects &amp; case studies</h2>
+        <h2 class="section-title">Filmstrip of projects &amp; case studies</h2>
         <p class="section-sub">
           Each project comes forward as a big frame in the centre. Scroll to move through
           the film – every notch on the scrollbar reveals a new scene (small → big → small).
         </p>
 
         <div class="projects-pin">
-          <div class="projects-viewport" aria-label="Scrollable filmstrip of projects">
+          <div class="projects-viewport">
             <!-- Slide 1 -->
-            <article class="project-slide is-initial" aria-label="AI Assistants Orchestrating AR Train Safety">
+            <article class="project-slide is-initial">
               <div class="project-media">
-                <img src="https://picsum.photos/800/600?random=70" alt="AR visualisation over rail components" loading="lazy">
+                <img src="https://picsum.photos/800/600?random=70" alt="">
               </div>
               <div class="project-body">
                 <div>
@@ -1261,9 +1130,9 @@
             </article>
 
             <!-- Slide 2 -->
-            <article class="project-slide" aria-label="AI-powered course helper">
+            <article class="project-slide">
               <div class="project-media">
-                <img src="https://picsum.photos/800/600?random=71" alt="Calm interface for course helper" loading="lazy">
+                <img src="https://picsum.photos/800/600?random=71" alt="">
               </div>
               <div class="project-body">
                 <div>
@@ -1288,9 +1157,9 @@
             </article>
 
             <!-- Slide 3 -->
-            <article class="project-slide" aria-label="Extended Reality for Railway Scenarios">
+            <article class="project-slide">
               <div class="project-media">
-                <img src="https://picsum.photos/800/600?random=72" alt="Workers training in XR railway environment" loading="lazy">
+                <img src="https://picsum.photos/800/600?random=72" alt="">
               </div>
               <div class="project-body">
                 <div>
@@ -1315,9 +1184,9 @@
             </article>
 
             <!-- Slide 4 -->
-            <article class="project-slide" aria-label="Calm scroll-driven interfaces">
+            <article class="project-slide">
               <div class="project-media">
-                <img src="https://picsum.photos/800/600?random=73" alt="Scroll-driven storytelling layout" loading="lazy">
+                <img src="https://picsum.photos/800/600?random=73" alt="">
               </div>
               <div class="project-body">
                 <div>
@@ -1347,10 +1216,10 @@
     </section>
 
     <!-- ========== SKILLS ========== -->
-    <section class="skills" aria-labelledby="skills-title">
+    <section class="skills">
       <div class="skills-inner">
         <div class="section-eyebrow">Systems, not only tools</div>
-        <h2 class="section-title" id="skills-title">How I think &amp; build</h2>
+        <h2 class="section-title">How I think &amp; build</h2>
         <p class="section-sub">
           I like when AI systems behave like cities: many small agents, clear rules,
           smooth flows. Below is the stack I use to keep everything coherent.
@@ -1421,9 +1290,9 @@
     </section>
 
     <!-- ========== FLOATING KEYWORDS ========== -->
-    <section class="keywords" aria-labelledby="keywords-title">
+    <section class="keywords">
       <div class="keywords-inner">
-        <h2 class="keywords-title" id="keywords-title">Words that orbit my work</h2>
+        <h2 class="keywords-title">Words that orbit my work</h2>
         <p class="keywords-sub">
           These are the ideas I keep coming back to. They float around the projects
           and pull them into shape – like subtle gravity.
@@ -1437,15 +1306,13 @@
     </section>
 
     <!-- ========== TIMELINE ========== -->
-    <section class="timeline" aria-labelledby="timeline-title">
+    <section class="timeline">
       <div class="timeline-inner">
         <div class="timeline-list">
-          <div class="timeline-line" aria-hidden="true"></div>
-
-          <h2 class="sr-only" id="timeline-title">Selected work timeline</h2>
+          <div class="timeline-line"></div>
 
           <article class="timeline-item">
-            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-dot"></div>
             <div class="timeline-title">AI Assistant for AR-Based Train Safety</div>
             <div class="timeline-meta">LLM orchestration · anomaly detection · AR UX</div>
             <div class="timeline-body">
@@ -1455,7 +1322,7 @@
           </article>
 
           <article class="timeline-item">
-            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-dot"></div>
             <div class="timeline-title">AI-Powered Course Helper</div>
             <div class="timeline-meta">LLMs · Flask backend · UX for students</div>
             <div class="timeline-body">
@@ -1465,7 +1332,7 @@
           </article>
 
           <article class="timeline-item">
-            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-dot"></div>
             <div class="timeline-title">XR for Railway Scenarios</div>
             <div class="timeline-meta">Unity · C# · Oculus Quest</div>
             <div class="timeline-body">
@@ -1475,7 +1342,7 @@
           </article>
         </div>
 
-        <aside class="timeline-aside" aria-label="Where this work is heading next">
+        <aside class="timeline-aside">
           <h3>Where this is heading</h3>
           <p>
             I’m especially interested in digital twins for rehabilitation and safety – systems
@@ -1491,10 +1358,10 @@
     </section>
 
     <!-- ========== EXTRAS / PERSONAL ========== -->
-    <section class="extras" aria-labelledby="extras-title">
+    <section class="extras">
       <div class="extras-inner">
         <div class="section-eyebrow">A bit more texture</div>
-        <h2 class="section-title" id="extras-title">Beyond the code</h2>
+        <h2 class="section-title">Beyond the code</h2>
 
         <div class="extras-grid">
           <article class="extras-box">
@@ -1520,8 +1387,7 @@
     </section>
 
     <!-- ========== CONTACT ========== -->
-    <section class="contact" aria-labelledby="contact-title">
-      <h2 id="contact-title" class="sr-only">Contact</h2>
+    <section class="contact">
       <p>
         If you’d like to explore calm, intelligent systems together, you can reach me at
         <a href="mailto:youssefh.sassi@gmail.com">youssefh.sassi@gmail.com</a>.
@@ -1538,313 +1404,275 @@
 </div>
 
 <!-- GSAP + ScrollTrigger -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-+sgxM4bqhRvyHv3+gKaOHOSRJh8udbSJZapHvZS0V+USLzzFOCQWg+EzXt4hNxhSFWXMFcuSXR/xDqoHOG3Suw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-iY4pS5QoUXDg8xPGCX47+VJYb6MAzuhswt8IDfOo5PYJPIIYwpxXswW9SJtze2uuhEglMPBaXv2WKVVL/ENg5w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    // Basic scroll header state
-    const bodyEl = document.body;
-    const onScrollHeader = () => {
-      if (window.scrollY > 10) bodyEl.classList.add("is-scrolled");
-      else bodyEl.classList.remove("is-scrolled");
-    };
-    onScrollHeader();
-    window.addEventListener("scroll", onScrollHeader, { passive: true });
-
-    // Nav active state
-    const navLinks = document.querySelectorAll(".nav-link[data-nav-target]");
-    const setActiveNav = (id) => {
-      navLinks.forEach(link => {
-        const target = link.getAttribute("data-nav-target");
-        if (target === id) link.classList.add("is-active");
-        else link.classList.remove("is-active");
-      });
-    };
-
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
-
     gsap.registerPlugin(ScrollTrigger);
 
     /* ----------------- BASIC ENTRANCE for all heroes ----------------- */
-    if (!prefersReducedMotion) {
-      gsap.utils.toArray(".hero-right").forEach(function(right){
-        gsap.from(right, {
-          y: 40,
-          autoAlpha: 0,
-          duration: 1.1,
-          ease: "power3.out"
-        });
+    gsap.utils.toArray(".hero-right").forEach(function(right){
+      gsap.from(right, {
+        y: 40,
+        autoAlpha: 0,
+        duration: 1.1,
+        ease: "power3.out"
       });
+    });
 
-      gsap.utils.toArray(".hero-main-media").forEach(function(media){
-        gsap.from(media, {
-          scale: 1.12,
-          y: 20,
-          autoAlpha: 0,
-          duration: 1.2,
-          ease: "power3.out"
-        });
+    gsap.utils.toArray(".hero-main-media").forEach(function(media){
+      gsap.from(media, {
+        scale: 1.12,
+        y: 20,
+        autoAlpha: 0,
+        duration: 1.2,
+        ease: "power3.out"
       });
+    });
 
-      /* Floating background big words in all hero options */
-      gsap.to(".hero-bg-words span", {
-        xPercent: (i) => (i % 2 === 0 ? -12 : 10),
-        yPercent: (i) => (i % 2 === 0 ? 6 : -8),
-        rotation: (i) => (i % 2 === 0 ? -6 : 5),
-        ease: "sine.inOut",
-        duration: 8,
-        repeat: -1,
-        yoyo: true
-      });
-    }
+    /* Floating background big words in all hero options */
+    gsap.to(".hero-bg-words span", {
+      xPercent: (i) => (i % 2 === 0 ? -12 : 10),
+      yPercent: (i) => (i % 2 === 0 ? 6 : -8),
+      rotation: (i) => (i % 2 === 0 ? -6 : 5),
+      ease: "sine.inOut",
+      duration: 8,
+      repeat: -1,
+      yoyo: true
+    });
 
     /* ================================================================
        DESKTOP / LAPTOP: pinned triple heroes + pinned projects slider
     ================================================================ */
     ScrollTrigger.matchMedia({
       "(min-width: 768px)": function() {
-        if (!prefersReducedMotion) {
-          /* ---------- OPTION 1 ---------- */
-          const heroTL1 = gsap.timeline({
+        /* ---------- OPTION 1 ---------- */
+        const heroTL1 = gsap.timeline({
+          scrollTrigger: {
+            trigger: "#heroOption1",
+            start: "top top",
+            end: "+=220%",
+            scrub: true,
+            pin: true
+          }
+        });
+
+        heroTL1
+          .to(".hero1-main-media", {
+            scale: 0.86,
+            yPercent: -8,
+            duration: 1.2,
+            ease: "none"
+          }, 0)
+          .to(".hero1-right", {
+            yPercent: -30,
+            autoAlpha: 0,
+            duration: 1.0,
+            ease: "none"
+          }, 0)
+          .to(".hero1-bg-words span:nth-child(1)", {
+            xPercent: -40,
+            rotation: -12,
+            ease: "none"
+          }, 0)
+          .to(".hero1-bg-words span:nth-child(2)", {
+            xPercent: 25,
+            rotation: 10,
+            ease: "none"
+          }, 0)
+          .to(".hero1-bg-words span:nth-child(3)", {
+            xPercent: -30,
+            rotation: -8,
+            ease: "none"
+          }, 0)
+          .to(".hero1-grid-frame", {
+            autoAlpha: 1,
+            scale: 1,
+            y: 0,
+            duration: 1.2,
+            ease: "power2.out"
+          }, 0.35)
+          .from(".hero1-grid-frame img", {
+            y: 60,
+            autoAlpha: 0,
+            stagger: 0.15,
+            duration: 0.9,
+            ease: "power2.out"
+          }, 0.45)
+          .to(".hero1-bg-words span", {
+            autoAlpha: 0,
+            duration: 0.8,
+            ease: "power1.out"
+          }, 1.4);
+
+        /* ---------- OPTION 2 (strong maze / diagonal) ---------- */
+        const heroTL2 = gsap.timeline({
+          scrollTrigger: {
+            trigger: "#heroOption2",
+            start: "top top",
+            end: "+=220%",
+            scrub: true,
+            pin: true
+          }
+        });
+
+        heroTL2
+          .to(".hero2-main-media", {
+            scale: 0.9,
+            xPercent: -10,
+            yPercent: 12,
+            rotation: -6,
+            ease: "none"
+          }, 0)
+          .to(".hero2-right", {
+            yPercent: -20,
+            xPercent: 10,
+            autoAlpha: 0,
+            ease: "none"
+          }, 0.2)
+          .to(".hero2-bg-words span:nth-child(1)", {
+            xPercent: -30,
+            yPercent: -10,
+            rotation: -14,
+            ease: "none"
+          }, 0)
+          .to(".hero2-bg-words span:nth-child(2)", {
+            xPercent: 35,
+            rotation: 10,
+            ease: "none"
+          }, 0)
+          .to(".hero2-bg-words span:nth-child(3)", {
+            xPercent: -20,
+            rotation: -8,
+            ease: "none"
+          }, 0)
+          .to(".hero2-grid-frame", {
+            autoAlpha: 1,
+            scale: 1.05,
+            y: -10,
+            duration: 1.2,
+            ease: "power2.out"
+          }, 0.4)
+          .from(".hero2-grid-frame img", {
+            y: 80,
+            autoAlpha: 0,
+            stagger: 0.12,
+            duration: 0.9,
+            ease: "power2.out"
+          }, 0.45);
+
+        /* ---------- OPTION 3 (combo) ---------- */
+        const heroTL3 = gsap.timeline({
+          scrollTrigger: {
+            trigger: "#heroOption3",
+            start: "top top",
+            end: "+=220%",
+            scrub: true,
+            pin: true
+          }
+        });
+
+        heroTL3
+          .to(".hero3-main-media", {
+            scale: 0.84,
+            yPercent: -6,
+            xPercent: 4,
+            rotation: 4,
+            ease: "none"
+          }, 0)
+          .to(".hero3-right", {
+            yPercent: -25,
+            autoAlpha: 0,
+            ease: "none"
+          }, 0.1)
+          .to(".hero3-bg-words span:nth-child(1)", {
+            xPercent: -25,
+            rotation: -10,
+            ease: "none"
+          }, 0)
+          .to(".hero3-bg-words span:nth-child(2)", {
+            xPercent: 30,
+            rotation: 12,
+            ease: "none"
+          }, 0)
+          .to(".hero3-bg-words span:nth-child(3)", {
+            xPercent: -15,
+            rotation: -8,
+            ease: "none"
+          }, 0)
+          .to(".hero3-grid-frame", {
+            autoAlpha: 1,
+            scale: 1.08,
+            y: -6,
+            duration: 1.2,
+            ease: "power2.out"
+          }, 0.35)
+          .from(".hero3-grid-frame img", {
+            y: 70,
+            autoAlpha: 0,
+            stagger: 0.13,
+            duration: 0.9,
+            ease: "power2.out"
+          }, 0.45)
+          .to(".hero3-bg-words span", {
+            autoAlpha: 0,
+            duration: 0.9,
+            ease: "power1.out"
+          }, 1.5);
+
+        /* =====================================================
+           PROJECTS PINNED BIG SLIDER – small→big→small cards
+        ===================================================== */
+        const slides = gsap.utils.toArray(".project-slide");
+        if (slides.length) {
+          // initial state: all slides small / hidden
+          gsap.set(slides, { autoAlpha: 0, scale: 0.8, y: 40 });
+          // first slide visible & centred
+          gsap.set(slides[0], { autoAlpha: 1, scale: 1.05, y: 0, zIndex: 20 });
+
+          const projTL = gsap.timeline({
             scrollTrigger: {
-              trigger: "#heroOption1",
+              trigger: ".projects-pin",
               start: "top top",
-              end: "+=220%",
+              end: "+=" + (slides.length * 600),
               scrub: true,
-              pin: true
+              pin: true,
+              anticipatePin: 1
             }
           });
 
-          heroTL1
-            .to(".hero1-main-media", {
-              scale: 0.86,
-              yPercent: -8,
-              duration: 1.2,
-              ease: "none"
-            }, 0)
-            .to(".hero1-right", {
-              yPercent: -30,
-              autoAlpha: 0,
-              duration: 1.0,
-              ease: "none"
-            }, 0)
-            .to(".hero1-bg-words span:nth-child(1)", {
-              xPercent: -40,
-              rotation: -12,
-              ease: "none"
-            }, 0)
-            .to(".hero1-bg-words span:nth-child(2)", {
-              xPercent: 25,
-              rotation: 10,
-              ease: "none"
-            }, 0)
-            .to(".hero1-bg-words span:nth-child(3)", {
-              xPercent: -30,
-              rotation: -8,
-              ease: "none"
-            }, 0)
-            .to(".hero1-grid-frame", {
+          slides.forEach((slide, i) => {
+            const next = slides[i + 1];
+
+            // Bring current slide front & big
+            projTL.to(slide, {
               autoAlpha: 1,
-              scale: 1,
+              scale: 1.1,
               y: 0,
-              duration: 1.2,
-              ease: "power2.out"
-            }, 0.35)
-            .from(".hero1-grid-frame img", {
-              y: 60,
-              autoAlpha: 0,
-              stagger: 0.15,
-              duration: 0.9,
-              ease: "power2.out"
-            }, 0.45)
-            .to(".hero1-bg-words span", {
-              autoAlpha: 0,
               duration: 0.8,
-              ease: "power1.out"
-            }, 1.4);
-
-          /* ---------- OPTION 2 (strong maze / diagonal) ---------- */
-          const heroTL2 = gsap.timeline({
-            scrollTrigger: {
-              trigger: "#heroOption2",
-              start: "top top",
-              end: "+=220%",
-              scrub: true,
-              pin: true
-            }
-          });
-
-          heroTL2
-            .to(".hero2-main-media", {
-              scale: 0.9,
-              xPercent: -10,
-              yPercent: 12,
-              rotation: -6,
-              ease: "none"
-            }, 0)
-            .to(".hero2-right", {
-              yPercent: -20,
-              xPercent: 10,
-              autoAlpha: 0,
-              ease: "none"
-            }, 0.2)
-            .to(".hero2-bg-words span:nth-child(1)", {
-              xPercent: -30,
-              yPercent: -10,
-              rotation: -14,
-              ease: "none"
-            }, 0)
-            .to(".hero2-bg-words span:nth-child(2)", {
-              xPercent: 35,
-              rotation: 10,
-              ease: "none"
-            }, 0)
-            .to(".hero2-bg-words span:nth-child(3)", {
-              xPercent: -20,
-              rotation: -8,
-              ease: "none"
-            }, 0)
-            .to(".hero2-grid-frame", {
-              autoAlpha: 1,
-              scale: 1.05,
-              y: -10,
-              duration: 1.2,
               ease: "power2.out"
-            }, 0.4)
-            .from(".hero2-grid-frame img", {
-              y: 80,
-              autoAlpha: 0,
-              stagger: 0.12,
-              duration: 0.9,
-              ease: "power2.out"
-            }, 0.45);
-
-          /* ---------- OPTION 3 (combo) ---------- */
-          const heroTL3 = gsap.timeline({
-            scrollTrigger: {
-              trigger: "#heroOption3",
-              start: "top top",
-              end: "+=220%",
-              scrub: true,
-              pin: true
-            }
-          });
-
-          heroTL3
-            .to(".hero3-main-media", {
-              scale: 0.84,
-              yPercent: -6,
-              xPercent: 4,
-              rotation: 4,
-              ease: "none"
-            }, 0)
-            .to(".hero3-right", {
-              yPercent: -25,
-              autoAlpha: 0,
-              ease: "none"
-            }, 0.1)
-            .to(".hero3-bg-words span:nth-child(1)", {
-              xPercent: -25,
-              rotation: -10,
-              ease: "none"
-            }, 0)
-            .to(".hero3-bg-words span:nth-child(2)", {
-              xPercent: 30,
-              rotation: 12,
-              ease: "none"
-            }, 0)
-            .to(".hero3-bg-words span:nth-child(3)", {
-              xPercent: -15,
-              rotation: -8,
-              ease: "none"
-            }, 0)
-            .to(".hero3-grid-frame", {
-              autoAlpha: 1,
-              scale: 1.08,
-              y: -6,
-              duration: 1.2,
-              ease: "power2.out"
-            }, 0.35)
-            .from(".hero3-grid-frame img", {
-              y: 70,
-              autoAlpha: 0,
-              stagger: 0.13,
-              duration: 0.9,
-              ease: "power2.out"
-            }, 0.45)
-            .to(".hero3-bg-words span", {
-              autoAlpha: 0,
-              duration: 0.9,
-              ease: "power1.out"
-            }, 1.5);
-
-          /* =====================================================
-             PROJECTS PINNED BIG SLIDER – small→big→small cards
-          ===================================================== */
-          const slides = gsap.utils.toArray(".project-slide");
-
-          if (slides.length) {
-            // initial state
-            gsap.set(slides, {
-              autoAlpha: 0,
-              scale: 0.8,
-              y: 40
             });
 
-            // First slide starts visible & centred
-            gsap.set(slides[0], {
-              autoAlpha: 1,
-              scale: 1.05,
-              y: 0,
-              zIndex: 20
-            });
-
-            const projTL = gsap.timeline({
-              scrollTrigger: {
-                trigger: ".projects-pin",
-                start: "top top",
-                end: "+=" + (slides.length * 600),
-                scrub: true,
-                pin: true,
-                anticipatePin: 1
-              }
-            });
-
-            slides.forEach((slide, i) => {
-              const next = slides[i + 1];
-
-              // Step A: current slide grows big in the centre
+            if (next) {
+              // Push current slide back (smaller / a bit down)
               projTL.to(slide, {
-                autoAlpha: 1,
-                scale: 1.12,
-                y: 0,
+                autoAlpha: 0.25,
+                scale: 0.9,
+                y: 50,
                 duration: 0.8,
-                ease: "power2.out"
+                ease: "power2.in"
               });
 
-              if (next) {
-                // Step B: current slide shrinks + moves slightly down
-                projTL.to(slide, {
-                  autoAlpha: 0.25,
-                  scale: 0.9,
-                  y: 60,
-                  duration: 0.8,
-                  ease: "power2.in"
-                });
-
-                // Step C: prepare next slide
-                projTL.set(next, {
-                  autoAlpha: 1,
-                  scale: 0.95,
-                  y: 20,
-                  zIndex: 20 + i + 1
-                }, "<");
-              }
-            });
-          }
+              // Prepare next slide just behind, ready to grow
+              projTL.set(next, {
+                autoAlpha: 1,
+                scale: 0.95,
+                y: 20,
+                zIndex: 20 + i + 1
+              }, "<");
+            }
+          });
         }
       },
 
@@ -1852,233 +1680,190 @@
          MOBILE: no pin, softer parallax so it stays readable
       ---------------------------------------------------- */
       "(max-width: 767px)": function() {
-        if (!prefersReducedMotion) {
-          ["#heroOption1", "#heroOption2", "#heroOption3"].forEach((id, idx) => {
-            const mainSel = ".hero" + (idx+1) + "-main-media";
-            const wordsSel = ".hero" + (idx+1) + "-bg-words span";
+        ["#heroOption1", "#heroOption2", "#heroOption3"].forEach((id, idx) => {
+          const mainSel = ".hero" + (idx+1) + "-main-media";
+          const wordsSel = ".hero" + (idx+1) + "-bg-words span";
 
-            gsap.to(mainSel, {
-              yPercent: -10,
-              scrollTrigger: {
-                trigger: id,
-                start: "top top",
-                end: "bottom top",
-                scrub: true
-              }
-            });
-
-            gsap.to(wordsSel, {
-              xPercent: (i) => (i % 2 === 0 ? -6 : 6),
-              scrollTrigger: {
-                trigger: id,
-                start: "top top",
-                end: "bottom top",
-                scrub: true
-              }
-            });
-
-            gsap.from(".hero" + (idx+1) + "-grid-frame", {
-              autoAlpha: 0,
-              scale: 0.9,
-              y: 40,
-              scrollTrigger: {
-                trigger: id,
-                start: "top 70%",
-                end: "bottom top",
-                scrub: true
-              }
-            });
-          });
-
-          // projects: just fade / slide, no pin
-          gsap.from(".project-slide", {
-            y: 40,
-            autoAlpha: 0,
-            scale: 0.95,
-            stagger: 0.15,
-            duration: 0.8,
-            ease: "power2.out",
+          gsap.to(mainSel, {
+            yPercent: -10,
             scrollTrigger: {
-              trigger: ".projects",
-              start: "top 80%"
+              trigger: id,
+              start: "top top",
+              end: "bottom top",
+              scrub: true
             }
           });
-        }
+
+          gsap.to(wordsSel, {
+            xPercent: (i) => (i % 2 === 0 ? -6 : 6),
+            scrollTrigger: {
+              trigger: id,
+              start: "top top",
+              end: "bottom top",
+              scrub: true
+            }
+          });
+
+          gsap.from(".hero" + (idx+1) + "-grid-frame", {
+            autoAlpha: 0,
+            scale: 0.9,
+            y: 40,
+            scrollTrigger: {
+              trigger: id,
+              start: "top 70%",
+              end: "bottom top",
+              scrub: true
+            }
+          });
+        });
+
+        // projects: just fade / slide, no pin
+        gsap.from(".project-slide", {
+          y: 40,
+          autoAlpha: 0,
+          scale: 0.95,
+          stagger: 0.15,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".projects",
+            start: "top 80%"
+          }
+        });
       }
     });
 
     /* ----------------- STILLNESS SECTION BG WORDS ----------------- */
-    if (!prefersReducedMotion) {
-      const bgLines = gsap.utils.toArray(".bg-line");
-      bgLines.forEach((line, i) => {
-        gsap.fromTo(line,
-          {
-            xPercent: i % 2 === 0 ? -20 : 20,
-            rotation: i % 2 === 0 ? -8 : 8
-          },
-          {
-            xPercent: i % 2 === 0 ? 10 : -10,
-            rotation: i % 2 === 0 ? 4 : -4,
-            ease: "none",
-            scrollTrigger: {
-              trigger: ".stillness-section",
-              start: "top bottom",
-              end: "bottom top",
-              scrub: true
-            }
+
+    const bgLines = gsap.utils.toArray(".bg-line");
+    bgLines.forEach((line, i) => {
+      gsap.fromTo(line,
+        {
+          xPercent: i % 2 === 0 ? -20 : 20,
+          rotation: i % 2 === 0 ? -8 : 8
+        },
+        {
+          xPercent: i % 2 === 0 ? 10 : -10,
+          rotation: i % 2 === 0 ? 4 : -4,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".stillness-section",
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true
           }
-        );
-      });
-
-      gsap.from(".stillness-heading", {
-        y: 40,
-        autoAlpha: 0,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".stillness-section",
-          start: "top 80%"
         }
-      });
+      );
+    });
 
-      gsap.from(".stillness-collage", {
-        y: 60,
-        scale: 0.85,
-        autoAlpha: 0,
-        duration: 1.1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".stillness-section",
-          start: "top 75%"
-        }
-      });
-
-      /* ----------------- MARQUEE (INFINITE) ----------------- */
-      const marquee = document.querySelector(".marquee-track");
-      if (marquee) {
-        gsap.to(marquee, {
-          xPercent: -50,
-          repeat: -1,
-          duration: 30,
-          ease: "none"
-        });
-
-        gsap.to(marquee, {
-          skewX: 5,
-          repeat: -1,
-          yoyo: true,
-          duration: 3,
-          ease: "sine.inOut"
-        });
+    gsap.from(".stillness-heading", {
+      y: 40,
+      autoAlpha: 0,
+      duration: 1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".stillness-section",
+        start: "top 80%"
       }
+    });
 
-      /* ----------------- SKILLS: zoom-in cards ----------------- */
-      gsap.from(".skill-card", {
-        y: 40,
-        autoAlpha: 0,
-        scale: 0.96,
-        stagger: 0.1,
-        duration: 0.8,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".skills-grid",
-          start: "top 80%"
-        }
+    gsap.from(".stillness-collage", {
+      y: 60,
+      scale: 0.85,
+      autoAlpha: 0,
+      duration: 1.1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".stillness-section",
+        start: "top 75%"
+      }
+    });
+
+    /* ----------------- MARQUEE (INFINITE) ----------------- */
+
+    const marquee = document.querySelector(".marquee-track");
+    if (marquee) {
+      gsap.to(marquee, {
+        xPercent: -50,
+        repeat: -1,
+        duration: 30,
+        ease: "none"
       });
 
-      /* ----------------- FLOATING KEYWORDS ----------------- */
-      gsap.to(".keyword", {
-        y: (i) => (i % 2 === 0 ? 20 : -20),
-        x: (i) => (i % 2 === 0 ? -10 : 8),
-        duration: 4,
-        ease: "sine.inOut",
+      gsap.to(marquee, {
+        skewX: 5,
         repeat: -1,
         yoyo: true,
-        stagger: 0.2
-      });
-
-      /* ----------------- TIMELINE ITEMS ----------------- */
-      gsap.from(".timeline-item", {
-        x: -40,
-        autoAlpha: 0,
-        stagger: 0.18,
-        duration: 0.8,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".timeline-inner",
-          start: "top 80%"
-        }
-      });
-
-      gsap.from(".timeline-aside", {
-        x: 40,
-        autoAlpha: 0,
-        duration: 0.8,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".timeline-inner",
-          start: "top 75%"
-        }
-      });
-
-      /* ----------------- EXTRAS ----------------- */
-      gsap.from(".extras-box", {
-        y: 40,
-        autoAlpha: 0,
-        scale: 0.97,
-        stagger: 0.12,
-        duration: 0.8,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".extras-inner",
-          start: "top 80%"
-        }
+        duration: 3,
+        ease: "sine.inOut"
       });
     }
 
-    // If reduced motion: still use gentle fade-ins so it doesn't feel dead
-    if (prefersReducedMotion) {
-      const fadeInOnScroll = (selector) => {
-        const elements = document.querySelectorAll(selector);
-        const observer = new IntersectionObserver((entries, obs) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.style.opacity = "1";
-              entry.target.style.transform = "translateY(0)";
-              obs.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.2 });
+    /* ----------------- SKILLS: zoom-in cards ----------------- */
 
-        elements.forEach(el => {
-          el.style.opacity = "0";
-          el.style.transform = "translateY(16px)";
-          el.style.transition = "opacity 0.4s ease, transform 0.4s ease";
-          observer.observe(el);
-        });
-      };
+    gsap.from(".skill-card", {
+      y: 40,
+      autoAlpha: 0,
+      scale: 0.96,
+      stagger: 0.1,
+      duration: 0.8,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".skills-grid",
+        start: "top 80%"
+      }
+    });
 
-      fadeInOnScroll(".hero-right, .stillness-heading, .stillness-collage, .skill-card, .timeline-item, .timeline-aside, .extras-box, .project-slide");
-    }
+    /* ----------------- FLOATING KEYWORDS ----------------- */
 
-    // Section-based nav highlighting using ScrollTrigger
-    const sectionsForNav = [
-      { id: "heroOption1" },
-      { id: "heroOption2" },
-      { id: "projects" }
-    ];
+    gsap.to(".keyword", {
+      y: (i) => (i % 2 === 0 ? 20 : -20),
+      x: (i) => (i % 2 === 0 ? -10 : 8),
+      duration: 4,
+      ease: "sine.inOut",
+      repeat: -1,
+      yoyo: true,
+      stagger: 0.2
+    });
 
-    sectionsForNav.forEach(({ id }) => {
-      const sectionEl = document.getElementById(id);
-      if (!sectionEl) return;
+    /* ----------------- TIMELINE ITEMS ----------------- */
 
-      ScrollTrigger.create({
-        trigger: sectionEl,
-        start: "top center",
-        end: "bottom center",
-        onEnter: () => setActiveNav(id),
-        onEnterBack: () => setActiveNav(id)
-      });
+    gsap.from(".timeline-item", {
+      x: -40,
+      autoAlpha: 0,
+      stagger: 0.18,
+      duration: 0.8,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".timeline-inner",
+        start: "top 80%"
+      }
+    });
+
+    gsap.from(".timeline-aside", {
+      x: 40,
+      autoAlpha: 0,
+      duration: 0.8,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".timeline-inner",
+        start: "top 75%"
+      }
+    });
+
+    /* ----------------- EXTRAS ----------------- */
+
+    gsap.from(".extras-box", {
+      y: 40,
+      autoAlpha: 0,
+      scale: 0.97,
+      stagger: 0.12,
+      duration: 0.8,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".extras-inner",
+        start: "top 80%"
+      }
     });
   });
 </script>
